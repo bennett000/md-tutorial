@@ -1,0 +1,4 @@
+{
+  "usage": "Copy 'project-root/project-config.json.template' to 'project-root/project-config.json' - then adjust the project-config.json file accordingly",
+  "CCPath": ""
+}

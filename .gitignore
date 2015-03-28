@@ -28,4 +28,4 @@ build
 coverage
 
 # local project config
-project-config
+project-config.json
