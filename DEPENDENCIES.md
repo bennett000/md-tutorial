@@ -16,7 +16,7 @@ that Angular is *not necessarily* the best tool for this job, and will attempt
 to use Angular as a *library*, not a framework.  Hopefully if anyone is so 
 inclined they would easily be able to swap out view code.
 
-Angular will be included through bower.
+Angular will be included through npm.
 
 
 ## evilstreak/markdown-js
@@ -32,3 +32,5 @@ Until the author learns about Gulp, or how to correctly maintain Makefiles the
 build rules will be written in a Gruntfile.coffee.  The terse nature of coffee
 script makes it ideal for writing an "interactive" configuration like a
 Gruntfile.
+
+Grunt, and numerous plugins are included through npm.
