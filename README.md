@@ -42,9 +42,13 @@ End to end tests:
 
     grunt e2e
 
-Build:
+Compile (Generate intermediate JS):
 
-   grunt build
+    grunt compile
+
+Build (Build for production):
+
+    grunt build
 
 More grunt tasks:
 

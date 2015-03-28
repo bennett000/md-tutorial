@@ -1,5 +1,6 @@
 #
 getConfig = require './scripts/load-config.js'
+source = require './etc/source.js'
 
 module.exports = (grunt) ->
   config = getConfig
@@ -15,6 +16,28 @@ module.exports = (grunt) ->
           sourceMap: true
           declaration: false
 
+    replace:
+      debug:
+        src: ['src/index.template.html']
+        dest: ['src/index.html']
+        replacements: [{
+          from: '###MANIFEST'
+          to: ''
+        }, {
+          from: '###SOURCE'
+          to: source.debugScriptTags()
+        }]
+      build:
+        src: ['src/index.template.html']
+        dest: ['build/index.html']
+        replacements: [{
+          from: '###MANIFEST'
+          to: 'manifest="md-tutorial.appcache"'
+        }, {
+          from: '###SOURCE'
+          to: source.productionScriptTags()
+        }]
+
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-compass'
@@ -23,9 +46,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-protractor-runner'
   grunt.loadNpmTasks 'grunt-closure-compiler'
   grunt.loadNpmTasks 'grunt-typescript'
+  grunt.loadNpmTasks 'grunt-text-replace'
 
 
 
+  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace']
   grunt.registerTask 'compile', 'Compile TS to JS', ['typescript']
+  grunt.registerTask 'test', 'Run unit tests', ['karma']
   grunt.registerTask 'build', 'Build The Project', ['compile']
   #grunt.registerTask 'default', ['prepare']

@@ -1,5 +1,7 @@
 // Karma configuration
 // Generated on Tue Feb 04 2014 21:57:25 GMT-0500 (EST)
+/*global __dirname, module, require */
+var source = require(__dirname + '/source.js');
 
 module.exports = function (config) {
     'use strict';
@@ -13,10 +15,9 @@ module.exports = function (config) {
         // frameworks to use
         frameworks: ['jasmine'],
 
-        files: [
-            'src/**/*.js',
+        files: source.absoluteScripts.concat([
             'spec/*-spec.js'
-        ],
+        ]),
 
         // list of files to exclude
         exclude: [

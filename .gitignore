@@ -29,3 +29,6 @@ coverage
 
 # local project config
 project-config.json
+
+# index.html is auto generated
+client/index.html

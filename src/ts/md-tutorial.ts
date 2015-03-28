@@ -4,9 +4,6 @@
  */
 
 ///<reference path="../../etc/defs/index.d.ts" />
-///<reference path="./test.ts" />
 
 var app = angular.module('md-tutorial', []);
 
-
-console.log('hi', app);
