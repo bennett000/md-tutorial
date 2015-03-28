@@ -1,6 +1,9 @@
 Markdown Tutorial
 =================
 
+This README is all about the markdown tutorial code base.  The actual tutorial
+can be found here: (@todo make a github page)
+
 ## Build Environment
 
 The project aims to have as system neutral a build process as possible,
@@ -10,6 +13,43 @@ can be copied to `md-tutorial/project-config` and tuned accordingly.  This file
 should be ignored by git.
 
 For more information about dependencies see `md-tutorial/DEPENDENCIES.md`
+
+### npm
+
+On initial download, and on subsequent pulls
+
+    npm install
+
+or
+
+    npm update
+
+To run a local server
+
+    npm start
+
+To run unit tests
+
+    npm test
+
+### Grunt
+
+Unit tests (same as npm test):
+
+    grunt test
+
+End to end tests:
+
+    grunt e2e
+
+Build:
+
+   grunt build
+
+More grunt tasks:
+
+    grunt --help
+
 
 ## Plans
 

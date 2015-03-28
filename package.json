@@ -2,7 +2,9 @@
   "name": "md-tutorial",
   "version": "0.0.0",
   "description": "Working towards a better markdown tutorial",
+  "index": "scripts/test-server.js",
   "scripts": {
+    "start": "node scripts/test-server.js",
     "test": "grunt test"
   },
   "repository": {
