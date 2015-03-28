@@ -30,6 +30,3 @@ Step through a series of sandboxes, that show a feature
 * Human friendly layouts for applets (sandbox/walkthrough/reference)
 * Better build plan
 
-### Goals
-
-* Solid prototype within three hours so I can make last call
