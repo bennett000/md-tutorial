@@ -14,6 +14,24 @@ should be ignored by git.
 
 For more information about dependencies see `md-tutorial/DEPENDENCIES.md`
 
+### Build Environment Overview
+
+So far everything is managed with npm, and grunt. In theory the `npm install`
+*should* setup the user for work by callling `grunt bootstrap`
+
+#### Relevant Source Files/Folders
+
+* project-root/spec - jasmine style TDD project specifications
+* project-root/src/ts - TypeScript source code
+* project-root/src/lib - Symbolicly linked dependencies (from node_modules/...)
+
+#### Relevant Build Files/Folders
+
+* project-root/src/js - destination folder for typescript compilation
+* project-root/source.js - central "manifest" of the project's source code,
+used by internal build processes.
+* project-root/build - destination for builds of the tutorial
+
 ### npm
 
 On initial download, and on subsequent pulls
@@ -42,9 +60,13 @@ End to end tests:
 
     grunt e2e
 
-Compile (Generate intermediate JS):
+Compile - Generate intermediate JS from TS:
 
     grunt compile
+
+grunt bootstrap - build index.html files, and compile:
+
+    grunt bootstrap
 
 Build (Build for production):
 

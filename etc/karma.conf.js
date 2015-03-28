@@ -15,7 +15,8 @@ module.exports = function (config) {
         // frameworks to use
         frameworks: ['jasmine'],
 
-        files: source.absoluteScripts.concat([
+        files: source.absoluteScripts().concat([
+            'node_modules/angular-mocks/angular-mocks.js',
             'spec/*-spec.js'
         ]),
 

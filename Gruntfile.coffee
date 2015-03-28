@@ -38,6 +38,12 @@ module.exports = (grunt) ->
           to: source.productionScriptTags()
         }]
 
+    karma:
+      unit:
+        configFile: 'etc/karma.conf.js'
+        singleRun: true,
+        browsers: ['Firefox']
+
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-compass'
@@ -50,8 +56,8 @@ module.exports = (grunt) ->
 
 
 
-  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace']
+  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
   grunt.registerTask 'compile', 'Compile TS to JS', ['typescript']
-  grunt.registerTask 'test', 'Run unit tests', ['karma']
+  grunt.registerTask 'test', 'Run unit tests', ['compile', 'karma']
   grunt.registerTask 'build', 'Build The Project', ['compile']
   #grunt.registerTask 'default', ['prepare']

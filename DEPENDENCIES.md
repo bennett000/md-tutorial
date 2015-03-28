@@ -16,7 +16,7 @@ that Angular is *not necessarily* the best tool for this job, and will attempt
 to use Angular as a *library*, not a framework.  Hopefully if anyone is so 
 inclined they would easily be able to swap out view code.
 
-Angular will be included through npm.
+Angular will be included through npm, including angular mocks.
 
 
 ## marked

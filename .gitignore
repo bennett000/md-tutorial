@@ -32,3 +32,7 @@ project-config.json
 
 # index.html is auto generated
 client/index.html
+
+# generated javascript
+src/js/md-tutorial.js.map
+src/js/md-tutorial.js
