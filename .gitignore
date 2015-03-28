@@ -26,3 +26,6 @@ build
 
 # coverage folder
 coverage
+
+# local project config
+project-config
