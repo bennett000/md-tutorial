@@ -9,20 +9,12 @@
 /* @todo use node's path to make these agnostic */
 /** @type {Object} */
 var connect = require('connect'),
+/** @type {function(...)} */
+getConfig = require('./load-config.js'),
 /** @type {Object} */
 serveStatic = require('serve-static'),
-/** @type {Object} */
-fs = require('fs'),
 /** @const */
 PATH_WWW = __dirname + '/../src/',
-/** @const */
-CONFIG_NAME = 'project-config.json',
-/** @const */
-DEFAULT_CONFIG_NAME = 'project-config.json.template',
-/** @const */
-FILE_DEFAULT_CONFIG = __dirname + '/../' + DEFAULT_CONFIG_NAME,
-/** @const */
-FILE_CONFIG = __dirname + '/../' + CONFIG_NAME,
 /** @type {boolean} */
 isEnding = false;
 
@@ -30,58 +22,6 @@ main();
 
 // Functions below
 
-/**
- * @param {string} file
- * @return {*}
- */
-function safeGetFile(file) {
-    'use strict';
-    try {
-        return fs.readFileSync(file, 'utf-8');
-    } catch (err) {
-        return null;
-    }
-}
-
-/**
- * @param {string} strToParse
- * @return {*}
- */
-function safeParse(strToParse) {
-    'use strict';
-
-    try {
-        return JSON.parse(strToParse);
-    } catch (error) {
-        return null;
-    }
-}
-
-/**
- * @throws {ReferenceError}
- * @return {*}
- */
-function getConfig() {
-    'use strict';
-
-    var config = safeGetFile(FILE_CONFIG);
-
-    if (!config) {
-        config = safeGetFile(FILE_DEFAULT_CONFIG);
-    }
-
-    if (!config) {
-        throw new ReferenceError('md-tutorial server: cannot find config');
-    }
-
-    config = safeParse(config);
-
-    if (!config) {
-        throw new ReferenceError('md-tutorial server: cannot parse config');
-    }
-
-    return config;
-}
 
 function main() {
     'use strict';

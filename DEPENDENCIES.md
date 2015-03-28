@@ -19,10 +19,10 @@ inclined they would easily be able to swap out view code.
 Angular will be included through npm.
 
 
-## evilstreak/markdown-js
+## marked
 
 The author intends to support multiple and/or alternate markdown interpereters
-markdown-js seems like it will be the easiest markdown parser to get started
+marked seems like it will be the easiest markdown parser to get started
 with.
 
 
@@ -34,3 +34,11 @@ script makes it ideal for writing an "interactive" configuration like a
 Gruntfile.
 
 Grunt, and numerous plugins are included through npm.
+
+## TypeScript
+
+The original intent of the author was to actually write in JavaScript, but the
+prospect of sewing together, and processing (with Grunt or otherwise) a set
+of JavaScript files seemed like more work than it was worth.  TypeScript should
+be able to handle that alone.  Beyond that es6 sugar, and more static analysis
+options are a plus.
