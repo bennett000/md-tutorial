@@ -3,7 +3,7 @@ getConfig = require './scripts/load-config.js'
 source = require './etc/source.js'
 jsMinName = 'md-tutorial.min.js'
 jsIntermediate = 'src/js/' + jsMinName
-jsBuild = 'build/js/' + jsMinName
+jsBuild = 'build/' + jsMinName
 
 module.exports = (grunt) ->
   config = getConfig()
@@ -77,6 +77,15 @@ module.exports = (grunt) ->
     coffeelint:
       app: ['Gruntfile.coffee']
 
+    # Build CSS
+    compass:
+      register:
+        options:
+          cssDir: 'src/'
+          sassDir: 'src/scss'
+          environment: 'production'
+          force: true
+
     # Runs the unit test suite - generates coverage
     karma:
       unit:
@@ -110,7 +119,9 @@ module.exports = (grunt) ->
   grunt.registerTask 'test', 'Run unit tests', ['compile', 'karma']
   grunt.registerTask 'compile', 'Compile TS to JS', ['lint', 'typescript']
   grunt.registerTask 'test-all', 'End to end tests', ['karma', 'protractor']
-  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
+  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile',
+                                                          'compass']
+
   grunt.registerTask 'build', 'Build The Project', ['bootstrap', 'compile',
                                                     'concat']
 

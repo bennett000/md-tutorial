@@ -1,0 +1,11 @@
+<div>
+    <form>
+        <textarea class="mdt-md-input" ng-model="md.input"
+                 placeholder="Mark it down Dude."
+                 spellcheck="true"
+                 wrap="hard"
+                 ng-change="md.update()">
+        </textarea>
+    </form>
+    <p class="mdt-md-output" ng-bind-html="md.output"></p>
+</div>

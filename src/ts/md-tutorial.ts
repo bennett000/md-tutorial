@@ -4,7 +4,7 @@
  */
 
 ///<reference path="../../etc/defs/index.d.ts" />
-var app = angular.module('md-tutorial', ['ngRoute']).
+var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
     config(function ($routeProvider, applets) {
         $routeProvider.when('/', {
             templateUrl: '/html/root.html',
@@ -53,6 +53,8 @@ var app = angular.module('md-tutorial', ['ngRoute']).
     }).directive('mdtMarkdownSandbox', function mdSandbox() {
         return {
             replace: true,
+            scope: {},
+            controller: 'Markdown',
             templateUrl: '/html/sandbox-directive.html'
         }
     });

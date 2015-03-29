@@ -32,32 +32,46 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Markdown Tutorial</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="md-tutorial.css" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport"
           content="initial-scale=1.0, height=device-width, width=device-height, maximum-scale=1.0, user-scalable=0"/>
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64"
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64"
           type="image/vnd.microsoft.icon">
     <!-- iOS Safari Recommendations
     https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-    <link rel="apple-touch-icon" href="/img/md-tutorial-76.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/img/md-tutorial-57.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/img/md-tutorial-76.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/img/md-tutorial-72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/img/md-tutorial-114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/md-tutorial-120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/img/md-tutorial-144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/img/md-tutorial-152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/md-tutorial-180.png">
+    <link rel="apple-touch-icon" href="img/md-tutorial-76.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/md-tutorial-57.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/md-tutorial-76.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/md-tutorial-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/md-tutorial-114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/md-tutorial-120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/md-tutorial-144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/md-tutorial-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/md-tutorial-180.png">
     <!-- Android/Chrome Icon Recommendations
     https://developer.chrome.com/multidevice/android/installtohomescreen -->
-    <link rel="icon" sizes="192x192" href="/img/md-tutorial-192.png">
-    <link rel="icon" sizes="128x128" href="/img/md-tutorial-128.png">
+    <link rel="icon" sizes="192x192" href="img/md-tutorial-192.png">
+    <link rel="icon" sizes="128x128" href="img/md-tutorial-128.png">
     <style>
         body, html {
             background-color: white;
             margin: 0;
+        }
+        /** thanks http://designshack.net/articles/css/10-great-google-font-combinations-you-can-copy/ */
+        h1 {
+            font-family: 'Arvo', Georgia, Times, serif;
+            font-size: 2.5em;
+            line-height: 90px;
+        }
+        body, textarea {
+            font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+            font-size: 1.3em;
+            line-height: 25px;
         }
     </style>
 </head>
@@ -68,7 +82,7 @@
     source, and review it. <%= sourceUrl %>
 </noscript>
 
-<mdt-frame></mdt-frame>
+<mdt-frame class="mdt-frame"></mdt-frame>
 
 ###SOURCE
 
