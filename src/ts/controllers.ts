@@ -1,0 +1,13 @@
+/**
+ * Created by michael on 29/03/15.
+ */
+
+app.controller('FirstTime', function () {
+    console.debug('first time');
+}).controller('Sandbox', function (){
+    console.debug('sandbox');
+}).controller('Reference', function () {
+    console.debug('reference');
+}).controller('Walkthrough', function (){
+    console.debug('walkthough');
+});

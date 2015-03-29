@@ -12,11 +12,13 @@ var source = {
     ],
     lib: [
         'lib/angular.min.js',
+        'lib/angular-route.min.js',
         'lib/marked.min.js'
     ],
     ts: [
         'src/ts/md-tutorial.ts',
-        'src/ts/common/frame.ts',
+        'src/ts/controllers.ts',
+        'src/ts/applet-selector.ts',
         'src/ts/markdown-services/markdown.ts'
     ],
     absoluteJS: absoluteJS,
