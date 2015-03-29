@@ -18,6 +18,7 @@ var source = {
     ts: [
         'src/ts/md-tutorial.ts',
         'src/ts/controllers.ts',
+        'src/ts/throttle.ts',
         'src/ts/applet-selector.ts',
         'src/ts/markdown-services/markdown.ts'
     ],

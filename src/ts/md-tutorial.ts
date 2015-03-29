@@ -50,5 +50,10 @@ var app = angular.module('md-tutorial', ['ngRoute']).
             replace: true,
             templateUrl: '/html/frame.html'
         };
+    }).directive('mdtMarkdownSandbox', function mdSandbox() {
+        return {
+            replace: true,
+            templateUrl: '/html/sandbox-directive.html'
+        }
     });
 
