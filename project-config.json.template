@@ -1,6 +1,6 @@
 {
   "usage": "Copy 'project-root/project-config.json.template' to 'project-root/project-config.json' - then adjust the project-config.json file accordingly",
-  "CCPath": "",
+  "pathCC": "/usr/local/lib/closure-compiler",
   "protocol":"http://",
   "host":"127.0.0.1",
   "port":"31415"

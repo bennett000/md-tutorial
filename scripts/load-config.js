@@ -28,6 +28,7 @@ function validateConfig(c) {
     'use strict';
     c = c || {};
 
+    c.pathCC = c.pathCC || '/usr/local/lib/closure-compiler';
     c.port = +c.port || 31415;
     c.host = c.host || '127.0.0.1';
     c.protocl = c.protocl === 'https://' ? c.protocol : 'http://';

@@ -1,9 +1,12 @@
 #
 getConfig = require './scripts/load-config.js'
 source = require './etc/source.js'
+jsMinName = 'md-tutorial.min.js'
+jsIntermediate = 'src/js/' + jsMinName
+jsBuild = 'build/js/' + jsMinName
 
 module.exports = (grunt) ->
-  config = getConfig
+  config = getConfig()
 
   grunt.initConfig
 
@@ -40,6 +43,26 @@ module.exports = (grunt) ->
           from: '###SOURCE'
           to: source.productionScriptTags()
         }]
+
+    # closure compiler will prep for the build
+    'closure-compiler':
+      mdTutorial:
+        closurePath: config.pathCC
+        js: source.absoluteJS()
+        jsOutputFile: jsIntermediate
+        maxBuffer: 500
+        noreport: true
+        options:
+          compilation_level: 'SIMPLE_OPTIMIZATIONS'
+          language_in: 'ECMASCRIPT5_STRICT'
+          externs: 'etc/externs/angular-1.3.js'
+          angular_pass: true
+
+    # Concat will do most of the building
+    concat:
+      buildJS:
+        src: jsIntermediate
+        dest: jsBuild
 
     # Lint the code - we are not savages
     tslint:
@@ -83,12 +106,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-coffeelint'
 
 
-  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
-  grunt.registerTask 'compile', 'Compile TS to JS', ['lint', 'typescript']
   grunt.registerTask 'e2e', 'End to end tests', ['protractor']
-  grunt.registerTask 'test-all', 'End to end tests', ['karma', 'protractor']
   grunt.registerTask 'test', 'Run unit tests', ['compile', 'karma']
-  grunt.registerTask 'build', 'Build The Project', ['compile']
+  grunt.registerTask 'compile', 'Compile TS to JS', ['lint', 'typescript']
+  grunt.registerTask 'test-all', 'End to end tests', ['karma', 'protractor']
+  grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
+  grunt.registerTask 'build', 'Build The Project', ['bootstrap', 'compile',
+                                                    'concat']
+
   grunt.registerTask 'lint', 'Lint the project', ['tslint', 'jshint',
                                                   'coffeelint']
   #grunt.registerTask 'default', ['prepare']

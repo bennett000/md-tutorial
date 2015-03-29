@@ -14,7 +14,9 @@ getConfig = require('./load-config.js'),
 /** @type {Object} */
 serveStatic = require('serve-static'),
 /** @const */
-PATH_WWW = __dirname + '/../src/',
+PATH_WWW_DEBUG = __dirname + '/../src/',
+/** @const */
+PATH_WWW_BUILD = __dirname + '/../build/',
 /** @type {boolean} */
 isEnding = false;
 
@@ -27,9 +29,14 @@ function main() {
     'use strict';
 
     var config = getConfig(),
-        s = connect().use(serveStatic(PATH_WWW)).listen(+config.port);
+        path = checkProduction() ? PATH_WWW_BUILD : PATH_WWW_DEBUG,
+        s = connect().use(serveStatic(path)).listen(+config.port);
+    console.log('');
+    console.log('md-tutroial test server');
+    console.log('  use -p or --production to test built version');
     console.log('');
     console.log('md-tutorial test server listening on ', +config.port);
+    console.log('serving files from ', path);
 
     function kill() {
         gracefulExit(s);
@@ -60,6 +67,21 @@ function onServerClose(err) {
     }
     bye();
     process.exit(0);
+}
+
+/**
+ * @return {boolean}
+ */
+function checkProduction() {
+    'use strict';
+
+    if (process.argv.indexOf('-p') > 0) {
+        return true;
+    }
+    if (process.argv.indexOf('--production') > 0) {
+        return true;
+    }
+    return false;
 }
 
 /**
