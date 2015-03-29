@@ -26,24 +26,41 @@ body, html {
 @include max-screen(1024px) {
   .mdt-applets {
     width: 100%;
+    height: 92%;
+    top: 8%;
+  }
+  .nav {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 7.99%;
   }
 }
 
 @include min-screen(1025px) {
   .mdt-applets {
+    height: 100%;
+    top: 0;
     width: 60%;
+  }
+  .nav {
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100%;
   }
 }
 
 .mdt-applets {
   position: relative;
 
-  height: 100%;
   margin: 0 auto;
   background-color: $foreground;
 }
 
 .mdt-frame {
+  position: absolute;
+
   width: 100%;
   height: 100%;
 }
@@ -54,3 +71,7 @@ body, html {
   top: 0;
 }
 
+.mdt-applet-selector {
+  width: 75px;
+  height: 75px;
+}

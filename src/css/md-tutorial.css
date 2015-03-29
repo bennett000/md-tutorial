@@ -19,25 +19,26 @@ body, textarea {
   font: 1.2em "Vollkorn", Palatino, Times;
   line-height: 1.4;
   text-align: justify;
+  overflow: hidden;
 }
 
-/* line 23, ../scss/partials/_base.scss */
+/* line 24, ../scss/partials/_base.scss */
 header, nav, article, footer {
   margin: 0 auto;
 }
 
-/* line 26, ../scss/partials/_base.scss */
+/* line 27, ../scss/partials/_base.scss */
 article {
   margin-top: 4em;
   margin-bottom: 4em;
 }
 
-/* line 30, ../scss/partials/_base.scss */
+/* line 31, ../scss/partials/_base.scss */
 footer {
   margin-bottom: 50px;
 }
 
-/* line 34, ../scss/partials/_base.scss */
+/* line 35, ../scss/partials/_base.scss */
 nav {
   font-size: .9em;
   font-style: italic;
@@ -45,7 +46,7 @@ nav {
   padding: 1em 0;
 }
 
-/* line 40, ../scss/partials/_base.scss */
+/* line 41, ../scss/partials/_base.scss */
 nav p {
   margin: 0;
 }
@@ -218,25 +219,26 @@ body, textarea {
   font: 1.2em "Vollkorn", Palatino, Times;
   line-height: 1.4;
   text-align: justify;
+  overflow: hidden;
 }
 
-/* line 23, ../scss/partials/_base.scss */
+/* line 24, ../scss/partials/_base.scss */
 header, nav, article, footer {
   margin: 0 auto;
 }
 
-/* line 26, ../scss/partials/_base.scss */
+/* line 27, ../scss/partials/_base.scss */
 article {
   margin-top: 4em;
   margin-bottom: 4em;
 }
 
-/* line 30, ../scss/partials/_base.scss */
+/* line 31, ../scss/partials/_base.scss */
 footer {
   margin-bottom: 50px;
 }
 
-/* line 34, ../scss/partials/_base.scss */
+/* line 35, ../scss/partials/_base.scss */
 nav {
   font-size: .9em;
   font-style: italic;
@@ -244,7 +246,7 @@ nav {
   padding: 1em 0;
 }
 
-/* line 40, ../scss/partials/_base.scss */
+/* line 41, ../scss/partials/_base.scss */
 nav p {
   margin: 0;
 }
@@ -279,33 +281,59 @@ body, html {
   /* line 27, ../scss/partials/_frame.scss */
   .mdt-applets {
     width: 100%;
+    height: 92%;
+    top: 8%;
+  }
+
+  /* line 32, ../scss/partials/_frame.scss */
+  .nav {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 7.99%;
   }
 }
 @media screen and (min-width: 1025px) {
-  /* line 33, ../scss/partials/_frame.scss */
+  /* line 41, ../scss/partials/_frame.scss */
   .mdt-applets {
+    height: 100%;
+    top: 0;
     width: 60%;
   }
+
+  /* line 46, ../scss/partials/_frame.scss */
+  .nav {
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100%;
+  }
 }
-/* line 38, ../scss/partials/_frame.scss */
+/* line 54, ../scss/partials/_frame.scss */
 .mdt-applets {
   position: relative;
-  height: 100%;
   margin: 0 auto;
   background-color: #d0dce2;
 }
 
-/* line 46, ../scss/partials/_frame.scss */
+/* line 61, ../scss/partials/_frame.scss */
 .mdt-frame {
+  position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* line 51, ../scss/partials/_frame.scss */
+/* line 68, ../scss/partials/_frame.scss */
 .nav {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+/* line 74, ../scss/partials/_frame.scss */
+.mdt-applet-selector {
+  width: 75px;
+  height: 75px;
 }
 
 /* line 4, ../scss/partials/_base.scss */
@@ -326,25 +354,26 @@ body, textarea {
   font: 1.2em "Vollkorn", Palatino, Times;
   line-height: 1.4;
   text-align: justify;
+  overflow: hidden;
 }
 
-/* line 23, ../scss/partials/_base.scss */
+/* line 24, ../scss/partials/_base.scss */
 header, nav, article, footer {
   margin: 0 auto;
 }
 
-/* line 26, ../scss/partials/_base.scss */
+/* line 27, ../scss/partials/_base.scss */
 article {
   margin-top: 4em;
   margin-bottom: 4em;
 }
 
-/* line 30, ../scss/partials/_base.scss */
+/* line 31, ../scss/partials/_base.scss */
 footer {
   margin-bottom: 50px;
 }
 
-/* line 34, ../scss/partials/_base.scss */
+/* line 35, ../scss/partials/_base.scss */
 nav {
   font-size: .9em;
   font-style: italic;
@@ -352,7 +381,7 @@ nav {
   padding: 1em 0;
 }
 
-/* line 40, ../scss/partials/_base.scss */
+/* line 41, ../scss/partials/_base.scss */
 nav p {
   margin: 0;
 }
