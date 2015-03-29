@@ -2,6 +2,8 @@
  * Created by michael on 29/03/15.
  */
 
+// These functions are more or less _ adapted to angular
+
 app.factory('throttleNow', function () {
     'use strict';
 
@@ -16,12 +18,16 @@ app.factory('throttleNow', function () {
             timeout = null,
             previous = 0;
 
-        if (!options) {options = {}; }
+        if (!options) {
+            options = {};
+        }
         function later() {
             previous = options.leading === false ? 0 : throttleNow();
             timeout = null;
             result = func.apply(context, args);
-            if (!timeout) { context = args = null; }
+            if (!timeout) {
+                context = args = null;
+            }
         }
 
         return function () {
@@ -37,7 +43,9 @@ app.factory('throttleNow', function () {
                 timeout = null;
                 previous = now;
                 result = func.apply(context, args);
-                if (!timeout) { context = args = null; }
+                if (!timeout) {
+                    context = args = null;
+                }
 
             } else if (!timeout && options.trailing !== false) {
                 timeout = $timeout(later, remaining);
@@ -69,7 +77,9 @@ app.factory('throttleNow', function () {
                 timeout = null;
                 if (!immediate) {
                     result = func.apply(context, args);
-                    if (!timeout) { context = args = null; }
+                    if (!timeout) {
+                        context = args = null;
+                    }
                 }
             }
         }
@@ -79,7 +89,9 @@ app.factory('throttleNow', function () {
             args = Array.prototype.slice.call(arguments, 0);
             timestamp = throttleNow();
             var callNow = immediate && !timeout;
-            if (!timeout) { timeout = $timeout(later, wait); }
+            if (!timeout) {
+                timeout = $timeout(later, wait);
+            }
             if (callNow) {
                 result = func.apply(context, args);
                 context = args = null;
