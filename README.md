@@ -64,6 +64,10 @@ All tests:
 
     grunt test-all
 
+Lint:
+
+    grunt lint
+
 Compile - Generate intermediate JS from TS:
 
     grunt compile

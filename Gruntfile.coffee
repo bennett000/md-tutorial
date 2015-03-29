@@ -48,6 +48,12 @@ module.exports = (grunt) ->
       files:
         src: ['src/ts/**/*.ts']
 
+    jshint:
+      all: ['spec/**/*.js', 'scripts/**/*.js']
+
+    coffeelint:
+      app: ['Gruntfile.coffee']
+
     # Runs the unit test suite - generates coverage
     karma:
       unit:
@@ -66,6 +72,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-compass'
+  grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-jasmine-node-coverage'
   grunt.loadNpmTasks 'grunt-karma'
   grunt.loadNpmTasks 'grunt-protractor-runner'
@@ -73,13 +80,15 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-typescript'
   grunt.loadNpmTasks 'grunt-text-replace'
   grunt.loadNpmTasks 'grunt-tslint'
-
+  grunt.loadNpmTasks 'grunt-coffeelint'
 
 
   grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
-  grunt.registerTask 'compile', 'Compile TS to JS', ['tslint', 'typescript']
+  grunt.registerTask 'compile', 'Compile TS to JS', ['lint', 'typescript']
   grunt.registerTask 'e2e', 'End to end tests', ['protractor']
   grunt.registerTask 'test-all', 'End to end tests', ['karma', 'protractor']
   grunt.registerTask 'test', 'Run unit tests', ['compile', 'karma']
   grunt.registerTask 'build', 'Build The Project', ['compile']
+  grunt.registerTask 'lint', 'Lint the project', ['tslint', 'jshint',
+                                                  'coffeelint']
   #grunt.registerTask 'default', ['prepare']
