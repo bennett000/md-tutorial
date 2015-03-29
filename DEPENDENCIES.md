@@ -2,11 +2,14 @@ Markdown Tutorial Dependencies
 ==============================
 
 The end project will run as a simple self contained web application with no
-external dependencies.  External dependencies will be managed with b̶o̶w̶e̶r̶ ̶w̶i̶t̶h̶ 
-t̶h̶e̶ ̶o̶d̶d̶ ̶n̶p̶m̶ ̶e̶x̶c̶e̶p̶t̶i̶o̶n̶.̶ npm.
+external dependencies.  External dependencies will be managed with b̶o̶w̶e̶r̶ ̶
+w̶i̶t̶h̶  t̶h̶e̶ ̶o̶d̶d̶ ̶n̶p̶m̶ ̶e̶x̶c̶e̶p̶t̶i̶o̶n̶.̶ npm, and bower will be
+the odd exception.
 
 In the following "the author" refers to the author of md-tutorial, not the
 third party technology.
+
+### Application
 
 ## Angular
 
@@ -26,6 +29,8 @@ marked seems like it will be the easiest markdown parser to get started
 with.
 
 
+### Build
+
 ## Grunt
 
 Until the author learns about Gulp, or how to correctly maintain Makefiles the
@@ -42,3 +47,10 @@ prospect of sewing together, and processing (with Grunt or otherwise) a set
 of JavaScript files seemed like more work than it was worth.  TypeScript should
 be able to handle that alone.  Beyond that es6 sugar, and more static analysis
 options are a plus.
+
+## SCSS - Compass - MediaQueries
+
+This likely means you need to have Ruby setup, and the relevant gems on your
+system.  Npm will take care of a lot, but
+
+Bower

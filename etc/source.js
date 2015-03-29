@@ -22,6 +22,11 @@ var source = {
         'src/ts/applet-selector.ts',
         'src/ts/markdown-services/markdown.ts'
     ],
+    staticFiles: [
+        '*.ico',
+        '**/*.html',
+        '**/*.png'
+    ],
     absoluteJS: absoluteJS,
     absoluteLib: absoluteLib,
     absoluteScripts: absoluteScripts,

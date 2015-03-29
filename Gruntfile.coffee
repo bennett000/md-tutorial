@@ -79,12 +79,26 @@ module.exports = (grunt) ->
 
     # Build CSS
     compass:
-      register:
+      debug:
         options:
-          cssDir: 'src/'
+          cssDir: 'src/css'
+          sassDir: 'src/scss'
+          environment: 'development'
+          force: true
+      build:
+        options:
+          cssDir: 'build/css'
           sassDir: 'src/scss'
           environment: 'production'
           force: true
+
+    # Copy assets
+    copy:
+      build:
+        expand: true
+        src: source.staticFiles
+        dest: 'build/'
+        cwd: 'src/'
 
     # Runs the unit test suite - generates coverage
     karma:
@@ -102,6 +116,7 @@ module.exports = (grunt) ->
 
 
   grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-compass'
   grunt.loadNpmTasks 'grunt-contrib-jshint'

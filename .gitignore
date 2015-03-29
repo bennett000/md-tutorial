@@ -36,3 +36,6 @@ client/index.html
 # generated javascript
 src/js/md-tutorial.js.map
 src/js/md-tutorial.js
+
+# sass cache
+.sass-cache

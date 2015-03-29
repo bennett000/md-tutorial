@@ -1,0 +1,27 @@
+{
+  "name": "md-tutorial",
+  "version": "0.0.0",
+  "authors": [
+    "Michael J. Bennett <dev@michaeljbennett.info>"
+  ],
+  "description": "Working towards a better markdown tutorial",
+  "main": "scripts/test-server.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "markdown",
+    "tutorial",
+    "javascript"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bennett000/md-tutorial",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
