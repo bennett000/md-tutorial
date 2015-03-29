@@ -14,6 +14,10 @@ var source = {
         'lib/angular.min.js',
         'lib/marked.min.js'
     ],
+    ts: [
+        'src/ts/md-tutorial.ts',
+        'src/ts/common/frame.ts'
+    ],
     absoluteJS: absoluteJS,
     absoluteLib: absoluteLib,
     absoluteScripts: absoluteScripts,

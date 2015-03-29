@@ -13,7 +13,7 @@ module.exports = (grunt) ->
     # Compiles typescript to js for testing, and distribution
     typescript:
       main:
-        src: ['src/ts/md-tutorial.ts']
+        src: source.ts
         dest: 'src/js/md-tutorial.js'
         options:
           target: 'es5'

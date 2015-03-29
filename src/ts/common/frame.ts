@@ -4,7 +4,7 @@
  */
 
 ///<reference path="../md-tutorial" />
-app.directive('mdt-frame', function frameDirective() {
+app.directive('mdtFrame', function frameDirective() {
 
     return {
         replace: true,

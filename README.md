@@ -17,7 +17,9 @@ For more information about dependencies see `md-tutorial/DEPENDENCIES.md`
 ### Build Environment Overview
 
 So far everything is managed with npm, and grunt. In theory the `npm install`
-*should* setup the user for work by callling `grunt bootstrap`
+*should* setup the user for work by calling `grunt bootstrap`.  JavaScript,
+and TypeScript source files are listed in `project-root/etc/source.js`, this
+file directly controls what gets built into the final JS.
 
 #### Relevant Source Files/Folders
 
@@ -28,9 +30,9 @@ So far everything is managed with npm, and grunt. In theory the `npm install`
 #### Relevant Build Files/Folders
 
 * project-root/src/js - destination folder for typescript compilation
+* project-root/build - destination for builds of the tutorial
 * project-root/source.js - central "manifest" of the project's source code,
 used by internal build processes.
-* project-root/build - destination for builds of the tutorial
 
 ### npm
 
