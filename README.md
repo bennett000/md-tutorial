@@ -14,6 +14,7 @@ should be ignored by git.
 
 For more information about dependencies see `md-tutorial/DEPENDENCIES.md`
 
+
 ### Build Environment Overview
 
 So far everything is managed with npm, and grunt. In theory the `npm install`
@@ -21,11 +22,13 @@ So far everything is managed with npm, and grunt. In theory the `npm install`
 and TypeScript source files are listed in `project-root/etc/source.js`, this
 file directly controls what gets built into the final JS.
 
+
 #### Relevant Source Files/Folders
 
 * project-root/spec - jasmine style TDD project specifications
 * project-root/src/ts - TypeScript source code
 * project-root/src/lib - Symbolicly linked dependencies (from node_modules/...)
+
 
 #### Relevant Build Files/Folders
 
@@ -33,6 +36,7 @@ file directly controls what gets built into the final JS.
 * project-root/build - destination for builds of the tutorial
 * project-root/source.js - central "manifest" of the project's source code,
 used by internal build processes.
+
 
 ### npm
 
@@ -51,6 +55,7 @@ To run a local server
 To run unit tests
 
     npm test
+
 
 ### Grunt
 
@@ -86,6 +91,7 @@ More grunt tasks:
 
     grunt --help
 
+
 ### Testing
 
 Unit tests have been written in the TDD jasmine style, and a Karma configuration
@@ -100,36 +106,6 @@ The end to end tests require more effort to setup.  Before running the grunt
 e2e/protractor task(s) a web driver instance *must be running*.  Setting up
 protractor is beyond the scope of this document, more information can be found
 [here](https://docs.angularjs.org/guide/e2e-testing)
-
-
-## Plans
-
-Concept(http://blog.codinghorror.com/toward-a-better-markdown-tutorial/)
-
-* Sandbox
-* Reference Card
-* Walkthrough
-
-### Sandbox
-
-Simple two column device portable screen, left side markdown, right side is
-rendered content.  If possible lets toggle between dialects.
-
-### Reference Card
-
-Draw inspiration from Randal M. - good luck with that!
-
-### Walkthrough
-
-Step through a series of sandboxes, that show a feature
-
-### Needs
-
-* Data structure of markdown features for Walkthrough
-* Markdown browser js librar(y/ies)
-* Human friendly layout for application
-* Human friendly layouts for applets (sandbox/walkthrough/reference)
-* Better build plan
 
 
 ## License
