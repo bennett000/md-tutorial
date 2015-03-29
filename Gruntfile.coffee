@@ -61,7 +61,7 @@ module.exports = (grunt) ->
     # Concat will do most of the building
     concat:
       buildJS:
-        src: jsIntermediate
+        src: source.absoluteLib().concat [jsIntermediate]
         dest: jsBuild
 
     # Lint the code - we are not savages

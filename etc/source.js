@@ -16,7 +16,8 @@ var source = {
     ],
     ts: [
         'src/ts/md-tutorial.ts',
-        'src/ts/common/frame.ts'
+        'src/ts/common/frame.ts',
+        'src/ts/markdown-services/markdown.ts'
     ],
     absoluteJS: absoluteJS,
     absoluteLib: absoluteLib,

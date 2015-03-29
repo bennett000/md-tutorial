@@ -3,11 +3,11 @@
 /*global __dirname, module, require */
 var source = require(__dirname + '/source.js');
 
-module.exports = function (config) {
+module.exports = function(config) {
     'use strict';
 
-    config.set({
-
+    config.set(
+    {
         // base path, that will be used to resolve files and exclude
         basePath: '..',
 
@@ -15,18 +15,22 @@ module.exports = function (config) {
         // frameworks to use
         frameworks: ['jasmine'],
 
-        files: source.absoluteScripts().concat([
+        files: [
+            'node_modules/angular/angular.js',
             'node_modules/angular-mocks/angular-mocks.js',
+            'spec/unit/mock-*.js'
+        ].concat(source.absoluteJS()).concat(
+        [
+            'spec/unit/helper-*.js',
             'spec/unit/*-spec.js'
         ]),
 
         // list of files to exclude
-        exclude: [
-        ],
+        exclude: [],
 
 
         // test results reporter to use
-        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+        // possible values: 'dots', 'progress', 'coverage'
         reporters: ['progress', 'coverage'],
 
 
@@ -70,5 +74,8 @@ module.exports = function (config) {
         preprocessors: {
             'src/**/*.js': ['coverage']
         }
-    });
-};
+    }
+    )
+    ;
+}
+;
