@@ -23,7 +23,7 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
         $routeProvider.otherwise({
             redirectTo: '/'
         });
-    }).variable('appFlags', {
+    }).value('appFlags', {
         worker: {
             error: null,
             is: false

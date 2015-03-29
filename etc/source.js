@@ -23,6 +23,7 @@ var source = {
         'src/ts/markdown-services/markdown.ts'
     ],
     staticFiles: [
+        '!*.template.html', // why won't grunt copy ignore this? @todo dig
         '*.ico',
         '**/*.html',
         '**/*.png'

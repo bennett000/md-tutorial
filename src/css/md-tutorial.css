@@ -1,0 +1,91 @@
+/* line 1, ../scss/md-tutorial.scss */
+h1, h2, h3 {
+  margin-top: 0.05em;
+  margin-bottom: 0.05em;
+}
+
+/* line 5, ../scss/md-tutorial.scss */
+h2 {
+  font-family: 'Arvo', Georgia, Times, serif;
+  font-size: 2.10em;
+  line-height: 90px;
+}
+
+/* line 11, ../scss/md-tutorial.scss */
+h3 {
+  font-family: 'Arvo', Georgia, Times, serif;
+  font-size: 1.85em;
+  line-height: 90px;
+}
+
+/* line 17, ../scss/md-tutorial.scss */
+.app-sandbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 24, ../scss/md-tutorial.scss */
+.app-sandbox > form > .mdt-md-input {
+  position: absolute;
+  left: 0;
+  width: 40%;
+  /* 23em;*/
+  height: 5.17em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 43, ../scss/md-tutorial.scss */
+.app-sandbox > .mdt-md-output > p {
+  margin-top: 0.05em;
+  margin-bottom: 0.05em;
+}
+
+/* line 48, ../scss/md-tutorial.scss */
+.app-sandbox > .mdt-md-output {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  /* 30em */
+  height: 7em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 67, ../scss/md-tutorial.scss */
+.mdt-applets {
+  position: relative;
+  width: 60.5em;
+  margin: 0 auto;
+}
+
+/* line 74, ../scss/md-tutorial.scss */
+.mdt-frame {
+  width: 100%;
+}
+
+/* line 78, ../scss/md-tutorial.scss */
+.nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 84, ../scss/md-tutorial.scss */
+textarea {
+  resize: none;
+  overflow: auto;
+}
