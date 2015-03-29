@@ -6,6 +6,8 @@ module.exports = (grunt) ->
   config = getConfig
 
   grunt.initConfig
+
+    # Compiles typescript to js for testing, and distribution
     typescript:
       main:
         src: ['src/ts/md-tutorial.ts']
@@ -16,6 +18,7 @@ module.exports = (grunt) ->
           sourceMap: true
           declaration: false
 
+    # Used to build the index.html's
     replace:
       debug:
         src: ['src/index.template.html']
@@ -38,12 +41,21 @@ module.exports = (grunt) ->
           to: source.productionScriptTags()
         }]
 
+    # Lint the code - we are not savages
+    tslint:
+      options:
+        configuration: grunt.file.readJSON 'etc/tslint.json'
+      files:
+        src: ['src/ts/**/*.ts']
+
+    # Runs the unit test suite - generates coverage
     karma:
       unit:
         configFile: 'etc/karma.conf.js'
         singleRun: true,
         browsers: ['Firefox']
 
+    # Runs the e2e suite - web driver must already be running!
     protractor:
       mdTutorial:
         configFile: 'etc/protractor.conf.js'
@@ -60,11 +72,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-closure-compiler'
   grunt.loadNpmTasks 'grunt-typescript'
   grunt.loadNpmTasks 'grunt-text-replace'
+  grunt.loadNpmTasks 'grunt-tslint'
 
 
 
   grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
-  grunt.registerTask 'compile', 'Compile TS to JS', ['typescript']
+  grunt.registerTask 'compile', 'Compile TS to JS', ['tslint', 'typescript']
   grunt.registerTask 'e2e', 'End to end tests', ['protractor']
   grunt.registerTask 'test-all', 'End to end tests', ['karma', 'protractor']
   grunt.registerTask 'test', 'Run unit tests', ['compile', 'karma']

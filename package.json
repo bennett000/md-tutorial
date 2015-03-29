@@ -4,7 +4,7 @@
   "description": "Working towards a better markdown tutorial",
   "index": "scripts/test-server.js",
   "scripts": {
-    "postinstall":"grunt bootstrap",
+    "postinstall": "grunt bootstrap",
     "start": "node scripts/test-server.js",
     "test": "grunt test"
   },
@@ -36,6 +36,7 @@
     "grunt-karma": "^0.10.1",
     "grunt-protractor-runner": "^1.2.1",
     "grunt-text-replace": "^0.4.0",
+    "grunt-tslint": "^2.0.0",
     "grunt-typescript": "^0.6.1",
     "jasmine-core": "^2.2.0",
     "karma": "^0.12.31",
@@ -46,6 +47,7 @@
     "marked": "^0.3.3",
     "protractor": "^2.0.0",
     "serve-static": "^1.9.2",
+    "tslint": "^2.1.1",
     "typescript": "^1.4.1"
   }
 }
