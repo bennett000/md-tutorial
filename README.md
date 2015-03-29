@@ -108,6 +108,21 @@ protractor is beyond the scope of this document, more information can be found
 [here](https://docs.angularjs.org/guide/e2e-testing)
 
 
+### Styles & Themes
+
+If it is not readily evident, the author lacks skills with style, layout, and UI
+in general (all hail the CLI).  However this is supposed to be an accessible
+guide.  I would really *love it* if someone wanted to make this look good.
+
+I would also really love it if we could offer a few built in styles, and the
+ability to add/save custom styles in the client app.  I know how to make the
+JS work, but My CSS/SCSS skills are just not going to fly.
+
+I have attempted to *somewhat* respect
+[this guide](http://thesassway.com/beginner/how-to-structure-a-sass-project)
+but well, you'll see.
+
+
 ## License
 
 Copyright (c) 2015 Michael J. Bennett

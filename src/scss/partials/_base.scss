@@ -1,0 +1,44 @@
+@import "../modules/colours";
+@import "../modules/media";
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+form, div {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS borrowed from https://github.com/jasonm23/markdown-css-themes/blob/gh-pages/foghorn.css */
+@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+
+body, textarea {
+  font: 1.2em "Vollkorn", Palatino, Times;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+header, nav, article, footer {
+  margin:0 auto;
+}
+article {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+footer {
+  margin-bottom:50px;
+}
+
+nav {
+  font-size: .9em;
+  font-style: italic;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+nav p {
+  margin: 0;
+}
+
+

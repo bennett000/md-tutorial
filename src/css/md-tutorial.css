@@ -1,91 +1,435 @@
-/* line 1, ../scss/md-tutorial.scss */
-h1, h2, h3 {
-  margin-top: 0.05em;
-  margin-bottom: 0.05em;
+@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+/* line 4, ../scss/partials/_base.scss */
+textarea {
+  resize: none;
+  overflow: auto;
 }
 
-/* line 5, ../scss/md-tutorial.scss */
-h2 {
-  font-family: 'Arvo', Georgia, Times, serif;
-  font-size: 2.10em;
-  line-height: 90px;
-}
-
-/* line 11, ../scss/md-tutorial.scss */
-h3 {
-  font-family: 'Arvo', Georgia, Times, serif;
-  font-size: 1.85em;
-  line-height: 90px;
-}
-
-/* line 17, ../scss/md-tutorial.scss */
-.app-sandbox {
-  position: relative;
+/* line 9, ../scss/partials/_base.scss */
+form, div {
   width: 100%;
   height: 100%;
 }
 
-/* line 24, ../scss/md-tutorial.scss */
-.app-sandbox > form > .mdt-md-input {
-  position: absolute;
-  left: 0;
-  width: 40%;
-  /* 23em;*/
-  height: 5.17em;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
+/* CSS borrowed from https://github.com/jasonm23/markdown-css-themes/blob/gh-pages/foghorn.css */
+/* line 17, ../scss/partials/_base.scss */
+body, textarea {
+  font: 1.2em "Vollkorn", Palatino, Times;
+  line-height: 1.4;
+  text-align: justify;
 }
 
-/* line 43, ../scss/md-tutorial.scss */
-.app-sandbox > .mdt-md-output > p {
-  margin-top: 0.05em;
-  margin-bottom: 0.05em;
-}
-
-/* line 48, ../scss/md-tutorial.scss */
-.app-sandbox > .mdt-md-output {
-  position: absolute;
-  right: 0;
-  width: 50%;
-  /* 30em */
-  height: 7em;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* line 67, ../scss/md-tutorial.scss */
-.mdt-applets {
-  position: relative;
-  width: 60.5em;
+/* line 23, ../scss/partials/_base.scss */
+header, nav, article, footer {
   margin: 0 auto;
 }
 
-/* line 74, ../scss/md-tutorial.scss */
-.mdt-frame {
-  width: 100%;
+/* line 26, ../scss/partials/_base.scss */
+article {
+  margin-top: 4em;
+  margin-bottom: 4em;
 }
 
-/* line 78, ../scss/md-tutorial.scss */
+/* line 30, ../scss/partials/_base.scss */
+footer {
+  margin-bottom: 50px;
+}
+
+/* line 34, ../scss/partials/_base.scss */
+nav {
+  font-size: .9em;
+  font-style: italic;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+/* line 40, ../scss/partials/_base.scss */
+nav p {
+  margin: 0;
+}
+
+/* Eric Meyer's CSS Reset
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   This is a Sass partial
+*/
+/* line 8, ../scss/partials/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 29, ../scss/partials/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 33, ../scss/partials/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 36, ../scss/partials/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 39, ../scss/partials/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 42, ../scss/partials/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 47, ../scss/partials/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 3, ../scss/partials/_typography.scss */
+h1 {
+  margin-top: 0;
+  font-weight: normal;
+  font-size: 1.8em;
+}
+
+/* line 8, ../scss/partials/_typography.scss */
+h2 {
+  font-weight: normal;
+  font-size: 1.55em;
+}
+
+/* line 12, ../scss/partials/_typography.scss */
+h3 {
+  font-weight: normal;
+  font-style: italic;
+  margin-top: 3em;
+  font-size: 1.45em;
+}
+
+/* line 18, ../scss/partials/_typography.scss */
+p {
+  margin-top: 0;
+  -webkit-hypens: auto;
+  -moz-hypens: auto;
+  hyphens: auto;
+}
+
+/* line 24, ../scss/partials/_typography.scss */
+ul {
+  list-style: square;
+  padding-left: 1.2em;
+}
+
+/* line 28, ../scss/partials/_typography.scss */
+ol {
+  padding-left: 1.2em;
+}
+
+/* line 31, ../scss/partials/_typography.scss */
+blockquote {
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: 1px solid #ddd;
+}
+
+/* line 36, ../scss/partials/_typography.scss */
+code {
+  font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+  font-size: .9em;
+  background: white;
+}
+
+/* line 41, ../scss/partials/_typography.scss */
+a {
+  color: #2484c1;
+  text-decoration: none;
+}
+
+/* line 45, ../scss/partials/_typography.scss */
+a:hover {
+  text-decoration: underline;
+}
+
+/* line 48, ../scss/partials/_typography.scss */
+a img {
+  border: none;
+}
+
+/* line 51, ../scss/partials/_typography.scss */
+h1 a, h1 a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+/* line 55, ../scss/partials/_typography.scss */
+hr {
+  color: #ddd;
+  height: 1px;
+  margin: 2em 0;
+  border-top: solid 1px #ddd;
+  border-bottom: none;
+  border-left: 0;
+  border-right: 0;
+}
+
+/* line 4, ../scss/partials/_base.scss */
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+/* line 9, ../scss/partials/_base.scss */
+form, div {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS borrowed from https://github.com/jasonm23/markdown-css-themes/blob/gh-pages/foghorn.css */
+/* line 17, ../scss/partials/_base.scss */
+body, textarea {
+  font: 1.2em "Vollkorn", Palatino, Times;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+/* line 23, ../scss/partials/_base.scss */
+header, nav, article, footer {
+  margin: 0 auto;
+}
+
+/* line 26, ../scss/partials/_base.scss */
+article {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+/* line 30, ../scss/partials/_base.scss */
+footer {
+  margin-bottom: 50px;
+}
+
+/* line 34, ../scss/partials/_base.scss */
+nav {
+  font-size: .9em;
+  font-style: italic;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+/* line 40, ../scss/partials/_base.scss */
+nav p {
+  margin: 0;
+}
+
+/* line 3, ../scss/partials/_frame.scss */
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: #9ab8c8;
+}
+
+/* line 9, ../scss/partials/_frame.scss */
+.incompatible {
+  display: none;
+  background-color: #d0dce2;
+}
+
+/* line 14, ../scss/partials/_frame.scss */
+.too-small {
+  display: none;
+  background-color: #d0dce2;
+}
+
+@media screen and (max-width: 319px) {
+  /* too small */
+  /* line 21, ../scss/partials/_frame.scss */
+  .too-small {
+    display: block;
+  }
+}
+@media screen and (max-width: 1024px) {
+  /* line 27, ../scss/partials/_frame.scss */
+  .mdt-applets {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  /* line 33, ../scss/partials/_frame.scss */
+  .mdt-applets {
+    width: 60%;
+  }
+}
+/* line 38, ../scss/partials/_frame.scss */
+.mdt-applets {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #d0dce2;
+}
+
+/* line 46, ../scss/partials/_frame.scss */
+.mdt-frame {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 51, ../scss/partials/_frame.scss */
 .nav {
   position: absolute;
   left: 0;
   top: 0;
 }
 
-/* line 84, ../scss/md-tutorial.scss */
+/* line 4, ../scss/partials/_base.scss */
 textarea {
   resize: none;
   overflow: auto;
+}
+
+/* line 9, ../scss/partials/_base.scss */
+form, div {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS borrowed from https://github.com/jasonm23/markdown-css-themes/blob/gh-pages/foghorn.css */
+/* line 17, ../scss/partials/_base.scss */
+body, textarea {
+  font: 1.2em "Vollkorn", Palatino, Times;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+/* line 23, ../scss/partials/_base.scss */
+header, nav, article, footer {
+  margin: 0 auto;
+}
+
+/* line 26, ../scss/partials/_base.scss */
+article {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+/* line 30, ../scss/partials/_base.scss */
+footer {
+  margin-bottom: 50px;
+}
+
+/* line 34, ../scss/partials/_base.scss */
+nav {
+  font-size: .9em;
+  font-style: italic;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+/* line 40, ../scss/partials/_base.scss */
+nav p {
+  margin: 0;
+}
+
+@media screen and (max-width: 319px) {
+  /* line 4, ../scss/partials/_sandbox.scss */
+  body {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  /* line 10, ../scss/partials/_sandbox.scss */
+  body {
+    font-size: 85%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  /* line 16, ../scss/partials/_sandbox.scss */
+  body {
+    font-size: 100%;
+  }
+}
+/* line 21, ../scss/partials/_sandbox.scss */
+.app-sandbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 27, ../scss/partials/_sandbox.scss */
+.app-sandbox > form {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 32, ../scss/partials/_sandbox.scss */
+.app-sandbox > form > .mdt-md-input {
+  background-color: #fdfcff;
+  /* background-color: blue; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 49.5%;
+  /* 23em;*/
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 54, ../scss/partials/_sandbox.scss */
+.app-sandbox > .mdt-md-output > p {
+  margin-top: 0.05em;
+  margin-bottom: 0.05em;
+}
+
+/* line 59, ../scss/partials/_sandbox.scss */
+.app-sandbox > .mdt-md-output {
+  background-color: #fdfcff;
+  /* background-color: red; */
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 49.5%;
+  /* 30em */
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }

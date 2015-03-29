@@ -32,9 +32,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Markdown Tutorial</title>
-    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/md-tutorial.css" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -62,26 +59,24 @@
             background-color: white;
             margin: 0;
         }
-        /** thanks http://designshack.net/articles/css/10-great-google-font-combinations-you-can-copy/ */
-        h1 {
-            font-family: 'Arvo', Georgia, Times, serif;
-            font-size: 2.5em;
-            line-height: 90px;
+        .incompatible {
+            display: none;
         }
-        body, textarea {
-            font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-            font-size: 1.3em;
-            line-height: 25px;
+        .too-small {
+            display: none;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="css/md-tutorial.css" />
 </head>
-<body ng-cloak="">
+<body>
 <noscript>
     The Markdown Tutorial requires JavaScript to be enabled.  If you're worried
     about malware I completely understand.  Pleaes feel free to download the
     source, and review it. <%= sourceUrl %>
 </noscript>
 
+<div class="too-small">Sorry your device is too small.</div>
+<div class="incompatible">Sorry your user agent lacks required features.</div>
 <mdt-frame class="mdt-frame"></mdt-frame>
 
 <script src="lib/angular.min.js"></script>

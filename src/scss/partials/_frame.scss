@@ -1,0 +1,56 @@
+@import "base";
+
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: $background;
+}
+
+.incompatible {
+  display: none;
+  background-color: $foreground;
+}
+
+.too-small {
+  display: none;
+  background-color: $foreground;
+}
+
+@include max-screen(319px) {
+  /* too small */
+  .too-small {
+    display: block;
+  }
+}
+
+@include max-screen(1024px) {
+  .mdt-applets {
+    width: 100%;
+  }
+}
+
+@include min-screen(1025px) {
+  .mdt-applets {
+    width: 60%;
+  }
+}
+
+.mdt-applets {
+  position: relative;
+
+  height: 100%;
+  margin: 0 auto;
+  background-color: $foreground;
+}
+
+.mdt-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
