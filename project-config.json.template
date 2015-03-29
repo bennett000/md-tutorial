@@ -1,5 +1,7 @@
 {
   "usage": "Copy 'project-root/project-config.json.template' to 'project-root/project-config.json' - then adjust the project-config.json file accordingly",
   "CCPath": "",
+  "protocol":"http://",
+  "host":"127.0.0.1",
   "port":"31415"
 }

@@ -17,7 +17,7 @@ module.exports = function (config) {
 
         files: source.absoluteScripts().concat([
             'node_modules/angular-mocks/angular-mocks.js',
-            'spec/*-spec.js'
+            'spec/unit/*-spec.js'
         ]),
 
         // list of files to exclude

@@ -44,6 +44,13 @@ module.exports = (grunt) ->
         singleRun: true,
         browsers: ['Firefox']
 
+    protractor:
+      mdTutorial:
+        configFile: 'etc/protractor.conf.js'
+        keepAlive: true
+        noColor: false
+
+
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-compass'
@@ -58,6 +65,8 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'bootstrap', 'Generate index.html', ['replace', 'compile']
   grunt.registerTask 'compile', 'Compile TS to JS', ['typescript']
+  grunt.registerTask 'e2e', 'End to end tests', ['protractor']
+  grunt.registerTask 'test-all', 'End to end tests', ['karma', 'protractor']
   grunt.registerTask 'test', 'Run unit tests', ['compile', 'karma']
   grunt.registerTask 'build', 'Build The Project', ['compile']
   #grunt.registerTask 'default', ['prepare']

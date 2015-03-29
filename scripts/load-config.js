@@ -3,7 +3,7 @@
  * Created by michael on 28/03/15.
  */
 
-/*global module*/
+/*global module, require, __dirname */
 /** @type {Object} */
 var fs = require('fs'),
 /** @const */
@@ -15,7 +15,25 @@ FILE_DEFAULT_CONFIG = __dirname + '/../' + DEFAULT_CONFIG_NAME,
 /** @const */
 FILE_CONFIG = __dirname + '/../' + CONFIG_NAME;
 
+/**
+ * @type {function(...)}
+ */
 module.exports = getConfig;
+
+/**
+ * @param {Object} c
+ * @return {Object}
+ */
+function validateConfig(c) {
+    'use strict';
+    c = c || {};
+
+    c.port = +c.port || 31415;
+    c.host = c.host || '127.0.0.1';
+    c.protocl = c.protocl === 'https://' ? c.protocol : 'http://';
+
+    return c;
+}
 
 /**
  * @param {string} file
@@ -67,5 +85,5 @@ function getConfig() {
         throw new ReferenceError('md-tutorial server: cannot parse config');
     }
 
-    return config;
+    return validateConfig(config);
 }

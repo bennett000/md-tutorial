@@ -7,6 +7,7 @@
 app.directive('mdt-frame', function frameDirective() {
 
     return {
+        replace: true,
         templateUrl: '/html/frame.html'
     };
 });

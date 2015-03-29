@@ -60,6 +60,10 @@ End to end tests:
 
     grunt e2e
 
+All tests:
+
+    grunt test-all
+
 Compile - Generate intermediate JS from TS:
 
     grunt compile
@@ -75,6 +79,21 @@ Build (Build for production):
 More grunt tasks:
 
     grunt --help
+
+### Testing
+
+Unit tests have been written in the TDD jasmine style, and a Karma configuration
+is provided for running the suite.  End to end tests are also written in the
+jasmine style but require protractor/web driver to run.
+
+With any luck the unit tests should run out of the box if you have firefox, and
+a valid npm install.  The primary karma suite's configuration can be found at
+`project-root/etc/karma.conf.js`
+
+The end to end tests require more effort to setup.  Before running the grunt
+e2e/protractor task(s) a web driver instance *must be running*.  Setting up
+protractor is beyond the scope of this document, more information can be found
+[here](https://docs.angularjs.org/guide/e2e-testing)
 
 
 ## Plans
@@ -100,9 +119,16 @@ Step through a series of sandboxes, that show a feature
 
 ### Needs
 
-* Data strucutre of markdown features for Walkthrough
+* Data structure of markdown features for Walkthrough
 * Markdown browser js librar(y/ies)
 * Human friendly layout for application
 * Human friendly layouts for applets (sandbox/walkthrough/reference)
 * Better build plan
+
+
+## License
+
+Copyright (c) 2015 Michael J. Bennett
+
+MIT License - see `project-root/LICENSE.md`
 
