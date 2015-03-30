@@ -28,7 +28,7 @@ describe('Mode selector', function() {
 
     it('render expected output', function() {
         el = create();
-        expect(el.text()).toBe('{{ selector.label }}');
+        expect(el.text()).toBe('');
     });
 
     it('select function should trigger on click', function() {

@@ -7,6 +7,13 @@ md-tutorial todo
 * Setup some watchers to automate compilation, bootstrapping, etc
 * Sort out angular minification - the markdown wrapper stuff is horrible right
 now
+* Pretty print syntax in rendered markdown's code blocks
+
+## e2e Testing
+
+* Fix e2e
+* Elaborate e2e
+* Start using PageObjects (nomenclature?)
 
 ## Flags panel
 
@@ -20,6 +27,7 @@ people who want to tinker.
 * window.localStorage can be leveraged to provide document support.  I have,
 and angular wrapper lined up for this.
 * localStorage will also be used to mark preferences
+* Allow for HTML/MD to be exported through file system dialogues (email for ios)
 
 ## Layouts
 
@@ -29,3 +37,17 @@ and angular wrapper lined up for this.
   * Add top right toggle icon (img/icons/loop-circular.svg) - flips between
   textarea/rendered output???
 * Themes.  There's still a lot to be sorted out for this
+
+## Tutorial Mode
+
+* Write a simple tutorial engine to iterate over the tutorial markdowns
+* implement forward/back (icons in /img) in tutorial
+
+## Beyond Marked, and Markdown
+
+* Add support for other markdown dialects (currently vanilla/github are "easy")
+* Add support for wiki dialects
+* Add support for bbcodes
+* Coffee Script? TypeScript? Seems like fun, but a whole other can of worms,
+ with respect to highlighting, syntax errors, etc. I do obviously like the
+ playground on coffeescript's webpage

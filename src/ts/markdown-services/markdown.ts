@@ -17,6 +17,8 @@ module markdown {
             smartypants: true
         };
 
+    amodule.service('mdtMarked', markedFactory);
+
     marked.setOptions(options);
 
 
@@ -39,11 +41,12 @@ module markdown {
         return d.promise;
     }
 
-
-    amodule.service('mdtMarked', function markedFactory($q) {
+    /** @ngInject */
+    function markedFactory($q) {
         Q = $q;
         // @todo optionally web workerize this
         this.render = render;
-    });
+    }
+
 }
 
