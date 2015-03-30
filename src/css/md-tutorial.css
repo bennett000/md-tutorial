@@ -297,50 +297,61 @@ body, html {
   .mdt-applet-selector {
     float: left;
   }
+
+  /* line 41, ../scss/partials/_frame.scss */
+  .mdt-applet-selector.selected {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
 }
 @media screen and (min-width: 1025px) {
-  /* line 44, ../scss/partials/_frame.scss */
+  /* line 48, ../scss/partials/_frame.scss */
   .mdt-applets {
     height: 100%;
     top: 0;
     width: 60%;
   }
 
-  /* line 49, ../scss/partials/_frame.scss */
+  /* line 53, ../scss/partials/_frame.scss */
   .nav {
-    left: 0;
+    right: 80%;
     top: 0;
-    width: 15%;
+    width: 75px;
     height: 100%;
   }
 
-  /* line 55, ../scss/partials/_frame.scss */
+  /* line 59, ../scss/partials/_frame.scss */
   .mdt-applet-selector {
     float: none;
   }
+
+  /* line 62, ../scss/partials/_frame.scss */
+  .mdt-applet-selector.selected {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
 }
-/* line 60, ../scss/partials/_frame.scss */
+/* line 68, ../scss/partials/_frame.scss */
 .mdt-applets {
   position: relative;
   margin: 0 auto;
   background-color: #d0dce2;
 }
 
-/* line 67, ../scss/partials/_frame.scss */
+/* line 75, ../scss/partials/_frame.scss */
 .mdt-frame {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* line 74, ../scss/partials/_frame.scss */
+/* line 82, ../scss/partials/_frame.scss */
 .nav {
   position: absolute;
-  left: 0;
   top: 0;
 }
 
-/* line 80, ../scss/partials/_frame.scss */
+/* line 87, ../scss/partials/_frame.scss */
 .mdt-applet-selector {
   width: 75px;
   height: 75px;
@@ -348,7 +359,7 @@ body, html {
   text-align: center;
 }
 
-/* line 87, ../scss/partials/_frame.scss */
+/* line 94, ../scss/partials/_frame.scss */
 .mdt-applet-selector.selected {
   width: 75px;
   height: 75px;
@@ -357,7 +368,7 @@ body, html {
   background-color: #d0dce2;
 }
 
-/* line 95, ../scss/partials/_frame.scss */
+/* line 102, ../scss/partials/_frame.scss */
 .nav-icon {
   width: 25px;
   height: 25px;
@@ -365,12 +376,12 @@ body, html {
   margin: 0 auto;
 }
 
-/* line 102, ../scss/partials/_frame.scss */
+/* line 109, ../scss/partials/_frame.scss */
 .nav-icon:active {
   background-color: #ffe6e5;
 }
 
-/* line 106, ../scss/partials/_frame.scss */
+/* line 113, ../scss/partials/_frame.scss */
 .nav-icon:hover {
   background-color: #f9fca7;
 }
