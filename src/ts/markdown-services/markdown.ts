@@ -6,8 +6,7 @@
 // parsers
 
 module markdown {
-    var amodule:angular.IModule = angular.module('mdt-markdown', ['md-tutorial']),
-        THROTTLE_MD:number = 150,
+    var amodule:angular.IModule = angular.module('mdt-markdown', []),
         Q:angular.IQService, // can use Q as drop in
         options:any = {
             gfm: true,
@@ -40,30 +39,11 @@ module markdown {
         return d.promise;
     }
 
-    class MarkdownCtrl {
-        constructor($scope, $q, $sce, throttle) {
-            Q = $q;
-            $scope.md = {
-                input: '',
-                output: ''
-            };
-            $scope.md.update = throttle(update, THROTTLE_MD);
-
-            function update() {
-                render($scope.md.input).then(function (html){
-                    /* @todo sanitize this way better */
-                    $scope.md.output = $sce.trustAsHtml(html);
-                });
-            }
-        }
-        update():void {  }
-    }
-
 
     amodule.service('mdtMarked', function markedFactory($q) {
         Q = $q;
         // @todo optionally web workerize this
         this.render = render;
-    }).controller('Markdown', MarkdownCtrl);
+    });
 }
 

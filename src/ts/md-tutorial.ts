@@ -74,12 +74,39 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
             replace: true,
             templateUrl: '/html/frame.html'
         };
-    }).directive('mdtMarkdownSandbox', function mdSandbox() {
+    }).directive('mdtMarkdownSandbox', function mdSandbox($q, $sce, mdtMarked, throttle) {
+        var THROTTLE_MD:number = 150;
+
+        function linkFn(scope:any, elem:any, attrs:any, controller:any, trans:any) {
+            scope.md = {
+                input: '',
+                output: ''
+            };
+            scope.md.update = throttle(update, THROTTLE_MD);
+            trans(scope, onTransclude);
+
+            function update() {
+                mdtMarked.render(scope.md.input).then(function (html){
+                    /* @todo sanitize this way better */
+                    scope.md.output = $sce.trustAsHtml(html);
+                });
+            }
+
+            function onTransclude(content) {
+                var result = angular.element(content).text();
+                if (!result) {
+                    return;
+                }
+                scope.md.input = result;
+                update();
+            }
+        }
+
         return {
             replace: true,
             scope: {},
-            controller: 'Markdown',
+            transclude: true,
+            link: linkFn,
             templateUrl: '/html/sandbox-directive.html'
         }
     });
-

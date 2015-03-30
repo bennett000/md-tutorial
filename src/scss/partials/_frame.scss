@@ -106,11 +106,11 @@ body, html {
   margin: 0 auto;
 }
 
-.nav-icon:active {
-  background-color: $active;
+.mdt-applet-selector:active {
+  background-color: $foreground;
 }
 
-.nav-icon:hover {
+.mdt-applet-selector:hover {
   background-color: $hover;
 }
 

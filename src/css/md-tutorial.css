@@ -377,12 +377,12 @@ body, html {
 }
 
 /* line 109, ../scss/partials/_frame.scss */
-.nav-icon:active {
-  background-color: #ffe6e5;
+.mdt-applet-selector:active {
+  background-color: #d0dce2;
 }
 
 /* line 113, ../scss/partials/_frame.scss */
-.nav-icon:hover {
+.mdt-applet-selector:hover {
   background-color: #f9fca7;
 }
 
