@@ -36,7 +36,7 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
         about: {
             label: 'About',
             path: '/about',
-            icon: '/img/icon/',
+            icon: '/img/icons/question-mark.svg',
             controller: 'Sandbox',
             controllerAs: 'sandbox',
             template: '/html/sandbox.html',
@@ -45,7 +45,7 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
         sandbox: {
             label: 'Sandbox',
             path: '/sandbox',
-            icon: 'img/icon/',
+            icon: 'img/icons/pencil.svg',
             controller: 'Sandbox',
             controllerAs: 'sandbox',
             template: '/html/sandbox.html',
@@ -54,7 +54,7 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
         walkthrough: {
             label: 'Walkthrough',
             path: '/walkthrough',
-            icon: 'img/icon/',
+            icon: 'img/icons/location.svg',
             controller: 'Walkthrough',
             controllerAs: 'walkthrough',
             template: '/html/walkthrough.html',
@@ -63,7 +63,7 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
         reference: {
             label: 'Reference',
             path: '/reference',
-            icon: 'img/icon/',
+            icon: 'img/icons/book.svg',
             controller: 'Reference',
             controllerAs: 'reference',
             template: '/html/reference.html',

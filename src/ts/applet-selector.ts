@@ -5,19 +5,27 @@
 app.directive('mdtAppletSelector', function () {
     return {
         replace: true,
-        template: '<div class="mdt-applet-selector" ' +
-        'mdt-tap="select(selector.path)">{{ selector.label }}</div>'
+        templateUrl: 'html/applet-selector.html'
     };
 }).directive('mdtAppletSelectors', function ($location, applets) {
 
     // filter selectors
-    var selectors:any = Object.keys(applets).map(function (applet):any{
+    var selectors:any = Object.keys(applets).
+        filter(onMenu).map(function (applet):any{
         var a = applets[applet];
         return {
+            icon: a.icon,
             path: a.path,
             label: a.label
         }
     });
+
+    /**
+     * @param {string} applet
+     */
+    function onMenu(applet):boolean {
+        return applets[applet].onMenu;
+    }
 
     function select(path:string) {
         $location.path(path);
