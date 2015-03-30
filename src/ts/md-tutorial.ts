@@ -33,26 +33,41 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
             is: false
         }
     }).constant('applets', {
+        about: {
+            label: 'About',
+            path: '/about',
+            icon: '/img/icon/',
+            controller: 'Sandbox',
+            controllerAs: 'sandbox',
+            template: '/html/sandbox.html',
+            onMenu: false
+        },
         sandbox: {
             label: 'Sandbox',
             path: '/sandbox',
+            icon: 'img/icon/',
             controller: 'Sandbox',
             controllerAs: 'sandbox',
-            template: '/html/sandbox.html'
+            template: '/html/sandbox.html',
+            onMenu: true
         },
         walkthrough: {
             label: 'Walkthrough',
             path: '/walkthrough',
+            icon: 'img/icon/',
             controller: 'Walkthrough',
             controllerAs: 'walkthrough',
-            template: '/html/walkthrough.html'
+            template: '/html/walkthrough.html',
+            onMenu: true
         },
         reference: {
             label: 'Reference',
             path: '/reference',
+            icon: 'img/icon/',
             controller: 'Reference',
             controllerAs: 'reference',
-            template: '/html/reference.html'
+            template: '/html/reference.html',
+            onMenu: true
         }
     }).directive('mdtFrame', function frameDirective() {
         return {

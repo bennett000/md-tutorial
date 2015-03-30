@@ -6,7 +6,7 @@ app.directive('mdtAppletSelector', function () {
     return {
         replace: true,
         template: '<div class="mdt-applet-selector" ' +
-        'ng-click="select(selector.path)">{{ selector.label }}</div>'
+        'mdt-tap="select(selector.path)">{{ selector.label }}</div>'
     };
 }).directive('mdtAppletSelectors', function ($location, applets) {
 

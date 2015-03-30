@@ -5,6 +5,8 @@ jsMinName = 'md-tutorial.min.js'
 jsIntermediate = 'src/js/' + jsMinName
 jsBuild = 'build/' + jsMinName
 
+console.log('ts: ' + source.ts.join(','))
+
 module.exports = (grunt) ->
   config = getConfig()
 

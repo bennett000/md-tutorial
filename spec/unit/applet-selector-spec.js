@@ -34,7 +34,8 @@ describe('Mode selector', function() {
     it('select function should trigger on click', function() {
         spyOn(scope, 'select');
         el = create();
-        el.triggerHandler('click');
+        el.triggerHandler('mousedown');
+        el.triggerHandler('mouseup');
         expect(scope.select).toHaveBeenCalled();
     });
 });
