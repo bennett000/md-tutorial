@@ -8,6 +8,6 @@ app.controller('FirstTime', function () {
     console.debug('sandbox');
 }).controller('Reference', function () {
     console.debug('reference');
-}).controller('Walkthrough', function (){
-    console.debug('walkthough');
+}).controller('Tutorial', function (){
+    console.debug('tutorial');
 });

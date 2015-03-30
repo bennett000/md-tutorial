@@ -51,13 +51,13 @@ var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
             template: '/html/sandbox.html',
             onMenu: true
         },
-        walkthrough: {
-            label: 'Walkthrough',
-            path: '/walkthrough',
+        tutorial: {
+            label: 'Tutorial',
+            path: '/tutorial',
             icon: 'img/icons/location.svg',
-            controller: 'Walkthrough',
-            controllerAs: 'walkthrough',
-            template: '/html/walkthrough.html',
+            controller: 'Tutorial',
+            controllerAs: 'tutorial',
+            template: '/html/tutorial.html',
             onMenu: true
         },
         reference: {

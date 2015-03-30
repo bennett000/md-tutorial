@@ -349,11 +349,30 @@ body, html {
 }
 
 /* line 87, ../scss/partials/_frame.scss */
+.mdt-applet-selector.selected {
+  width: 75px;
+  height: 75px;
+  font-size: 0.85em;
+  text-align: center;
+  background-color: #d0dce2;
+}
+
+/* line 95, ../scss/partials/_frame.scss */
 .nav-icon {
   width: 25px;
   height: 25px;
   padding: 5px;
   margin: 0 auto;
+}
+
+/* line 102, ../scss/partials/_frame.scss */
+.nav-icon:active {
+  background-color: #ffe6e5;
+}
+
+/* line 106, ../scss/partials/_frame.scss */
+.nav-icon:hover {
+  background-color: #f9fca7;
 }
 
 /* line 4, ../scss/partials/_base.scss */

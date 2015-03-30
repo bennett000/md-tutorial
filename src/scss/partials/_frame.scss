@@ -84,9 +84,26 @@ body, html {
   text-align: center;
 }
 
+.mdt-applet-selector.selected {
+  width: 75px;
+  height: 75px;
+  font-size: 0.85em;
+  text-align: center;
+  background-color: $foreground;
+}
+
 .nav-icon {
   width: 25px;
   height: 25px;
   padding: 5px;
   margin: 0 auto;
 }
+
+.nav-icon:active {
+  background-color: $active;
+}
+
+.nav-icon:hover {
+  background-color: $hover;
+}
+

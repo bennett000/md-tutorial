@@ -10,7 +10,8 @@ app.directive('mdtAppletSelector', function () {
 }).directive('mdtAppletSelectors', function ($location, applets) {
 
     // filter selectors
-    var selectors:any = Object.keys(applets).
+    var defaultMode = '/sandbox',
+        selectors:any = Object.keys(applets).
         filter(onMenu).map(function (applet):any{
         var a = applets[applet];
         return {
@@ -27,18 +28,23 @@ app.directive('mdtAppletSelector', function () {
         return applets[applet].onMenu;
     }
 
-    function select(path:string) {
-        $location.path(path);
-    }
 
     function linkFn(scope:any) {
         scope.selectors = selectors;
         scope.select = select;
+        scope.selected = defaultMode;
+
+        function select(path:string) {
+            $location.path(path);
+            scope.selected = path;
+        }
+
     }
 
     return {
         replace: true,
         link: linkFn,
+        scope: {},
         template: '<div class="mdt-applet-selectors"><mdt-applet-selector ' +
         'ng-repeat="selector in selectors"></mdt-applet-selector></div>'
     };
