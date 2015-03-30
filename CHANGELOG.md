@@ -3,6 +3,15 @@ Markdown Tutorial Change Log
 
 ## Notes
 
+### Third Day
+
+* Found MIT licensed icons that will be useful for buttons
+* Started to get a handle on scss, and rudimentary "responsive" layout
+* R&D'd custom themes.  Technical details seem easy - name spacing CSS not so
+much.  Pursuing something like an iFrame might work with that - but then there
+are mobile issue.
+* Likely my last commits for a little while - it's Monday!
+
 ### Second Day
 
 * Last night (this morning) a basic proof of concept was sort of achieved, with

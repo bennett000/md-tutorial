@@ -54,3 +54,8 @@ This likely means you need to have Ruby setup, and the relevant gems on your
 system.  Npm will take care of a lot, but
 
 Bower
+
+## Icons
+
+If you've noticed the hideous favicon.ico, or the equally hideous mobile icons,
+then you'll understand why this project is using [Open Iconic](http://www.useiconic.com/open)
