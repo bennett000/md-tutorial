@@ -26,8 +26,9 @@ var source = {
     staticFiles: [
         '!*.template.html', // why won't grunt copy ignore this? @todo dig
         '*.ico',
-        '**/*.html',
-        '**/*.png'
+        'html/**/*.html',
+        '**/*.png',
+        '**/*.svg'
     ],
     absoluteJS: absoluteJS,
     absoluteLib: absoluteLib,
@@ -118,6 +119,6 @@ function debugScriptTags() {
 function productionScriptTags() {
     'use strict';
 
-    return makeScriptTag('/js/md-tutorial.js');
+    return makeScriptTag('/md-tutorial.min.js');
 }
 

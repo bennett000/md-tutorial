@@ -5,9 +5,8 @@ md-tutorial todo
 * Find someone with artistic skill to make icons
 * Find someone with design skill for scss/sass
 * Setup some watchers to automate compilation, bootstrapping, etc
-* Sort out angular minification - the markdown wrapper stuff is horrible right
-now
 * Pretty print syntax in rendered markdown's code blocks
+* Grunt task to build a simple HTML5 manifest - then update replace task
 
 ## e2e Testing
 

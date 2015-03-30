@@ -38,7 +38,7 @@ module.exports = (grunt) ->
         dest: ['build/index.html']
         replacements: [{
           from: '###MANIFEST'
-          to: 'manifest="md-tutorial.appcache"'
+          to: '' #'manifest="md-tutorial.appcache"'
         }, {
           from: '###SOURCE'
           to: source.productionScriptTags()
@@ -117,7 +117,6 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-compass'
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-jasmine-node-coverage'
@@ -138,6 +137,8 @@ module.exports = (grunt) ->
                                                           'compass']
 
   grunt.registerTask 'build', 'Build The Project', ['bootstrap', 'compile',
+                                                    'closure-compiler',
+                                                    'copy',
                                                     'concat']
 
   grunt.registerTask 'lint', 'Lint the project', ['tslint', 'jshint',
