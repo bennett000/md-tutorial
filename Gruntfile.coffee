@@ -32,6 +32,9 @@ module.exports = (grunt) ->
         }, {
           from: '###SOURCE'
           to: source.debugScriptTags()
+        }, {
+          from: '###BASE'
+          to: ''
         }]
       build:
         src: ['src/index.template.html']
@@ -42,6 +45,9 @@ module.exports = (grunt) ->
         }, {
           from: '###SOURCE'
           to: source.productionScriptTags()
+        }, {
+          from: '###BASE'
+          to: '<base href="/md-tutorial/" />'
         }]
 
     # closure compiler will prep for the build

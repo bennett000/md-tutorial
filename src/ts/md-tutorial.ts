@@ -22,7 +22,7 @@ module mdTutorial {
                 icon: '/img/icons/question-mark.svg',
                 controller: 'Sandbox',
                 controllerAs: 'sandbox',
-                template: '/html/sandbox.html',
+                template: 'html/sandbox.html',
                 onMenu: false
             },
             sandbox: {
@@ -31,7 +31,7 @@ module mdTutorial {
                 icon: 'img/icons/pencil.svg',
                 controller: 'Sandbox',
                 controllerAs: 'sandbox',
-                template: '/html/sandbox.html',
+                template: 'html/sandbox.html',
                 onMenu: true
             },
             tutorial: {
@@ -40,7 +40,7 @@ module mdTutorial {
                 icon: 'img/icons/location.svg',
                 controller: 'Tutorial',
                 controllerAs: 'tutorial',
-                template: '/html/tutorial.html',
+                template: 'html/tutorial.html',
                 onMenu: true
             },
             reference: {
@@ -49,7 +49,7 @@ module mdTutorial {
                 icon: 'img/icons/book.svg',
                 controller: 'Reference',
                 controllerAs: 'reference',
-                template: '/html/reference.html',
+                template: 'html/reference.html',
                 onMenu: true
             }
         };
@@ -64,11 +64,11 @@ module mdTutorial {
      * @ngInject
      */
     function configureRoutes($routeProvider, applets) {
-        $routeProvider.when('/', {
-            templateUrl: '/html/root.html',
-            controller: 'FirstTime',
-            controllerAs: 'firstTime'
-        });
+        //$routeProvider.when('/', {
+        //    templateUrl: 'html/root.html',
+        //    controller: 'FirstTime',
+        //    controllerAs: 'firstTime'
+        //});
 
         Object.keys(applets).forEach(function (applet) {
             var a = applets[applet];
@@ -79,14 +79,14 @@ module mdTutorial {
             });
         });
         $routeProvider.otherwise({
-            redirectTo: '/'
+            redirectTo: '/sandbox'
         });
     }
 
     function frameDirective() {
         return {
             replace: true,
-            templateUrl: '/html/frame.html'
+            templateUrl: 'html/frame.html'
         };
     }
 
@@ -124,7 +124,7 @@ module mdTutorial {
             scope: {},
             transclude: true,
             link: linkFn,
-            templateUrl: '/html/sandbox-directive.html'
+            templateUrl: 'html/sandbox-directive.html'
         }
     }
 }

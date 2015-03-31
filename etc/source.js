@@ -119,6 +119,6 @@ function debugScriptTags() {
 function productionScriptTags() {
     'use strict';
 
-    return makeScriptTag('/md-tutorial.min.js');
+    return makeScriptTag('/md-tutorial/md-tutorial.min.js');
 }
 
