@@ -16,7 +16,8 @@ function IndexPage() {
     browser.get(host);
 
     routes.forEach(function (route) {
-        that[route] = new require('./' + route);
+        var Con = require('./' + route);
+        that[route] = new Con();
     });
 
     this.menu1 = new Menu1();
