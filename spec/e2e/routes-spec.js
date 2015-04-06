@@ -4,40 +4,40 @@
  */
 
 /*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs,
-it, module,inject, workular, browser, element, by */
+it, module,inject, workular, browser, element, by, require */
 
-/* @todo figure out how to load a config */
-var host = 'http://127.0.0.1:31415',
-routes = ['sandbox', 'reference', 'walkthrough'];
+var indexPage = require('./page-index/index.js');
 
 describe('change the routes', function() {
     'use strict';
+    var page;
+
+    beforeEach(function() {
+        page = new indexPage.Page();
+    });
 
     it('should start at /#/', function() {
-        browser.get(host);
-        expect(browser.getCurrentUrl()).toBe(host + '/#/');
+        expect(browser.getCurrentUrl()).toBe(indexPage.host + '/#/sandbox');
     });
 
     /* @todo this test is horrendous */
     it('applet selection ', function() {
-        element.all(by.css('.mdt-applet-selector')).then(function (els) {
-            var lastRoute;
-            els.forEach(function (el){
-                el.click();
-                var route = browser.getCurrentUrl(),
+        var lastRoute;
+        page.menu1.walk(function (el) {
+            el.click();
+            var route = browser.getCurrentUrl(),
                 match = false;
-                expect(route).not.toBe(lastRoute);
-                routes.forEach(function (r){
-                    if (match) { return; }
-                    if (route.indexOf) {
-                        match = route.indexOf(r);
-                    }
-                    if (match > -1) {
-                        match = true;
-                    } else {
-                        match = false;
-                    }
-                });
+            expect(route).not.toBe(lastRoute);
+            indexPage.routes.forEach(function (r){
+                if (match) { return; }
+                if (route.indexOf) {
+                    match = route.indexOf(r);
+                }
+                if (match > -1) {
+                    match = true;
+                } else {
+                    match = false;
+                }
             });
         });
     });

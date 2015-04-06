@@ -3,6 +3,13 @@ Markdown Tutorial Change Log
 
 ## Notes
 
+### Fourth Day
+
+* Built to gh-pages - "local testing" of build is broken needs fixing
+* Got a handle on a basic layout for tablet/desktop
+* Roughed in some concepts for the tutorial
+
+
 ### Third Day
 
 * Found MIT licensed icons that will be useful for buttons

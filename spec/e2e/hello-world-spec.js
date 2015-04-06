@@ -4,19 +4,20 @@
  */
 
 /*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs,
-it, module,inject, workular, browser */
+it, module,inject, workular, browser, require */
 
-/* @todo figure out how to load a config */
-var host = 'http://127.0.0.1:31415',
-    /* @todo DRY failure */
-title = 'Markdown Tutorial';
+var indexPage = require('./page-index');
 
 describe('md-tutorial hello world test', function() {
     'use strict';
-    it('should have a title', function() {
-        browser.get(host);
+    var page;
 
-        expect(browser.getTitle()).toEqual(title);
+    beforeEach(function() {
+        page = new indexPage.Page();
+    });
+
+    it('should have a title', function() {
+        expect(browser.getTitle()).toEqual('Markdown Tutorial');
     });
 
 });
