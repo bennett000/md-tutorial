@@ -12,7 +12,8 @@ form, div {
 }
 
 /* CSS borrowed from https://github.com/jasonm23/markdown-css-themes/blob/gh-pages/foghorn.css */
-@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+//@import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
+@import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700);
 
 body, textarea {
   font: 1.2em "Vollkorn", Palatino, Times;
