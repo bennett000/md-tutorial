@@ -83,7 +83,12 @@ grunt bootstrap - build index.html files, and compile:
 
     grunt bootstrap
 
-Build (Build for production):
+Build - Build for production:
+
+_By default all production paths are specified relatively.  Passing the option
+`--buildPath="/path-on-production/"` to grunt build will prefix all paths to
+`/path-on-production/`.  Leading, and trailing slashes are inserted exactly as
+specified on the CLI_
 
     grunt build
 

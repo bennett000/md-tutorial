@@ -7,6 +7,7 @@ jsBuild = 'build/' + jsMinName
 
 module.exports = (grunt) ->
   config = getConfig()
+  buildPath = grunt.option('buildPath') || ''
 
   grunt.initConfig
 
@@ -44,10 +45,10 @@ module.exports = (grunt) ->
           to: '' #'manifest="md-tutorial.appcache"'
         }, {
           from: '###SOURCE'
-          to: source.productionScriptTags()
+          to: source.productionScriptTags buildPath
         }, {
           from: '###BASE'
-          to: '<base href="/md-tutorial/" />'
+          to: '<base href="' + buildPath + '" />'
         }]
 
     # closure compiler will prep for the build
@@ -69,6 +70,10 @@ module.exports = (grunt) ->
       buildJS:
         src: source.absoluteLib().concat [jsIntermediate]
         dest: jsBuild
+        options:
+          process: (src, file) ->
+            src = src.replace '//# sourceMappingURL=', '// '
+            src
 
     # Lint the code - we are not savages
     tslint:

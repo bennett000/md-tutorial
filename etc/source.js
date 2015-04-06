@@ -114,11 +114,12 @@ function debugScriptTags() {
 }
 
 /**
+ * @param {string=} path
  * @return {string}
  */
-function productionScriptTags() {
+function productionScriptTags(path) {
     'use strict';
 
-    return makeScriptTag('/md-tutorial/md-tutorial.min.js');
+    return makeScriptTag(path + 'md-tutorial.min.js');
 }
 
