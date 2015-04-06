@@ -8,12 +8,6 @@ md-tutorial todo
 * Pretty print syntax in rendered markdown's code blocks
 * Grunt task to build a simple HTML5 manifest - then update replace task
 
-## e2e Testing
-
-* Fix e2e
-* Elaborate e2e
-* Start using PageObjects (nomenclature?)
-
 ## Flags panel
 
 * icon img/icons/wrench.png
