@@ -2,15 +2,11 @@
 
 
 module mdTutorial {
-    app.service('localStorage', LocalStorage);
+    app.factory('localStorage', function ( ){
+        return new LocalStorage();
+    });
 
     var prefix = window.location.pathname;
-
-    class LocalStorage extends StorageWrapper {
-        constructor() {
-            super(window.localStorage);
-        }
-    }
 
     class StorageWrapper {
         storage:Storage;
@@ -26,7 +22,7 @@ module mdTutorial {
         remove(key:string) {
             return this.storage.removeItem(prefix + key);
         }
-        removeAll() {
+        removeAll():void {
             var key:string,
                 toRemove:Array<string> = [], i:number;
 
@@ -38,5 +34,24 @@ module mdTutorial {
             }
             toRemove.forEach(this.remove.bind(this));
         }
+        length():number {
+            var len:number = 0, key:string, i:number;
+
+            for (i = 0; i < this.storage.length; i += 1) {
+                key = this.storage.key(i);
+                if (key.indexOf(prefix) !== 0) {
+                    len += 1;
+                }
+            }
+
+            return len;
+        }
     }
+
+    class LocalStorage extends StorageWrapper {
+        constructor() {
+            super(window.localStorage);
+        }
+    }
+
 }
