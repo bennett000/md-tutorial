@@ -8,6 +8,7 @@ module mdTutorial {
 
     function mdtAppletSelector() {
         return {
+            restrict: 'E',
             replace: true,
             templateUrl: 'html/applet-selector.html'
         };
@@ -49,6 +50,7 @@ module mdTutorial {
         }
 
         return {
+            restrict: 'E',
             replace: true,
             link: linkFn,
             scope: {},

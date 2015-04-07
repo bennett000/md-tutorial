@@ -24,6 +24,7 @@ module.exports = function(config) {
         [
             'spec/unit/helper-*.js',
             'spec/unit/*-spec.js'
+            //'src/html/**/*.html'
         ]),
 
         // list of files to exclude
@@ -45,7 +46,7 @@ module.exports = function(config) {
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_DEBUG,
 
 
         // enable / disable watching file and executing tests whenever any file changes
@@ -73,10 +74,12 @@ module.exports = function(config) {
 
         // coverage support
         preprocessors: {
-            'src/**/*.js': ['coverage']
+            //'src/html/**/*.html': ['ng-html2js'],
+            'src/js/**/*.js': ['coverage']
         }
-    }
-    )
-    ;
-}
-;
+
+        //ngHtml2JsPreprocessor: {
+        //    stripPrefix: 'src/'
+        //}
+    });
+};
