@@ -3,6 +3,12 @@ Markdown Tutorial Change Log
 
 ## Notes
 
+### Fifth Day
+
+* Storage system spec started
+* e2e tests fixed up with page objects
+* build process streamlined for Git Hub pages
+
 ### Fourth Day
 
 * Built to gh-pages - "local testing" of build is broken needs fixing

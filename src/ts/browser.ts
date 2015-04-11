@@ -6,7 +6,7 @@ module mdTutorial {
         return new LocalStorage();
     });
 
-    var prefix = window.location.pathname;
+    var prefix = 'mdt' + window.location.pathname;
 
     class StorageWrapper {
         storage:Storage;
@@ -28,8 +28,8 @@ module mdTutorial {
 
             for (i  = 0; i < this.storage.length; i += 1) {
                 key = this.storage.key(i);
-                if (key.indexOf(prefix) !== 0) {
-                    toRemove.push(key);
+                if (key.indexOf(prefix) === 0) {
+                    toRemove.push(key.slice(prefix.length));
                 }
             }
             toRemove.forEach(this.remove.bind(this));
@@ -39,7 +39,7 @@ module mdTutorial {
 
             for (i = 0; i < this.storage.length; i += 1) {
                 key = this.storage.key(i);
-                if (key.indexOf(prefix) !== 0) {
+                if (key.indexOf(prefix) === 0) {
                     len += 1;
                 }
             }
