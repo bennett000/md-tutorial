@@ -23,8 +23,8 @@ module.exports = function(config) {
         ].concat(source.absoluteJS()).concat(
         [
             'spec/unit/helper-*.js',
-            'spec/unit/*-spec.js'
-            //'src/html/**/*.html'
+            'spec/unit/*-spec.js',
+            'src/html/**/*.html'
         ]),
 
         // list of files to exclude
@@ -74,12 +74,12 @@ module.exports = function(config) {
 
         // coverage support
         preprocessors: {
-            //'src/html/**/*.html': ['ng-html2js'],
+            'src/html/**/*.html': ['ng-html2js'],
             'src/js/**/*.js': ['coverage']
-        }
+        },
 
-        //ngHtml2JsPreprocessor: {
-        //    stripPrefix: 'src/'
-        //}
+        ngHtml2JsPreprocessor: {
+            stripPrefix: 'src/'
+        }
     });
 };

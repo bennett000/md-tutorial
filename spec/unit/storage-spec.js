@@ -4,10 +4,10 @@
  */
 
 /*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs,
-it, module,inject, workular */
+it, module,inject, workular, afterEach */
 
 
-describe('', function() {
+describe('Storage (local/session/poly) specs', function() {
     'use strict';
     var ls;
 
@@ -17,6 +17,10 @@ describe('', function() {
             ls = localStorage;
             ls.removeAll();
         });
+    });
+
+    afterEach(function () {
+        ls.removeAll();
     });
 
     it('should start empty', function() {

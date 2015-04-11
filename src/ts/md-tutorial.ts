@@ -57,8 +57,9 @@ module mdTutorial {
         config(configureRoutes).
         value('appFlags', appFlags).
         constant('applets', applets).
+        factory('mdtSandboxState', mdtSandboxState).
         directive('mdtFrame', frameDirective).
-        directive('mdtMarkdownSandbox', mdSandbox);
+        directive('mdtSandbox', mdtSandbox);
 
     /**
      * @ngInject
@@ -90,26 +91,63 @@ module mdTutorial {
         };
     }
 
-    /** @ngInject */ // @todo also rename this, and make it its own
-    function mdSandbox($q, $sce, mdtMarked, throttle) {
-        var THROTTLE_MD:number = 150;
+    /** @ngInject */
+    function mdtSandboxState(localStorage) {
+        var prefix = 'sandbox-',
+            storage = {};
 
-        function linkFn(scope:any, elem:any, attrs:any, controller:any, trans:any) {
+        function value(name:string, value:any):string {
+            if (!name) {
+                return '';
+            }
+            if (value === undefined) {
+                if (storage[name]) {
+                    return storage[name];
+                }
+                storage[name] = localStorage.get(prefix + name);
+                return storage[name];
+            }
+            if (storage[name] === value) {
+                return storage[name];
+            }
+            storage[name] = value;
+            localStorage.set(prefix + name, value);
+            return storage[name];
+        }
+
+        return value;
+    }
+
+    /** @ngInject */ // @todo also rename this, and make it its own
+    function mdtSandbox($q, $sce, mdtMarked, throttle, mdtSandboxState) {
+        var THROTTLE_MD:number = 150;
+        function linkFn(scope:any, e:any, a:any, c:any, trans:any) {
             scope.md = {
                 input: '',
-                output: ''
+                output: '',
+                update: throttle(update, THROTTLE_MD)
             };
-            scope.md.update = throttle(update, THROTTLE_MD);
             trans(scope, onTransclude);
+
+            if (scope.mdtName) {
+                scope.md.input = mdtSandboxState(scope.mdtName) || '';
+            }
 
             function update() {
                 mdtMarked.render(scope.md.input).then(function (html) {
-                    /* @todo sanitize this way better */
+                    /* @todo sanitize - is this relevant client side only? */
                     scope.md.output = $sce.trustAsHtml(html);
+                    if (a.mdtState) {
+                        mdtSandboxState(scope.mdtName, scope.md.input);
+                    }
                 });
             }
 
             function onTransclude(content) {
+                if (scope.mdtName) {
+                    // name takes precedence over transclusion
+                    return;
+                }
                 var result = angular.element(content).text();
                 if (!result) {
                     return;
@@ -121,7 +159,9 @@ module mdTutorial {
 
         return {
             replace: true,
-            scope: {},
+            scope: {
+                mdtName: '@'
+            },
             transclude: true,
             link: linkFn,
             templateUrl: 'html/sandbox-directive.html'
