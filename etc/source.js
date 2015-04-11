@@ -40,7 +40,9 @@ var source = {
 };
 
 /**
- * @type {{root: string, js: string[], lib: string[], absoluteJS: absoluteJS, absoluteLib: absoluteLib, absoluteScripts: absoluteScripts, debugScriptTags: debugScriptTags, productionScriptTags: productionScriptTags}}
+ @type {{root: string, js: string[], lib: string[], absoluteJS: absoluteJS,
+ absoluteLib: absoluteLib, absoluteScripts: absoluteScripts,
+ debugScriptTags: debugScriptTags, productionScriptTags: productionScriptTags}}
  */
 module.exports = source;
 

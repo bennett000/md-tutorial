@@ -3,7 +3,8 @@
  * Created by michael on 06/04/15
  */
 
-/*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs, it, module,inject, workular */
+/*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs,
+it, module,inject, workular */
 
 
 describe('', function() {

@@ -3,7 +3,8 @@
  * Created by michael on 30/03/15
  */
 
-/*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs, it, module,inject, workular */
+/*global window, jasmine, beforeEach, describe, expect, waitsFor, spyOn, runs,
+it, module,inject, workular */
 
 
 describe('Tap/Click', function() {
