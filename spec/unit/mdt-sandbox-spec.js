@@ -41,20 +41,20 @@ describe('sandbox directive', function() {
     });
 
     it('should load existing state', function() {
-        state('test', 'word');
-        var el = create('<mdt-sandbox mdt-name="test"></mdt-sandbox>');
+        state.file('test', 'word');
+        var el = create('<mdt-sandbox mdt-file="test"></mdt-sandbox>');
         scope.$digest();
         expect(input(el)).toBe('word');
     });
 
     it('should set state on update', function() {
-        state('test', 'word');
-        var el = create('<mdt-sandbox mdt-name="test"></mdt-sandbox>'),
+        state.file('test', 'word');
+        var el = create('<mdt-sandbox mdt-file="test"></mdt-sandbox>'),
         changes = 'ch-changes', done = false;
         scope.$digest();
         el.isolateScope().md.input = changes;
         el.isolateScope().md.update().then(function () {
-            expect(state('test')).toBe(changes);
+            expect(state.file('test')).toBe(changes);
             done = true;
         }, function (err) {
             expect(err.message).toBeUndefined();

@@ -57,7 +57,7 @@ module mdTutorial {
         config(configureRoutes).
         value('appFlags', appFlags).
         constant('applets', applets).
-        factory('mdtSandboxState', mdtSandboxState).
+        service('mdtSandboxState', MdtSandboxState).
         directive('mdtFrame', frameDirective).
         directive('mdtSandbox', mdtSandbox);
 
@@ -92,11 +92,12 @@ module mdTutorial {
     }
 
     /** @ngInject */
-    function mdtSandboxState(localStorage) {
+    function MdtSandboxState(localStorage) {
         var prefix = 'sandbox-',
+            currentFile = null,
             storage = {};
 
-        function value(name:string, value:any):string {
+        function file(name:string, value:any):string {
             if (!name) {
                 return '';
             }
@@ -115,7 +116,14 @@ module mdTutorial {
             return storage[name];
         }
 
-        return value;
+        function current(val) {
+            if (val === undefined) {
+                return currentFile;
+            }
+        }
+
+        this.file = file;
+        this.current = current;
     }
 
     /** @ngInject */ // @todo also rename this, and make it its own
@@ -129,22 +137,22 @@ module mdTutorial {
             };
             trans(scope, onTransclude);
 
-            if (scope.mdtName) {
-                scope.md.input = mdtSandboxState(scope.mdtName) || '';
+            if (scope.mdtFile) {
+                scope.md.input = mdtSandboxState.file(scope.mdtFile) || '';
             }
 
             function update() {
                 return mdtMarked.render(scope.md.input).then(function (html) {
                     /* @todo sanitize - is this relevant client side only? */
                     scope.md.output = $sce.trustAsHtml(html);
-                    if (a.mdtName) {
-                        mdtSandboxState(scope.mdtName, scope.md.input);
+                    if (a.mdtFile) {
+                        mdtSandboxState.file(scope.mdtFile, scope.md.input);
                     }
                 });
             }
 
             function onTransclude(content) {
-                if (scope.mdtName) {
+                if (scope.mdtFile) {
                     // name takes precedence over transclusion
                     return;
                 }
@@ -160,7 +168,7 @@ module mdTutorial {
         return {
             replace: true,
             scope: {
-                mdtName: '@'
+                mdtFile: '@'
             },
             transclude: true,
             link: linkFn,

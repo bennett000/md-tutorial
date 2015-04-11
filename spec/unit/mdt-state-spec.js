@@ -26,21 +26,21 @@ describe('sandbox state', function() {
 
     it('should store a state in a localStorage namespace sandbox-', function() {
         var label = 'something', data = '*hi';
-        state(label, data);
+        state.file(label, data);
         expect(ls.get('sandbox-' + label)).toBe(data);
     });
 
     it('double saves should not trigger localStorage.set', function() {
         var label = 'something', data = '*hi';
         spyOn(ls, 'set').and.callThrough();
-        state(label, data);
+        state.file(label, data);
         expect(ls.set.calls.count()).toBe(1);
-        state(label, data);
+        state.file(label, data);
         expect(ls.set.calls.count()).toBe(1);
     });
 
     it('given no parameters returns an empty string', function() {
-        expect(state()).toBe('');
+        expect(state.file()).toBe('');
     });
 });
 
@@ -62,7 +62,7 @@ describe('sandbox state (persistence)', function() {
 
     it('Setup storage data for next test', function() {
         var label = 'something', data = '*hi';
-        state(label, data);
+        state.file(label, data);
         expect(ls.get('sandbox-' + label)).toBe(data);
     });
 
@@ -72,9 +72,9 @@ describe('sandbox state (persistence)', function() {
         expect(ls.get('sandbox-' + label)).toBe(data);
         // test
         spyOn(ls, 'get').and.callThrough();
-        state(label);
+        state.file(label);
         expect(ls.get.calls.count()).toBe(1);
-        state(label);
+        state.file(label);
         expect(ls.get.calls.count()).toBe(1);
 
         // cleanup describe block
