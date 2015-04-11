@@ -134,10 +134,10 @@ module mdTutorial {
             }
 
             function update() {
-                mdtMarked.render(scope.md.input).then(function (html) {
+                return mdtMarked.render(scope.md.input).then(function (html) {
                     /* @todo sanitize - is this relevant client side only? */
                     scope.md.output = $sce.trustAsHtml(html);
-                    if (a.mdtState) {
+                    if (a.mdtName) {
                         mdtSandboxState(scope.mdtName, scope.md.input);
                     }
                 });

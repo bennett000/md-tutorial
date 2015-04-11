@@ -47,6 +47,23 @@ describe('sandbox directive', function() {
         expect(input(el)).toBe('word');
     });
 
+    it('should set state on update', function() {
+        state('test', 'word');
+        var el = create('<mdt-sandbox mdt-name="test"></mdt-sandbox>'),
+        changes = 'ch-changes', done = false;
+        scope.$digest();
+        el.isolateScope().md.input = changes;
+        el.isolateScope().md.update().then(function () {
+            expect(state('test')).toBe(changes);
+            done = true;
+        }, function (err) {
+            expect(err.message).toBeUndefined();
+            done = true;
+        });
+        scope.$apply();
+        expect(done).toBe(true);
+    });
+
     // get the markdown input child text
     function input(val) {
         return angular.element(
