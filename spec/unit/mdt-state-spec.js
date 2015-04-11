@@ -80,5 +80,33 @@ describe('sandbox state (persistence)', function() {
         // cleanup describe block
         ls.removeAll();
     });
+
+    it('should have a current value function, that starts empty', function() {
+        expect(state.current()).toBe(null);
+    });
+
+    it('should be able to set current values', function() {
+        state.current('bowie');
+        expect(state.current()).toBe('bowie');
+    });
+
+    it('should be able to register update callbacks', function() {
+        var done = false;
+        state.onUpdate(function () {
+            done = true;
+        });
+        state.current('test');
+        expect(done).toBe(true);
+    });
+
+    it('should be able to de-register update callbacks', function() {
+        var done = false,
+            remove = state.onUpdate(function () {
+            done = true;
+        });
+        remove();
+        state.current('test');
+        expect(done).toBe(false);
+    });
     // Start a new describe block
 });

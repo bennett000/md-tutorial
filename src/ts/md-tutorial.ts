@@ -94,10 +94,11 @@ module mdTutorial {
     /** @ngInject */
     function MdtSandboxState(localStorage) {
         var prefix = 'sandbox-',
-            currentFile = null,
+            currentFile:string = null,
+            updateListeners = {},
             storage = {};
 
-        function file(name:string, value:any):string {
+        function file(name:string, value?:string):string {
             if (!name) {
                 return '';
             }
@@ -116,19 +117,56 @@ module mdTutorial {
             return storage[name];
         }
 
-        function current(val) {
-            if (val === undefined) {
-                return currentFile;
+        function safeCall(fn) {
+            try {
+                return fn();
+            } catch (err) {
+                // fail silent
             }
         }
 
+        function update() {
+            Object.keys(updateListeners).forEach(function (id) {
+                safeCall(updateListeners[id]);
+            });
+        }
+
+        function current(name?:string):string {
+            if (name === undefined) {
+                return currentFile;
+            }
+            currentFile = name;
+            update();
+            return currentFile;
+        }
+
+        function remove(name:string):void {
+            localStorage.remove(prefix + name);
+        }
+
+        function onUpdate(callback:Function):Function {
+            if (typeof callback !== 'function') {
+                return angular.noop;
+            }
+            var id = Date.now().toString(16) + '.' + Math.random();
+            updateListeners[id] = callback;
+            function remove() {
+                delete updateListeners[id];
+            }
+
+            return remove;
+        }
+
         this.file = file;
+        this.remove = remove;
         this.current = current;
+        this.onUpdate = onUpdate;
     }
 
     /** @ngInject */ // @todo also rename this, and make it its own
     function mdtSandbox($q, $sce, mdtMarked, throttle, mdtSandboxState) {
         var THROTTLE_MD:number = 150;
+
         function linkFn(scope:any, e:any, a:any, c:any, trans:any) {
             scope.md = {
                 input: '',
