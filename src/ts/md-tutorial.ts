@@ -189,7 +189,7 @@ module mdTutorial {
     }
 
     /** @ngInject */ // @todo also rename this, and make it its own
-    function mdtSandbox($q, $sce, mdtMarked, throttle, mdtSandboxState) {
+    function mdtSandbox($sce, mdtMarked, throttle, mdtSandboxState) {
         var THROTTLE_MD:number = 150;
 
         function linkFn(scope:any, e:any, a:any, c:any, trans:any) {
@@ -204,9 +204,11 @@ module mdTutorial {
             if (scope.mdtCurrent) {
                 // "current" (managed) mode
                 scope.md.input = mdtSandboxState.file(mdtSandboxState.current());
+                update();
             } else if (scope.mdtFile) {
                 // declarative "file" mode
                 scope.md.input = mdtSandboxState.file(scope.mdtFile) || '';
+                update();
             }
 
             function update() {
