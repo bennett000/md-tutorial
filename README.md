@@ -4,6 +4,8 @@ Markdown Tutorial
 This README is all about the markdown tutorial code base.  The actual tutorial
 can be found [here](http://bennett000.github.io/md-tutorial).
 
+[![Build Status](https://travis-ci.org/bennett000/md-tutorial.svg?branch=master)](https://travis-ci.org/bennett000/md-tutorial)
+
 ## Build Environment
 
 The project aims to have as system neutral a build process as possible,
