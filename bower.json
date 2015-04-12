@@ -23,5 +23,8 @@
     "lib",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "sass-mediaqueries": "~1.5.1"
+  }
 }
