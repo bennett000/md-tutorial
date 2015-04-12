@@ -112,6 +112,25 @@ describe('sandbox state', function() {
            state.saveAs(nf, 'test');
            expect(state.file(nf)).toBe('');
        });
+
+    it('should list sandbox files', function() {
+        var files = [{n: 'test1', v: 1}, {n: 'test2', v: 2},
+            {n: 'test3', v: 3}];
+
+        files.forEach(function (file) { state.file(file.n, file.v); });
+        expect(state.list().length).toBe(3);
+    });
+
+    it('should list sandbox files by naturally sorted name', function() {
+        var files = [{n: 'test1', v: 1}, {n: 'test10', v: 2},
+            {n: 'test3', v: 3}, {n: 'test100', v: -352}];
+
+        files.forEach(function (file) { state.file(file.n, file.v); });
+        expect(state.list()[0]).toBe('test1');
+        expect(state.list()[1]).toBe('test3');
+        expect(state.list()[2]).toBe('test10');
+        expect(state.list()[3]).toBe('test100');
+    });
 });
 
 describe('sandbox state (persistence)', function() {

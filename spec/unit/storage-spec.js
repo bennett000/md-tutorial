@@ -63,4 +63,30 @@ describe('Storage (local/session/poly) specs', function() {
         ls.removeAll();
         expect(ls.length()).toBe(0);
     });
+
+    it('should list items', function() {
+        ls.set('test', 567);
+        ls.set('test2', 5672365);
+        expect(ls.list().length).toBe(2);
+    });
+
+    it('list should return subsets based on a string prefix', function() {
+        ls.set('test', 567);
+        ls.set('gob', 567265);
+        ls.set('test2', 5672365);
+        expect(ls.list('test').length).toBe(2);
+    });
+
+    it('list should accept a callback', function() {
+        var len = 0;
+        ls.set('test', 567);
+        ls.set('gob', 567265);
+        ls.set('test2', 5672365);
+        ls.list(null, function (err, key) {
+            len += 1;
+            expect(key === 'test' || key === 'gob' || key === 'test2').
+            toBe(true);
+        });
+        expect(len).toBe(3);
+    });
 });

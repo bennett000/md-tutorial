@@ -52,12 +52,17 @@ module mdTutorial {
                 template: 'html/reference.html',
                 onMenu: true
             }
-        };
+        }, rx = /(\d+)|(\D+)/g,
+        /** @const */
+        rd = /\d+/;
+
+
     export var app = angular.module('md-tutorial', ['ngRoute', 'mdt-markdown']).
         config(configureRoutes).
         value('appFlags', appFlags).
         constant('applets', applets).
         service('mdtSandboxState', MdtSandboxState).
+        factory('mdtSafecall', safeCall).
         directive('mdtFrame', frameDirective).
         directive('mdtSandbox', mdtSandbox);
 
@@ -91,6 +96,42 @@ module mdTutorial {
         };
     }
 
+    export function safeCall(fn:Function, args?:Array<any>, ctext?:any) {
+        try {
+            ctext = ctext || null;
+            return fn.apply(ctext, args);
+        } catch (err) {
+            // fail silent
+        }
+    }
+
+    // thanks http://stackoverflow.com/questions/19247495/alphanumeric-sorting-an-array-in-javascript
+    export function naturalSort(as:string, bs:string):number {
+        var a = as.toLowerCase().match(rx),
+            b = bs.toLowerCase().match(rx),
+            a1, b1;
+
+        while (a.length && b.length) {
+            a1 = a.shift();
+            b1 = b.shift();
+            if (rd.test(a1) || rd.test(b1)) {
+                if (!rd.test(a1)) {
+                    return 1;
+                }
+                if (!rd.test(b1)) {
+                    return -1;
+                }
+                if (a1 != b1) {
+                    return a1 - b1;
+                }
+            } else if (a1 != b1) {
+                return a1 > b1 ? 1 : -1;
+            }
+        }
+        return a.length - b.length;
+    }
+
+
     /** @ngInject */
     function MdtSandboxState(localStorage) {
         var prefix = 'sandbox-',
@@ -98,6 +139,14 @@ module mdTutorial {
             currentFile:string = newFileLabel,
             updateListeners = {},
             storage = {};
+
+        function list():string[] {
+            return localStorage.list(prefix).map(function (fileName) {
+                return fileName.slice(prefix.length);
+            }).filter(function (fileName) {
+                return fileName != newFileLabel;
+            }).sort(naturalSort);
+        }
 
         function file(name:string, value?:string):string {
             if (!name) {
@@ -116,14 +165,6 @@ module mdTutorial {
             storage[name] = value;
             localStorage.set(prefix + name, value);
             return storage[name];
-        }
-
-        function safeCall(fn) {
-            try {
-                return fn();
-            } catch (err) {
-                // fail silent
-            }
         }
 
         function update() {
@@ -181,6 +222,7 @@ module mdTutorial {
             return '';
         }
 
+        this.list = list;
         this.file = file;
         this.remove = remove;
         this.current = current;
