@@ -4,7 +4,7 @@ Markdown Tutorial
 This README is all about the markdown tutorial code base.  The actual tutorial
 can be found [here](http://bennett000.github.io/md-tutorial).
 
-[![Build Status](https://travis-ci.org/bennett000/md-tutorial.svg?branch=master)](https://travis-ci.org/bennett000/md-tutorial) [![Code Climate](https://codeclimate.com/github/bennett000/md-tutorial/badges/gpa.svg)](https://codeclimate.com/github/bennett000/md-tutorial) [![Dependency Status](https://gemnasium.com/bennett000/md-tutorial.svg)](https://gemnasium.com/bennett000/md-tutorial)
+[![Build Status](https://travis-ci.org/bennett000/md-tutorial.svg?branch=master)](https://travis-ci.org/bennett000/md-tutorial) [![Code Climate](https://codeclimate.com/github/bennett000/md-tutorial/badges/gpa.svg)](https://codeclimate.com/github/bennett000/md-tutorial) [![Dependency Status](https://gemnasium.com/bennett000/md-tutorial.svg)](https://gemnasium.com/bennett000/md-tutorial) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 
 ## Build Environment
