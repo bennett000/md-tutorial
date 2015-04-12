@@ -94,7 +94,8 @@ module mdTutorial {
     /** @ngInject */
     function MdtSandboxState(localStorage) {
         var prefix = 'sandbox-',
-            currentFile:string = null,
+            newFileLabel = '__new __file',
+            currentFile:string = newFileLabel,
             updateListeners = {},
             storage = {};
 
@@ -157,10 +158,34 @@ module mdTutorial {
             return remove;
         }
 
+        /**
+         * @param {string} oldName
+         * @param {string} newName
+         * @param {boolean} overwrite
+         * @return {string} '' for success otherwise an error string
+         */
+        function saveAs(oldName, newName, overwrite?:boolean):string {
+            if (!file(oldName)) {
+                return 'file ' + oldName + ' not found';
+            }
+            if (!overwrite) {
+                if (file(newName)) {
+                    return 'file ' + newName + ' exists';
+                }
+            }
+            file(newName, file(oldName));
+            // if the file being saved was the "new file" reset it
+            if (oldName === newFileLabel) {
+                file(newFileLabel, '');
+            }
+            return '';
+        }
+
         this.file = file;
         this.remove = remove;
         this.current = current;
         this.onUpdate = onUpdate;
+        this.saveAs = saveAs;
     }
 
     /** @ngInject */ // @todo also rename this, and make it its own
@@ -175,7 +200,9 @@ module mdTutorial {
             };
             trans(scope, onTransclude);
 
-            if (scope.mdtFile) {
+            if (scope.mdtCurrent) {
+                scope.md.input = mdtSandboxState.file(mdtSandboxState.current());
+            } else if (scope.mdtFile) {
                 scope.md.input = mdtSandboxState.file(scope.mdtFile) || '';
             }
 
@@ -206,7 +233,8 @@ module mdTutorial {
         return {
             replace: true,
             scope: {
-                mdtFile: '@'
+                mdtFile: '@',
+                mdtCurrent: '@'
             },
             transclude: true,
             link: linkFn,

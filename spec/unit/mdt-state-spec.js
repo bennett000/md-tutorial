@@ -20,7 +20,7 @@ describe('sandbox state', function() {
         });
     });
 
-    afterEach(function () {
+    afterEach(function() {
         ls.removeAll();
     });
 
@@ -81,9 +81,10 @@ describe('sandbox state (persistence)', function() {
         ls.removeAll();
     });
 
-    it('should have a current value function, that starts empty', function() {
-        expect(state.current()).toBe(null);
-    });
+    it('should have a current value function, that starts as "__new __file"',
+       function() {
+           expect(state.current()).toBe('__new __file');
+       });
 
     it('should be able to set current values', function() {
         state.current('bowie');
@@ -92,7 +93,7 @@ describe('sandbox state (persistence)', function() {
 
     it('should be able to register update callbacks', function() {
         var done = false;
-        state.onUpdate(function () {
+        state.onUpdate(function() {
             done = true;
         });
         state.current('test');
@@ -101,12 +102,27 @@ describe('sandbox state (persistence)', function() {
 
     it('should be able to de-register update callbacks', function() {
         var done = false,
-            remove = state.onUpdate(function () {
-            done = true;
-        });
+            remove = state.onUpdate(function() {
+                done = true;
+            });
         remove();
         state.current('test');
         expect(done).toBe(false);
     });
+
+    it('should be able to save something as something else', function() {
+        state.file('test1', 'word');
+        state.saveAs('test1', 'test2');
+        expect(state.file('test2')).toBe('word');
+    });
+
+    it('when saving "__new __file" as something else it should reset new file',
+       function() {
+           var nf = '__new __file', word = 'word';
+           state.file(nf, word);
+           expect(state.file(nf)).toBe(word);
+           state.saveAs(nf, 'test');
+           expect(state.file(nf)).toBe('');
+       });
     // Start a new describe block
 });
