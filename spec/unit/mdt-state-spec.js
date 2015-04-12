@@ -42,6 +42,76 @@ describe('sandbox state', function() {
     it('given no parameters returns an empty string', function() {
         expect(state.file()).toBe('');
     });
+
+    it('should have a current value function, that starts as "__new __file"',
+       function() {
+           expect(state.current()).toBe('__new __file');
+       });
+
+    it('should be able to set current values', function() {
+        state.current('bowie');
+        expect(state.current()).toBe('bowie');
+    });
+
+    it('should be able to register update callbacks', function() {
+        var done = false;
+        state.onUpdate(function() {
+            done = true;
+        });
+        state.current('test');
+        expect(done).toBe(true);
+    });
+
+    it('should be able to de-register update callbacks', function() {
+        var done = false,
+            remove = state.onUpdate(function() {
+                done = true;
+            });
+        remove();
+        state.current('test');
+        expect(done).toBe(false);
+    });
+
+    it('should be able to save something as something else', function() {
+        state.file('test1', 'word');
+        state.saveAs('test1', 'test2');
+        expect(state.file('test2')).toBe('word');
+    });
+
+    it('should be "overwrite safe" by default', function() {
+        var result1 = '', result2 = '';
+        state.file('test1', 'word');
+        result1 = state.saveAs('test1', 'test2');
+        expect(result1).toBe('');
+        result2 = state.saveAs('test1', 'test2');
+        expect(result2).not.toBe('');
+    });
+
+    it('should allow manual overwrites', function() {
+        var word = 'word', up = 'up';
+        state.file('test1', word);
+        state.saveAs('test1', 'test2');
+        expect(state.file('test2')).toBe(word);
+        state.file('test1', up);
+        state.saveAs('test1', 'test2', true);
+        expect(state.file('test2')).toBe(up);
+    });
+
+    it('return an error message when asked to saveAs a non-existant file',
+       function() {
+           var result = '';
+           result = state.saveAs('test1', 'test2');
+           expect(result).not.toBe('');
+       });
+
+    it('when saving "__new __file" as something else it should reset new file',
+       function() {
+           var nf = '__new __file', word = 'word';
+           state.file(nf, word);
+           expect(state.file(nf)).toBe(word);
+           state.saveAs(nf, 'test');
+           expect(state.file(nf)).toBe('');
+       });
 });
 
 describe('sandbox state (persistence)', function() {
@@ -80,49 +150,5 @@ describe('sandbox state (persistence)', function() {
         // cleanup describe block
         ls.removeAll();
     });
-
-    it('should have a current value function, that starts as "__new __file"',
-       function() {
-           expect(state.current()).toBe('__new __file');
-       });
-
-    it('should be able to set current values', function() {
-        state.current('bowie');
-        expect(state.current()).toBe('bowie');
-    });
-
-    it('should be able to register update callbacks', function() {
-        var done = false;
-        state.onUpdate(function() {
-            done = true;
-        });
-        state.current('test');
-        expect(done).toBe(true);
-    });
-
-    it('should be able to de-register update callbacks', function() {
-        var done = false,
-            remove = state.onUpdate(function() {
-                done = true;
-            });
-        remove();
-        state.current('test');
-        expect(done).toBe(false);
-    });
-
-    it('should be able to save something as something else', function() {
-        state.file('test1', 'word');
-        state.saveAs('test1', 'test2');
-        expect(state.file('test2')).toBe('word');
-    });
-
-    it('when saving "__new __file" as something else it should reset new file',
-       function() {
-           var nf = '__new __file', word = 'word';
-           state.file(nf, word);
-           expect(state.file(nf)).toBe(word);
-           state.saveAs(nf, 'test');
-           expect(state.file(nf)).toBe('');
-       });
     // Start a new describe block
 });

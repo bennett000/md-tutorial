@@ -200,9 +200,12 @@ module mdTutorial {
             };
             trans(scope, onTransclude);
 
+            // "current' (managed) mode takes precedence
             if (scope.mdtCurrent) {
+                // "current" (managed) mode
                 scope.md.input = mdtSandboxState.file(mdtSandboxState.current());
             } else if (scope.mdtFile) {
+                // declarative "file" mode
                 scope.md.input = mdtSandboxState.file(scope.mdtFile) || '';
             }
 
@@ -210,17 +213,24 @@ module mdTutorial {
                 return mdtMarked.render(scope.md.input).then(function (html) {
                     /* @todo sanitize - is this relevant client side only? */
                     scope.md.output = $sce.trustAsHtml(html);
-                    if (a.mdtFile) {
+
+                    // "current' (managed) mode takes precedence
+                    if (a.mdtCurrent) {
+                        mdtSandboxState.file(mdtSandboxState.current(),
+                            scope.md.input);
+                    } else if (a.mdtFile) {
                         mdtSandboxState.file(scope.mdtFile, scope.md.input);
                     }
                 });
             }
 
+            // transclusion only works when current, and file modes are off
             function onTransclude(content) {
-                if (scope.mdtFile) {
-                    // name takes precedence over transclusion
+                if (scope.mdtFile || scope.mdtCurrent) {
+                    // stop transcluding
                     return;
                 }
+                // mark down the declarative text
                 var result = angular.element(content).text();
                 if (!result) {
                     return;
