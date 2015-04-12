@@ -2,7 +2,7 @@ Markdown Tutorial
 =================
 
 This README is all about the markdown tutorial code base.  The actual tutorial
-can be found here: (@todo make a github page)
+can be found [here](http://bennett000.github.io/md-tutorial).
 
 ## Build Environment
 
@@ -19,22 +19,22 @@ For more information about dependencies see `md-tutorial/DEPENDENCIES.md`
 
 So far everything is managed with npm, and grunt. In theory the `npm install`
 *should* setup the user for work by calling `grunt bootstrap`.  JavaScript,
-and TypeScript source files are listed in `project-root/etc/source.js`, this
+and TypeScript source files are listed in [/etc/source.js](etc/source.js), this
 file directly controls what gets built into the final JS.
 
 
 #### Relevant Source Files/Folders
 
-* project-root/spec - jasmine style TDD project specifications
-* project-root/src/ts - TypeScript source code
-* project-root/src/lib - Symbolicly linked dependencies (from node_modules/...)
+* [/spec](spec) - jasmine style TDD project specifications
+* [/src/ts](src/ts) - TypeScript source code
+* [/src/lib](src/lib) - Symbolicly linked dependencies (from node_modules/...)
 
 
 #### Relevant Build Files/Folders
 
-* project-root/src/js - destination folder for typescript compilation
-* project-root/build - destination for builds of the tutorial
-* project-root/source.js - central "manifest" of the project's source code,
+* [/src/js](src/js) - destination folder for typescript compilation
+* [/build](build) - destination for builds of the tutorial
+* [/source.js](source.js) - central "manifest" of the project's source code,
 used by internal build processes.
 
 
@@ -105,7 +105,7 @@ jasmine style but require protractor/web driver to run.
 
 With any luck the unit tests should run out of the box if you have firefox, and
 a valid npm install.  The primary karma suite's configuration can be found at
-`project-root/etc/karma.conf.js`
+[/etc/karma.conf.js](etc/karma.conf.js)
 
 The end to end tests require more effort to setup.  Before running the grunt
 e2e/protractor task(s) a web driver instance *must be running*.  Setting up
@@ -132,5 +132,5 @@ but well, you'll see.
 
 Copyright (c) 2015 Michael J. Bennett
 
-MIT License - see `project-root/LICENSE.md`
+MIT License - see [LICENSE.md](LICENSE.md)
 
