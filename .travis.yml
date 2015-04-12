@@ -9,5 +9,5 @@ before_install:
   - gem install compass
   - npm install -g compass
 install:
-  - npm install
   - bower install
+  - npm install
