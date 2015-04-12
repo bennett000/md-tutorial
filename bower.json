@@ -15,7 +15,7 @@
     "javascript"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/bennett000/md-tutorial",
+  "homepage": "http://bennett000.github.io/md-tutorial",
   "ignore": [
     "**/.*",
     "node_modules",
