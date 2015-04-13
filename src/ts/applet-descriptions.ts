@@ -9,7 +9,7 @@ module mdTutorial {
             controller: 'Sandbox',
             controllerAs: 'sandbox',
             template: 'html/sandbox.html',
-            onMenu: false
+            onMenu: 'secondary'
         },
         sandbox: {
             label: 'Sandbox',
@@ -18,7 +18,7 @@ module mdTutorial {
             controller: 'Sandbox',
             controllerAs: 'sandbox',
             template: 'html/sandbox.html',
-            onMenu: true
+            onMenu: 'primary'
         },
         tutorial: {
             label: 'Tutorial',
@@ -27,7 +27,7 @@ module mdTutorial {
             controller: 'Tutorial',
             controllerAs: 'tutorial',
             template: 'html/tutorial.html',
-            onMenu: true
+            onMenu: 'primary'
         },
         reference: {
             label: 'Reference',
@@ -36,7 +36,7 @@ module mdTutorial {
             controller: 'Reference',
             controllerAs: 'reference',
             template: 'html/reference.html',
-            onMenu: true
+            onMenu: 'primary'
         }
     };
 

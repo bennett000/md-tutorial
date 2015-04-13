@@ -19,9 +19,23 @@ module mdTutorial {
     function mdtAppletSelectors($location, applets) {
 
         // filter selectors
-        var defaultMode = '/sandbox',
-            selectors:any = Object.keys(applets).
-                filter(onMenu).map(function (applet):any {
+        var defaultMode = '/sandbox';
+
+        function getOnMenu(name:string) {
+            /**
+             * @param {string} applet
+             */
+            function onMenu(applet):boolean {
+                return applets[applet].onMenu === name;
+            }
+
+            return onMenu;
+        }
+
+
+        function linkFn(scope:any) {
+            scope.selectors = Object.keys(applets).
+                filter(getOnMenu(scope.mdtMenu)).map(function (applet):any {
                     var a = applets[applet];
                     return {
                         icon: a.icon,
@@ -29,17 +43,6 @@ module mdTutorial {
                         label: a.label
                     }
                 });
-
-        /**
-         * @param {string} applet
-         */
-        function onMenu(applet):boolean {
-            return applets[applet].onMenu;
-        }
-
-
-        function linkFn(scope:any) {
-            scope.selectors = selectors;
             scope.select = select;
             scope.selected = defaultMode;
 
@@ -54,7 +57,9 @@ module mdTutorial {
             restrict: 'E',
             replace: true,
             link: linkFn,
-            scope: {},
+            scope: {
+                mdtMenu: '@'
+            },
             template: '<div class="mdt-applet-selectors"><mdt-applet-selector ' +
             'ng-repeat="selector in selectors"></mdt-applet-selector></div>'
         };
