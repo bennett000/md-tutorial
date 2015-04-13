@@ -19,12 +19,30 @@ module mdTutorial {
         };
     }
 
-    function MdtMenuState() {
-        var selected = defaultMode;
+    /** @ngInject */
+    function MdtMenuState(mdtMakeListener) {
+        var selected = defaultMode,
+            that = mdtMakeListener(this);
+
+        function current(val?:string):string {
+            if (val === undefined) {
+                return selected;
+            }
+            selected = val;
+            that.emitSync('update', val);
+            return selected;
+        }
+
+        function onUpdate(cb) {
+            return that.on('update', cb);
+        }
+
+        this.current = current;
+        this.onUpdate = onUpdate;
     }
 
     /** @ngInject */
-    function mdtAppletSelectors($location, applets) {
+    function mdtAppletSelectors($location, applets, mdtMenuState) {
 
         function getOnMenu(name:string) {
             /**
@@ -39,6 +57,8 @@ module mdTutorial {
 
 
         function linkFn(scope:any) {
+            var ignore;
+
             scope.selectors = Object.keys(applets).
                 filter(getOnMenu(scope.mdtMenu)).map(function (applet):any {
                     var a = applets[applet];
@@ -49,13 +69,20 @@ module mdTutorial {
                     }
                 });
             scope.select = select;
-            scope.selected = defaultMode;
+            scope.selected = mdtMenuState.current();
+
+            ignore = mdtMenuState.onUpdate(update);
+
+            function update(val) {
+                scope.selected = val;
+            }
 
             function select(path:string) {
                 $location.path(path);
-                scope.selected = path;
+                mdtMenuState.current(path);
             }
 
+            scope.$on('$destroy', ignore);
         }
 
         return {

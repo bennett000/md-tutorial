@@ -1,7 +1,16 @@
 @import "base";
 
 .mdt-about {
+  padding: 1%;
+  width: 98.0%;
+  height: 98.0%;
+  background-color: $foreground;
+}
+
+.mdt-readme {
   padding: 2.5%;
-  width: 95.0%;
-  background-color: $foreground
+  width: 95%;
+  height: 95%;
+  background-color: $inputbg;
+  border-radius: 7px;
 }

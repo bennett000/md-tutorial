@@ -622,7 +622,17 @@ nav p {
 
 /* line 3, ../scss/partials/_about.scss */
 .mdt-about {
-  padding: 2.5%;
-  width: 95.0%;
+  padding: 1%;
+  width: 98.0%;
+  height: 98.0%;
   background-color: #d0dce2;
+}
+
+/* line 10, ../scss/partials/_about.scss */
+.mdt-readme {
+  padding: 2.5%;
+  width: 95%;
+  height: 95%;
+  background-color: #fdfcff;
+  border-radius: 7px;
 }
