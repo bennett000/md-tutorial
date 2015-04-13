@@ -6,9 +6,9 @@ module mdTutorial {
             label: 'About',
             path: '/about',
             icon: '/img/icons/question-mark.svg',
-            controller: 'Sandbox',
-            controllerAs: 'sandbox',
-            template: 'html/sandbox.html',
+            controller: 'About',
+            controllerAs: 'about',
+            template: 'html/about.html',
             onMenu: 'secondary'
         },
         sandbox: {

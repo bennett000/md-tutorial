@@ -4,8 +4,12 @@
 
 ///<reference path="./md-tutorial.ts" />
 module mdTutorial {
-    app.directive('mdtAppletSelector', mdtAppletSelector).
+    app.service('mdtMenuState', MdtMenuState).
+        directive('mdtAppletSelector', mdtAppletSelector).
         directive('mdtAppletSelectors', mdtAppletSelectors);
+
+    // filter selectors
+    var defaultMode = '/sandbox';
 
     function mdtAppletSelector() {
         return {
@@ -15,11 +19,12 @@ module mdTutorial {
         };
     }
 
+    function MdtMenuState() {
+        var selected = defaultMode;
+    }
+
     /** @ngInject */
     function mdtAppletSelectors($location, applets) {
-
-        // filter selectors
-        var defaultMode = '/sandbox';
 
         function getOnMenu(name:string) {
             /**

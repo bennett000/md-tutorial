@@ -62,6 +62,12 @@ describe('sandbox state', function() {
         expect(done).toBe(true);
     });
 
+    it('onUpdate should return a function even if not given a callback',
+       function() {
+           var remove = state.onUpdate();
+           expect(typeof remove).toBe('function');
+       });
+
     it('should be able to de-register update callbacks', function() {
         var done = false,
             remove = state.onUpdate(function() {
@@ -70,6 +76,13 @@ describe('sandbox state', function() {
         remove();
         state.current('test');
         expect(done).toBe(false);
+    });
+
+    it('should be able to remove something', function() {
+        state.file('test1', 'word');
+        expect(state.file('test1')).toBe('word');
+        state.remove('test1');
+        expect(state.file('test1')).toBeFalsy();
     });
 
     it('should be able to save something as something else', function() {
@@ -117,7 +130,7 @@ describe('sandbox state', function() {
         var files = [{n: 'test1', v: 1}, {n: 'test2', v: 2},
             {n: 'test3', v: 3}];
 
-        files.forEach(function (file) { state.file(file.n, file.v); });
+        files.forEach(function(file) { state.file(file.n, file.v); });
         expect(state.list().length).toBe(3);
     });
 
@@ -125,7 +138,7 @@ describe('sandbox state', function() {
         var files = [{n: 'test1', v: 1}, {n: 'test10', v: 2},
             {n: 'test3', v: 3}, {n: 'test100', v: -352}];
 
-        files.forEach(function (file) { state.file(file.n, file.v); });
+        files.forEach(function(file) { state.file(file.n, file.v); });
         expect(state.list()[0]).toBe('test1');
         expect(state.list()[1]).toBe('test3');
         expect(state.list()[2]).toBe('test10');

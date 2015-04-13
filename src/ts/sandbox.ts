@@ -4,11 +4,11 @@ module mdTutorial {
         directive('mdtSandbox', mdtSandbox);
 
     /** @ngInject */
-    function MdtSandboxState(localStorage) {
-        var prefix = 'sandbox-',
+    function MdtSandboxState(localStorage, mdtMakeListener) {
+        var that = mdtMakeListener(this),
+            prefix = 'sandbox-',
             newFileLabel = '__new __file',
             currentFile:string = newFileLabel,
-            updateListeners = {},
             storage = {};
 
         function list():string[] {
@@ -39,9 +39,7 @@ module mdTutorial {
         }
 
         function update() {
-            Object.keys(updateListeners).forEach(function (id) {
-                safeCall(updateListeners[id]);
-            });
+            that.emitSync('update');
         }
 
         function current(name?:string):string {
@@ -54,20 +52,14 @@ module mdTutorial {
         }
 
         function remove(name:string):void {
+            if (storage[name]) {
+                delete storage[name];
+            }
             localStorage.remove(prefix + name);
         }
 
         function onUpdate(callback:Function):Function {
-            if (typeof callback !== 'function') {
-                return angular.noop;
-            }
-            var id = Date.now().toString(16) + '.' + Math.random();
-            updateListeners[id] = callback;
-            function remove() {
-                delete updateListeners[id];
-            }
-
-            return remove;
+            return that.on('update', callback);
         }
 
         /**

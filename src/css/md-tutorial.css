@@ -7,6 +7,7 @@
 @import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700);
 @import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700);
 @import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700);
+@import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700);
 /* line 8, ../scss/partials/_reset.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -284,7 +285,7 @@ body, html {
   }
 
   /* line 32, ../scss/partials/_frame.scss */
-  .menu_primary {
+  .menu-primary {
     left: 0;
     top: 0;
     width: 100%;
@@ -292,68 +293,88 @@ body, html {
   }
 
   /* line 38, ../scss/partials/_frame.scss */
-  .menu_primary > .mdt-applet-selector {
+  .menu-secondary {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 7.99%;
+  }
+
+  /* line 44, ../scss/partials/_frame.scss */
+  .menu-primary > .mdt-applet-selector {
     float: left;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
 
-  /* line 43, ../scss/partials/_frame.scss */
-  .menu_primary > .mdt-applet-selector.selected {
+  /* line 49, ../scss/partials/_frame.scss */
+  .menu-secondary > .mdt-applet-selector {
+    float: right;
+    top: 0;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
 }
 @media screen and (min-width: 1025px) {
-  /* line 50, ../scss/partials/_frame.scss */
+  /* line 58, ../scss/partials/_frame.scss */
   .mdt-applets {
     height: 100%;
     top: 0;
     width: 60%;
   }
 
-  /* line 55, ../scss/partials/_frame.scss */
-  .menu_primary {
+  /* line 63, ../scss/partials/_frame.scss */
+  .menu-primary {
     right: 80%;
     top: 0;
     width: 75px;
     height: 100%;
   }
 
-  /* line 61, ../scss/partials/_frame.scss */
-  .menu_primary > .mdt-applet-selector {
+  /* line 69, ../scss/partials/_frame.scss */
+  .menu-secondary {
+    float: none;
+    left: 80%;
+    bottom: 0;
+    width: 75px;
+    height: 100%;
+  }
+
+  /* line 76, ../scss/partials/_frame.scss */
+  .menu-primary > .mdt-applet-selector {
     float: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
 
-  /* line 66, ../scss/partials/_frame.scss */
-  .menu_primary > .mdt-applet-selector.selected {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+  /* line 81, ../scss/partials/_frame.scss */
+  .menu-secondary > .mdt-applet-selector {
+    float: none;
+    bottom: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }
-/* line 72, ../scss/partials/_frame.scss */
+/* line 89, ../scss/partials/_frame.scss */
 .mdt-applets {
   position: relative;
   margin: 0 auto;
   background-color: #d0dce2;
 }
 
-/* line 79, ../scss/partials/_frame.scss */
+/* line 96, ../scss/partials/_frame.scss */
 .mdt-frame {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* line 86, ../scss/partials/_frame.scss */
-.menu_primary {
+/* line 103, ../scss/partials/_frame.scss */
+.menu-primary, .menu-secondary {
   position: absolute;
-  top: 0;
 }
 
-/* line 91, ../scss/partials/_frame.scss */
+/* line 107, ../scss/partials/_frame.scss */
 .mdt-applet-selector {
   width: 75px;
   height: 75px;
@@ -361,7 +382,7 @@ body, html {
   text-align: center;
 }
 
-/* line 98, ../scss/partials/_frame.scss */
+/* line 114, ../scss/partials/_frame.scss */
 .mdt-applet-selector.selected {
   width: 75px;
   height: 75px;
@@ -370,7 +391,7 @@ body, html {
   background-color: #d0dce2;
 }
 
-/* line 106, ../scss/partials/_frame.scss */
+/* line 122, ../scss/partials/_frame.scss */
 .nav-icon {
   width: 25px;
   height: 25px;
@@ -378,12 +399,12 @@ body, html {
   margin: 0 auto;
 }
 
-/* line 113, ../scss/partials/_frame.scss */
+/* line 129, ../scss/partials/_frame.scss */
 .mdt-applet-selector:active {
   background-color: #d0dce2;
 }
 
-/* line 117, ../scss/partials/_frame.scss */
+/* line 133, ../scss/partials/_frame.scss */
 .mdt-applet-selector:hover {
   background-color: #f9fca7;
 }
@@ -547,4 +568,61 @@ nav p {
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
+}
+
+/* line 4, ../scss/partials/_base.scss */
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+/* line 9, ../scss/partials/_base.scss */
+form, div {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS borrowed from https://github.com/jasonm23/markdown-css-themes/blob/gh-pages/foghorn.css */
+/* line 18, ../scss/partials/_base.scss */
+body, textarea {
+  font: 1.2em "Vollkorn", Palatino, Times;
+  line-height: 1.4;
+  text-align: justify;
+  overflow: hidden;
+}
+
+/* line 25, ../scss/partials/_base.scss */
+header, nav, article, footer {
+  margin: 0 auto;
+}
+
+/* line 28, ../scss/partials/_base.scss */
+article {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+/* line 32, ../scss/partials/_base.scss */
+footer {
+  margin-bottom: 50px;
+}
+
+/* line 36, ../scss/partials/_base.scss */
+nav {
+  font-size: .9em;
+  font-style: italic;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+/* line 42, ../scss/partials/_base.scss */
+nav p {
+  margin: 0;
+}
+
+/* line 3, ../scss/partials/_about.scss */
+.mdt-about {
+  padding: 2.5%;
+  width: 95.0%;
+  background-color: #d0dce2;
 }

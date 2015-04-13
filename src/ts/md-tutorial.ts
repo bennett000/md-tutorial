@@ -28,6 +28,8 @@ module mdTutorial {
             console.debug('reference');
         }).controller('Tutorial', function () {
             console.debug('tutorial');
+        }).controller('About', function () {
+            console.debug('about');
         });
 
     /**
