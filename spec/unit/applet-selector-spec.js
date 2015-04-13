@@ -90,15 +90,7 @@ describe('Mode selectors', function() {
         scope.$digest();
         spyOn(mf, 'go').and.callThrough();
         el.isolateScope().select('go', 'places', 'label');
-        expect(mf.go).toHaveBeenCalledWith('places');
-    });
-
-    it('select function should set corresponding state', function() {
-        el = create();
-        scope.$digest();
-        spyOn(ms, 'current').and.callThrough();
-        el.isolateScope().select('go', 'places', 'label');
-        expect(ms.current).toHaveBeenCalledWith('label');
+        expect(mf.go).toHaveBeenCalledWith('places', 'label');
     });
 
     it('selectors on scope should only have essential properties', function() {

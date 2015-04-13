@@ -9,13 +9,14 @@
 
 describe('menu functions', function() {
     'use strict';
-    var mf, loc;
+    var mf, loc, ms;
 
     beforeEach(function() {
         module('md-tutorial');
-        inject(function(mdtMenuFunctions, $location) {
+        inject(function(mdtMenuFunctions, $location, mdtMenuState) {
             mf = mdtMenuFunctions;
             loc = $location;
+            ms = mdtMenuState;
         });
     });
 
@@ -23,5 +24,11 @@ describe('menu functions', function() {
         spyOn(loc, 'path').and.callThrough();
         mf.go('word');
         expect(loc.path).toHaveBeenCalledWith('word');
+    });
+
+    it('go should set the current menu selection', function() {
+        spyOn(ms, 'selected').and.callThrough();
+        mf.go('word', 'dude');
+        expect(ms.selected).toHaveBeenCalledWith('dude');
     });
 });

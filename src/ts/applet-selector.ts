@@ -63,7 +63,7 @@ module mdTutorial {
 
         function go(args, label) {
             $location.path(args);
-            mdtMenuState.current(label);
+            mdtMenuState.selected(label);
         }
 
         this.go = go;

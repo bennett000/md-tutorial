@@ -19,19 +19,28 @@ describe('menu state', function() {
     });
 
     it('should start off at /sandbox', function() {
-        expect(menuState.current()).toBe('/sandbox');
+        expect(menuState.selected()).toBe('/sandbox');
     });
 
     it('should accept arbitrary states', function() {
-        expect(menuState.current('hah')).toBe('hah');
+        expect(menuState.selected('hah')).toBe('hah');
     });
 
-    it('should register udpate callbacks', function() {
+    it('should register on select callbacks', function() {
         var done = false;
-        menuState.onUpdate(function () {
+        menuState.onSelect(function () {
             done = true;
         });
-        menuState.current('blah');
+        menuState.selected('blah');
+        expect(done).toBe(true);
+    });
+
+    it('should register on toggle callbacks', function() {
+        var done = false;
+        menuState.onToggle(function () {
+            done = true;
+        });
+        menuState.toggle('blah');
         expect(done).toBe(true);
     });
 });
