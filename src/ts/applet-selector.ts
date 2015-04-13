@@ -22,30 +22,48 @@ module mdTutorial {
 
     /** @ngInject */
     function MdtMenuState(mdtMakeListener) {
-        var selected = defaultMode,
+        var states = {
+                selected: defaultMode,
+                toggle: ''
+            },
             that = mdtMakeListener(this);
 
-        function current(val?:string):string {
+        function access(prop, val?:string):string {
             if (val === undefined) {
-                return selected;
+                return states[prop];
             }
-            selected = val;
-            that.emitSync('update', val);
-            return selected;
+            states[prop] = val;
+            that.emitSync(prop, val);
+            return states[prop];
         }
 
-        function onUpdate(cb) {
-            return that.on('update', cb);
+        function current(val?:string) {
+            return access('selected', val);
         }
 
-        this.current = current;
-        this.onUpdate = onUpdate;
+        function onSelect(cb) {
+            return that.on('selected', cb);
+        }
+
+        function onToggle(cb) {
+            return that.on('toggle', cb);
+        }
+
+        function toggle(val?:string) {
+            return access('toggle', val);
+        }
+
+        this.toggle = toggle;
+        this.selected = current;
+        this.onSelect = onSelect;
+        this.onToggle = onToggle;
     }
 
-    function MdtMenuFunctions($location) {
+    function MdtMenuFunctions($location, mdtMenuState) {
 
-        function go(args) {
+        function go(args, label) {
             $location.path(args);
+            mdtMenuState.current(label);
         }
 
         this.go = go;
@@ -67,8 +85,9 @@ module mdTutorial {
 
 
         function linkFn(scope:any) {
-            var ignore;
+            var listenSelect, listenToggle;
 
+            scope.toggle = '';
             scope.selectors = Object.keys(mdtMenus).
                 filter(getOnMenu(scope.mdtMenu)).map(function (menu):any {
                     var a = mdtMenus[menu];
@@ -76,16 +95,23 @@ module mdTutorial {
                         icon: a.icon,
                         fn: a.fn,
                         args: a.args,
-                        label: a.label
+                        label: a.label,
+                        toggle: a.toggle
                     }
                 });
             scope.select = select;
-            scope.selected = mdtMenuState.current();
+            scope.selected = mdtMenuState.selected();
+            scope.toggle = mdtMenuState.toggle();
 
-            ignore = mdtMenuState.onUpdate(update);
+            listenSelect = mdtMenuState.onSelect(updateSelect);
+            listenToggle = mdtMenuState.onToggle(updateToggle);
 
-            function update(val) {
+            function updateSelect(val) {
                 scope.selected = val;
+            }
+
+            function updateToggle(val) {
+                scope.toggle = val;
             }
 
             function select(fn:string, args:string, label:string) {
@@ -93,11 +119,15 @@ module mdTutorial {
                     // @todo warn
                     return;
                 }
-                mdtMenuFunctions[fn](args);
-                mdtMenuState.current(label);
+                mdtMenuFunctions[fn](args, label);
             }
 
-            scope.$on('$destroy', ignore);
+            function destroy() {
+                listenSelect();
+                listenToggle();
+            }
+
+            scope.$on('$destroy', destroy);
         }
 
         return {

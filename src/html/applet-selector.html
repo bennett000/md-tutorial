@@ -1,5 +1,6 @@
 <div class="mdt-applet-selector"
      mdt-tap="select(selector.fn, selector.args, selector.label)"
+     ng-hide="toggle.indexOf(selector.toggle) != -1"
      ng-class="{ selected: selected == selector.label }">
     <img class="nav-icon" ng-src="{{ selector.icon }}" ontouchstart=""
          alt="{{ selector.label }}"> </img>

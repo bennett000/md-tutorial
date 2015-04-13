@@ -7,14 +7,16 @@ module mdTutorial {
             args: '/load',
             fn: 'go',
             icon: '/img/icons/question-mark.svg',
-            onMenu: 'secondary'
+            onMenu: 'secondary',
+            toggle: 'hide-load'
         },
         saveAs: {
             label: 'About',
             args: '/about',
             fn: 'go',
             icon: '/img/icons/question-mark.svg',
-            onMenu: 'secondary'
+            onMenu: 'secondary',
+            toggle: 'hide-save-as'
         },
         about: {
             label: 'About',

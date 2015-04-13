@@ -54,7 +54,8 @@ describe('Mode selectors', function() {
 
     var el, scope, compile, mf, ms,
         defaultTemplate = '<mdt-applet-selectors></mdt-applet-selectors>',
-        essentialScopeSelectorProperties = ['label', 'args', 'fn', 'icon'];
+        essentialScopeSelectorProperties = ['label', 'args', 'fn',
+            'icon', 'toggle'];
 
     function create(d, tpl) {
         return compile(tpl || defaultTemplate)(scope);
