@@ -35,15 +35,15 @@ module mdTutorial {
     /**
      * @ngInject
      */
-    function configureRoutes($routeProvider, applets) {
+    function configureRoutes($routeProvider, mdtApplets) {
         //$routeProvider.when('/', {
         //    templateUrl: 'html/root.html',
         //    controller: 'FirstTime',
         //    controllerAs: 'firstTime'
         //});
 
-        Object.keys(applets).forEach(function (applet) {
-            var a = applets[applet];
+        Object.keys(mdtApplets).forEach(function (applet) {
+            var a = mdtApplets[applet];
             $routeProvider.when(a.path, {
                 templateUrl: a.template,
                 controller: a.controller,

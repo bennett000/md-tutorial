@@ -1,44 +1,49 @@
 ///<reference path="./md-tutorial.ts" />
 module mdTutorial {
     // *NOTE* angular export is at the bottom
-    var applets = {
+    var menus = {
+        load: {
+            label: 'Load',
+            args: '/load',
+            fn: 'go',
+            icon: '/img/icons/question-mark.svg',
+            onMenu: 'secondary'
+        },
+        saveAs: {
+            label: 'About',
+            args: '/about',
+            fn: 'go',
+            icon: '/img/icons/question-mark.svg',
+            onMenu: 'secondary'
+        },
         about: {
             label: 'About',
-            path: '/about',
+            args: '/about',
+            fn: 'go',
             icon: '/img/icons/question-mark.svg',
-            controller: 'About',
-            controllerAs: 'about',
-            template: 'html/about.html',
             onMenu: 'secondary'
         },
         sandbox: {
             label: 'Sandbox',
-            path: '/sandbox',
+            args: '/sandbox',
+            fn: 'go',
             icon: 'img/icons/pencil.svg',
-            controller: 'Sandbox',
-            controllerAs: 'sandbox',
-            template: 'html/sandbox.html',
             onMenu: 'primary'
         },
         tutorial: {
             label: 'Tutorial',
-            path: '/tutorial',
+            args: '/tutorial',
+            fn: 'go',
             icon: 'img/icons/location.svg',
-            controller: 'Tutorial',
-            controllerAs: 'tutorial',
-            template: 'html/tutorial.html',
             onMenu: 'primary'
         },
         reference: {
             label: 'Reference',
-            path: '/reference',
+            args: '/reference',
+            fn: 'go',
             icon: 'img/icons/book.svg',
-            controller: 'Reference',
-            controllerAs: 'reference',
-            template: 'html/reference.html',
             onMenu: 'primary'
         }
     };
-
-    app.constant('applets', applets);
+    app.constant('mdtMenus', menus);
 }

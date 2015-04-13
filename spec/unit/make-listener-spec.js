@@ -61,4 +61,34 @@ describe('make listener', function() {
         expect(blank.on('word')).toBe(angular.noop);
     });
 
+    it('should do nothing when emit called with nothing', function() {
+        expect(blank.emit()).toBeUndefined();
+    });
+
+    it('should do nothing when emitSync called with nothing', function() {
+        expect(blank.emitSync()).toBeUndefined();
+    });
+
+    it('should forward arbitrary data on notification', function() {
+        var result1 = false, result2 = false;
+        blank.on('update', function(a, b) {
+            result1 = a;
+            result2 = b;
+        });
+        blank.emitSync('update', 'a', 'b');
+        expect(result1).toBe('a');
+        expect(result2).toBe('b');
+    });
+
+    it('should asynchronously forward arbitrary data on notification', function() {
+        var result1 = false, result2 = false;
+        blank.on('update', function(a, b) {
+            result1 = a;
+            result2 = b;
+        });
+        blank.emit('update', 'a', 'b');
+        to.flush();
+        expect(result1).toBe('a');
+        expect(result2).toBe('b');
+    });
 });

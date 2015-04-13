@@ -1,5 +1,6 @@
-<div class="mdt-applet-selector" mdt-tap="select(selector.path)"
-     ng-class="{ selected: selected == selector.path }">
+<div class="mdt-applet-selector"
+     mdt-tap="select(selector.fn, selector.args, selector.label)"
+     ng-class="{ selected: selected == selector.label }">
     <img class="nav-icon" ng-src="{{ selector.icon }}" ontouchstart=""
          alt="{{ selector.label }}"> </img>
     {{ selector.label }}

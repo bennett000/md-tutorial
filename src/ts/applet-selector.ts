@@ -5,6 +5,7 @@
 ///<reference path="./md-tutorial.ts" />
 module mdTutorial {
     app.service('mdtMenuState', MdtMenuState).
+        service('mdtMenuFunctions', MdtMenuFunctions).
         directive('mdtAppletSelector', mdtAppletSelector).
         directive('mdtAppletSelectors', mdtAppletSelectors);
 
@@ -41,15 +42,24 @@ module mdTutorial {
         this.onUpdate = onUpdate;
     }
 
+    function MdtMenuFunctions($location) {
+
+        function go(args) {
+            $location.path(args);
+        }
+
+        this.go = go;
+    }
+
     /** @ngInject */
-    function mdtAppletSelectors($location, applets, mdtMenuState) {
+    function mdtAppletSelectors(mdtMenus, mdtMenuState, mdtMenuFunctions) {
 
         function getOnMenu(name:string) {
             /**
              * @param {string} applet
              */
-            function onMenu(applet):boolean {
-                return applets[applet].onMenu === name;
+            function onMenu(menu):boolean {
+                return mdtMenus[menu].onMenu === name;
             }
 
             return onMenu;
@@ -59,12 +69,13 @@ module mdTutorial {
         function linkFn(scope:any) {
             var ignore;
 
-            scope.selectors = Object.keys(applets).
-                filter(getOnMenu(scope.mdtMenu)).map(function (applet):any {
-                    var a = applets[applet];
+            scope.selectors = Object.keys(mdtMenus).
+                filter(getOnMenu(scope.mdtMenu)).map(function (menu):any {
+                    var a = mdtMenus[menu];
                     return {
                         icon: a.icon,
-                        path: a.path,
+                        fn: a.fn,
+                        args: a.args,
                         label: a.label
                     }
                 });
@@ -77,9 +88,13 @@ module mdTutorial {
                 scope.selected = val;
             }
 
-            function select(path:string) {
-                $location.path(path);
-                mdtMenuState.current(path);
+            function select(fn:string, args:string, label:string) {
+                if (!mdtMenuFunctions[fn]) {
+                    // @todo warn
+                    return;
+                }
+                mdtMenuFunctions[fn](args);
+                mdtMenuState.current(label);
             }
 
             scope.$on('$destroy', ignore);

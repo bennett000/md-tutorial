@@ -17,7 +17,8 @@ var source = {
     ],
     ts: [
         'src/ts/md-tutorial.ts',
-        'src/ts/applet-descriptions.ts',
+        'src/ts/descriptions-applet.ts',
+        'src/ts/descriptions-menus.ts',
         'src/ts/applet-selector.ts',
         'src/ts/browser.ts',
         'src/ts/common.ts',
