@@ -303,27 +303,33 @@ body, html {
   }
 
   /* line 46, ../scss/partials/_frame.scss */
+  .menu-secondary > div {
+    float: none;
+  }
+
+  /* line 49, ../scss/partials/_frame.scss */
   .menu-primary > .mdt-applet-selector {
+    float: left;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
 
-  /* line 50, ../scss/partials/_frame.scss */
+  /* line 54, ../scss/partials/_frame.scss */
   .menu-secondary > .mdt-applet-selector {
-    top: 0;
+    float: right;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
 }
 @media screen and (min-width: 1025px) {
-  /* line 58, ../scss/partials/_frame.scss */
+  /* line 62, ../scss/partials/_frame.scss */
   .mdt-applets {
     height: 100%;
     top: 0;
     width: 60%;
   }
 
-  /* line 63, ../scss/partials/_frame.scss */
+  /* line 67, ../scss/partials/_frame.scss */
   .menu-primary {
     float: none;
     right: 80%;
@@ -332,7 +338,7 @@ body, html {
     height: 100%;
   }
 
-  /* line 70, ../scss/partials/_frame.scss */
+  /* line 74, ../scss/partials/_frame.scss */
   .menu-secondary {
     float: none;
     left: 80%;
@@ -341,39 +347,39 @@ body, html {
     height: 100%;
   }
 
-  /* line 77, ../scss/partials/_frame.scss */
+  /* line 81, ../scss/partials/_frame.scss */
   .menu-primary > .mdt-applet-selector {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
 
-  /* line 81, ../scss/partials/_frame.scss */
+  /* line 85, ../scss/partials/_frame.scss */
   .menu-secondary > .mdt-applet-selector {
     bottom: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
 }
-/* line 88, ../scss/partials/_frame.scss */
+/* line 92, ../scss/partials/_frame.scss */
 .mdt-applets {
   position: relative;
   margin: 0 auto;
   background-color: #d0dce2;
 }
 
-/* line 95, ../scss/partials/_frame.scss */
+/* line 99, ../scss/partials/_frame.scss */
 .mdt-frame {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* line 102, ../scss/partials/_frame.scss */
+/* line 106, ../scss/partials/_frame.scss */
 .menu-primary, .menu-secondary {
   position: absolute;
 }
 
-/* line 106, ../scss/partials/_frame.scss */
+/* line 110, ../scss/partials/_frame.scss */
 .mdt-applet-selector {
   width: 75px;
   height: 75px;
@@ -381,7 +387,7 @@ body, html {
   text-align: center;
 }
 
-/* line 113, ../scss/partials/_frame.scss */
+/* line 117, ../scss/partials/_frame.scss */
 .mdt-applet-selector.selected {
   width: 75px;
   height: 75px;
@@ -390,7 +396,7 @@ body, html {
   background-color: #d0dce2;
 }
 
-/* line 121, ../scss/partials/_frame.scss */
+/* line 125, ../scss/partials/_frame.scss */
 .nav-icon {
   width: 25px;
   height: 25px;
@@ -398,12 +404,12 @@ body, html {
   margin: 0 auto;
 }
 
-/* line 128, ../scss/partials/_frame.scss */
+/* line 132, ../scss/partials/_frame.scss */
 .mdt-applet-selector:active {
   background-color: #d0dce2;
 }
 
-/* line 132, ../scss/partials/_frame.scss */
+/* line 136, ../scss/partials/_frame.scss */
 .mdt-applet-selector:hover {
   background-color: #f9fca7;
 }

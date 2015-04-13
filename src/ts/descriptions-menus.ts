@@ -2,10 +2,41 @@
 module mdTutorial {
     // *NOTE* angular export is at the bottom
     var menus = {
+        about: {
+            label: 'About',
+            args: '/about',
+            fn: 'go',
+            icon: '/img/icons/question-mark.svg',
+            onMenu: 'secondary'
+        },
+        remove: {
+            label: 'Remove',
+            args: '',
+            fn: 'remove',
+            icon: '/img/icons/trash.svg',
+            onMenu: 'secondary',
+            toggle: 'hide-remove'
+        },
+        mailto: {
+            label: 'Send',
+            args: '',
+            fn: 'email',
+            icon: '/img/icons/envelope-closed.svg',
+            onMenu: 'secondary',
+            toggle: 'hide-email'
+        },
+        download: {
+            label: 'Download',
+            args: '',
+            fn: 'download',
+            icon: '/img/icons/data-transfer-download.svg',
+            onMenu: 'secondary',
+            toggle: 'hide-download'
+        },
         saveAs: {
             label: 'Save As',
             args: '',
-            fn: 'saveAs',
+            fn: 'promptSaveAs',
             icon: '/img/icons/file.svg',
             onMenu: 'secondary',
             toggle: 'hide-save-as'
@@ -13,17 +44,10 @@ module mdTutorial {
         load: {
             label: 'Load',
             args: '',
-            fn: 'load',
+            fn: 'promptLoad',
             icon: '/img/icons/folder.svg',
             onMenu: 'secondary',
             toggle: 'hide-load'
-        },
-        about: {
-            label: 'About',
-            args: '/about',
-            fn: 'go',
-            icon: '/img/icons/question-mark.svg',
-            onMenu: 'secondary'
         },
         sandbox: {
             label: 'Sandbox',

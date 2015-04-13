@@ -43,4 +43,13 @@ describe('menu state', function() {
         menuState.toggle('blah');
         expect(done).toBe(true);
     });
+
+    it('should register on prompt callbacks', function() {
+        var done = false;
+        menuState.onPrompt(function () {
+            done = true;
+        });
+        menuState.prompt('blah');
+        expect(done).toBe(true);
+    });
 });

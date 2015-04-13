@@ -53,20 +53,89 @@ module mdTutorial {
             return access('toggle', val);
         }
 
+        function onPrompt(cb) {
+            return that.on('prompt', cb);
+        }
+
+        function prompt(val?:string) {
+            return access('prompt', val);
+        }
+
+        this.prompt = prompt;
         this.toggle = toggle;
         this.selected = current;
         this.onSelect = onSelect;
         this.onToggle = onToggle;
+        this.onPrompt = onPrompt;
     }
 
-    function MdtMenuFunctions($location, mdtMenuState) {
+    /** @ngInject */
+    function MdtMenuFunctions($window, $location, mdtMenuState,
+                              mdtSandboxState, mdtMarked) {
 
         function go(args, label) {
             $location.path(args);
             mdtMenuState.selected(label);
         }
 
+        function promptSaveAs(args, label) {
+
+        }
+
+        function promptLoad(args, label) {
+
+        }
+
+        function validateSaveCall(cur) {
+            var data = mdtSandboxState.file(cur);
+            if (!data) {
+                return null;
+            }
+            return data;
+        }
+
+        function getLabel(cur, data) {
+            if (cur === '__new __file') {
+                return data.slice(0, data.indexOf('\n'));
+            } else {
+                return cur;
+            }
+        }
+
+        function email() {
+            var cur = mdtSandboxState.current(),
+                data = validateSaveCall(cur),
+                subject = '';
+            if (!data) {
+                return;
+            }
+            subject = getLabel(cur, data);
+            $window.location.href = ['mailto:?subject=',
+                encodeURIComponent(subject),
+                '&body=', encodeURIComponent(data)].join('');
+        }
+
+        function download() {
+            var cur = mdtSandboxState.current(),
+                data = validateSaveCall(cur),
+                filename = '';
+            filename = getLabel(cur, data);
+            mdtMarked.render(data).then(function (html) {
+                var uriContent = "data:application/octet-stream," +
+                    encodeURIComponent(html);
+                /*global window*/
+                window.open(uriContent, filename + '.html');
+            }, function (err) {
+                /** @todo error system */
+                console.warn(err.message);
+            });
+        }
+
         this.go = go;
+        this.email = email;
+        this.download = download;
+        this.promptLoad = promptLoad;
+        this.promptSaveAs = promptSaveAs;
     }
 
     /** @ngInject */

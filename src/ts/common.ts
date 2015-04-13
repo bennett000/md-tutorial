@@ -1,6 +1,6 @@
 ///<reference path="./md-tutorial.ts" />
 module mdTutorial {
-    app.value('mdtSafecall', safeCall).
+    app.value('mdtSafeCall', safeCall).
         value('mdtNaturalSort', naturalSort).
         factory('mdtMakeListener', makeListenerFactory);
 

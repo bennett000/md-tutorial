@@ -43,12 +43,16 @@ body, html {
     width: 49%;
     height: 7.99%;
   }
+  .menu-secondary > div {
+    float: none;
+  }
   .menu-primary > .mdt-applet-selector {
+    float: left;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
   .menu-secondary > .mdt-applet-selector {
-    top: 0;
+    float: right;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }

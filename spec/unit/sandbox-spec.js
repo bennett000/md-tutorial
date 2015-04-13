@@ -7,9 +7,31 @@
  it, module,inject, workular, afterEach, angular */
 
 
-describe('sandbox directive', function() {
+describe('sandbox controller', function() {
     'use strict';
 
+    var $c, scope, ms;
+
+    beforeEach(function() {
+        module('md-tutorial');
+        inject(function ($controller, $rootScope, mdtMenuState) {
+            $c = $controller;
+            scope = $rootScope;
+            ms = mdtMenuState;
+        });
+    });
+
+    it('setToggles should call menu state toggle', function() {
+        spyOn(ms, 'toggle').and.callThrough();
+        var s = scope.$new(), c = $c('Sandbox', {$scope: s});
+        c.setToggles();
+        expect(ms.toggle).toHaveBeenCalled();
+    });
+
+});
+
+describe('sandbox directive', function() {
+    'use strict';
 
     var el, scope, compile,
         defaultTemplate = '<mdt-sandbox></mdt-sandbox>',

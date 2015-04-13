@@ -9,7 +9,7 @@
 describe('Mode selector', function() {
     'use strict';
 
-    var el, scope, compile,
+    var el, scope, compile, ms,
         defaultTemplate = '<mdt-applet-selector></mdt-applet-selector>';
 
     function create(tpl) {
@@ -21,7 +21,7 @@ describe('Mode selector', function() {
     beforeEach(function() {
         module('html/applet-selector.html');
         module('md-tutorial');
-        inject(function($rootScope, $compile) {
+        inject(function($rootScope, $compile, mdtMenuState) {
             scope = $rootScope;
             compile = $compile;
             scope.select = function (a) { return a; };
@@ -30,6 +30,7 @@ describe('Mode selector', function() {
                 label: 'b',
                 icon: 'c'
             };
+            ms = mdtMenuState;
         });
     });
 
@@ -99,5 +100,13 @@ describe('Mode selectors', function() {
         el.isolateScope().selectors.forEach(function(selector) {
             expect(essentialScopeSelectorProperties.indexOf(selector)).toBe(-1);
         });
+    });
+
+    it('scope\'s toggle value should change with menu updates', function() {
+        el = create();
+        scope.$digest();
+        var start = el.isolateScope().toggle;
+        ms.toggle('arg');
+        expect(el.isolateScope().toggle).not.toBe(start);
     });
 });

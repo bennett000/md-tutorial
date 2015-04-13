@@ -35,6 +35,7 @@ module mdTutorial {
             }
             storage[name] = value;
             localStorage.set(prefix + name, value);
+            that.emitSync('update');
             return storage[name];
         }
 
@@ -93,7 +94,7 @@ module mdTutorial {
         this.saveAs = saveAs;
     }
 
-    /** @ngInject */ // @todo also rename this, and make it its own
+    /** @ngInject */
     function mdtSandbox($sce, mdtMarked, throttle, mdtSandboxState) {
         var THROTTLE_MD:number = 150;
 

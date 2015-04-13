@@ -20,21 +20,47 @@ module mdTutorial {
         config(configureRoutes).
         value('appFlags', appFlags).
         directive('mdtFrame', frameDirective).
-        controller('FirstTime', function () {
-            console.debug('first time');
-        }).controller('Sandbox', function () {
-            console.debug('sandbox');
-        }).controller('Reference', function () {
-            console.debug('reference');
-        }).controller('Tutorial', function () {
-            console.debug('tutorial');
-        }).controller('About', function () {
-            console.debug('about');
-        });
+        controller('FirstTime', NonSavingController).
+        controller('Reference', NonSavingController).
+        controller('Tutorial', NonSavingController).
+        controller('About', NonSavingController).
+        controller('Sandbox', Sandbox);
 
-    /**
-     * @ngInject
-     */
+    /** @ngInject */
+    function Sandbox($scope, mdtMenuState, mdtSandboxState) {
+        function setToggles() {
+            var toggleString = '', cur = mdtSandboxState.current();
+            if (!mdtSandboxState.list().length) {
+                toggleString += 'hide-load';
+            }
+            if (!mdtSandboxState.file(cur)) {
+                toggleString += 'hide-save-as hide-email hide-download';
+            }
+            // if it's a new file, and it's empty remove is invisible
+            if (!mdtSandboxState.file(cur) && (cur === '__new __file')) {
+                toggleString += 'hide-save-as hide-email hide-download ' +
+                'hide-remove';
+            }
+            mdtMenuState.toggle(toggleString);
+        }
+        setToggles();
+        this.setToggles = setToggles;
+        $scope.$on('$destroy', mdtSandboxState.onUpdate(setToggles));
+    }
+
+    /** @ngInject */
+    function NonSavingController(mdtMenuState, mdtMenus) {
+        var toggleString = '';
+        Object.keys(mdtMenus).forEach(function (name) {
+            if (!mdtMenus[name].toggle) {
+                return;
+            }
+            toggleString += mdtMenus[name].toggle + ' ';
+        });
+        mdtMenuState.toggle(toggleString);
+    }
+
+    /** @ngInject */
     function configureRoutes($routeProvider, mdtApplets) {
         //$routeProvider.when('/', {
         //    templateUrl: 'html/root.html',
@@ -55,9 +81,25 @@ module mdTutorial {
         });
     }
 
-    function frameDirective() {
+    /** @ngInject */
+    function frameDirective(mdtMenuState) {
+
+        function linkFn(scope:any) {
+            var listenToggle = mdtMenuState.onToggle(update);
+
+            update(mdtMenuState.toggle());
+
+            function update(val) {
+                scope.toggle = val;
+            }
+
+            scope.$on('$destroy', listenToggle);
+        }
+
         return {
             replace: true,
+            scope: {},
+            link: linkFn,
             templateUrl: 'html/frame.html'
         };
     }
