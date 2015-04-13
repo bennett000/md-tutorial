@@ -3,6 +3,6 @@
      ng-hide="toggle.indexOf(selector.toggle) != -1"
      ng-class="{ selected: selected == selector.label }">
     <img class="nav-icon" ng-src="{{ selector.icon }}" ontouchstart=""
-         alt="{{ selector.label }}"> </img>
-    {{ selector.label }}
+         alt="{{ selector.label }}"></img>
+    <div>{{ selector.label }}</div>
 </div>

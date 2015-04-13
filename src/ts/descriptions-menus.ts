@@ -2,21 +2,21 @@
 module mdTutorial {
     // *NOTE* angular export is at the bottom
     var menus = {
-        load: {
-            label: 'Load',
-            args: '/load',
-            fn: 'go',
-            icon: '/img/icons/question-mark.svg',
-            onMenu: 'secondary',
-            toggle: 'hide-load'
-        },
         saveAs: {
-            label: 'About',
-            args: '/about',
-            fn: 'go',
-            icon: '/img/icons/question-mark.svg',
+            label: 'Save As',
+            args: '',
+            fn: 'saveAs',
+            icon: '/img/icons/file.svg',
             onMenu: 'secondary',
             toggle: 'hide-save-as'
+        },
+        load: {
+            label: 'Load',
+            args: '',
+            fn: 'load',
+            icon: '/img/icons/folder.svg',
+            onMenu: 'secondary',
+            toggle: 'hide-load'
         },
         about: {
             label: 'About',

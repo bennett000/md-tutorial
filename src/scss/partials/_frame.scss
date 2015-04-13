@@ -30,24 +30,24 @@ body, html {
     top: 8%;
   }
   .menu-primary {
+    float: left;
     left: 0;
     top: 0;
     width: 49%;
     height: 7.99%;
   }
   .menu-secondary {
+    float: right;
     top: 0;
     right: 0;
     width: 49%;
     height: 7.99%;
   }
   .menu-primary > .mdt-applet-selector {
-    float: left;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
   }
   .menu-secondary > .mdt-applet-selector {
-    float: right;
     top: 0;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -61,6 +61,7 @@ body, html {
     width: 60%;
   }
   .menu-primary {
+    float: none;
     right: 80%;
     top: 0;
     width: 75px;
@@ -74,12 +75,10 @@ body, html {
     height: 100%;
   }
   .menu-primary > .mdt-applet-selector {
-    float: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
   .menu-secondary > .mdt-applet-selector {
-    float: none;
     bottom: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -107,7 +106,7 @@ body, html {
 .mdt-applet-selector {
   width: 75px;
   height: 75px;
-  font-size: 0.85em;
+  font-size: 0.75em;
   text-align: center;
 }
 
