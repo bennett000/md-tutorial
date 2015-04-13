@@ -5,9 +5,9 @@
 // we're going to start with one, and expand this @todo expand to multiple
 // parsers
 
-module markdown {
-    var amodule:angular.IModule = angular.module('mdt-markdown', []),
-        Q:angular.IQService, // can use Q as drop in
+///<reference path="./md-tutorial.ts" />
+module mdTutorial {
+    var Q:angular.IQService, // can use Q as drop in
         options:any = {
             gfm: true,
             tables: true,
@@ -17,7 +17,7 @@ module markdown {
             smartypants: true
         };
 
-    amodule.service('mdtMarked', markedFactory);
+    app.service('mdtMarked', markedFactory);
 
     marked.setOptions(options);
 

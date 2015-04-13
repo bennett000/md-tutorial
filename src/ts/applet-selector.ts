@@ -2,6 +2,7 @@
  * Created by michael on 29/03/15.
  */
 
+///<reference path="./md-tutorial.ts" />
 module mdTutorial {
     app.directive('mdtAppletSelector', mdtAppletSelector).
         directive('mdtAppletSelectors', mdtAppletSelectors);

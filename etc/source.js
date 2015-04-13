@@ -17,12 +17,14 @@ var source = {
     ],
     ts: [
         'src/ts/md-tutorial.ts',
-        'src/ts/browser.ts',
+        'src/ts/applet-descriptions.ts',
         'src/ts/applet-selector.ts',
+        'src/ts/browser.ts',
+        'src/ts/common.ts',
         'src/ts/input-handlers.ts',
-        'src/ts/controllers.ts',
+        'src/ts/sandbox.ts',
         'src/ts/throttle.ts',
-        'src/ts/markdown-services/markdown.ts'
+        'src/ts/markdown.ts'
     ],
     staticFiles: [
         '!*.template.html', // why won't grunt copy ignore this? @todo dig

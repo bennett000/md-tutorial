@@ -13,7 +13,7 @@ describe('markdown services', function() {
     var mds, scope;
 
     beforeEach(function() {
-        module('mdt-markdown');
+        module('md-tutorial');
 
         inject(function (mdtMarked, $rootScope) {
             mds = mdtMarked;
