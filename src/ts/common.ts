@@ -74,6 +74,7 @@ module mdTutorial {
             obj.on = on;
             obj.emit = emit;
             obj.emitSync = emitSync;
+            obj.__callbacks = callbacks;
 
             return obj;
         }

@@ -12,24 +12,54 @@ describe('Frame is a simple directive that represents the "root" of the' +
          function() {
              'use strict';
 
-             var el, scope, compile, defaultData,
-                 defaultTemplate = '<mdt-frame></mdt-frame>';
+             var el, scope, compile, ms,
+                 defaultTemplate = '<mdt-frame></mdt-frame>',
+                 menus;
 
-             function create(d, tpl) {
-                 scope.data = d || defaultData;
-                 return compile(tpl || defaultTemplate)(scope);
+             function create() {
+                 return compile(defaultTemplate)(scope);
              }
 
              beforeEach(function() {
+                 module('html/frame.html');
+                 module('html/applet-selector.html');
+                 module('html/sandbox.html');
+                 module('html/sandbox-directive.html');
                  module('md-tutorial');
-                 inject(function($rootScope, $compile) {
+                 inject(function($rootScope, $compile, mdtMenus, mdtMenuState) {
                      scope = $rootScope;
                      compile = $compile;
+                     menus = mdtMenus;
+                     ms = mdtMenuState;
                  });
              });
 
-             it('render expected output', function() {
+             it('Should have all the default buttons', function() {
                  el = create();
-                 expect(el.text()).toBe('');
+                 scope.$digest();
+                 var results = el.text().split(' ').map(function (el) {
+                        return el.trim();
+                 });
+                 Object.keys(menus).forEach(function(id) {
+                     if (menus[id].toggle) { return; }
+                    expect(results.indexOf(menus[id].label)).not.toBe(-1);
+                 });
+             });
+
+             it('should put a toggle string on scope', function() {
+                 el = create();
+                 scope.$digest();
+                 expect(typeof el.isolateScope().toggle).toBe('string');
+             });
+
+             it('should destroy', function() {
+                 /** @todo find a better way of tracking this */
+                 el = create();
+                 scope.$digest();
+                 var start = Object.keys(ms.__callbacks.toggle).length, end;
+                 scope.$destroy();
+                 scope.$digest();
+                 end = Object.keys(ms.__callbacks.toggle).length;
+                 expect(end < start).toBe(true);
              });
          });
