@@ -11,11 +11,12 @@ can be found [here](http://bennett000.github.io/md-tutorial).
 
 The project aims to have as system neutral a build process as possible,
 nevertheless there are a few external dependencies, and other local settings
-that need to be accounted for.  This file `md-tutorial/project-config.template`
-can be copied to `md-tutorial/project-config` and tuned accordingly.  This file
-should be ignored by git.
+that need to be accounted for.  [This file](project-config.json.template)
+`md-tutorial/project-config.json.template` can be copied to
+`md-tutorial/project-config.json` and tuned accordingly.  This file should be
+ignored by git.
 
-For more information about dependencies see `md-tutorial/DEPENDENCIES.md`
+For more information about dependencies see [/DEPENDENCIES.md](DEPENDENCIES.md)
 
 
 ### Build Environment Overview
