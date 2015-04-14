@@ -4,7 +4,7 @@
 
 // These functions are more or less _ adapted to angular
 
-///<reference path="./md-tutorial.ts" />
+///<reference path="./main.ts" />
 module mdTutorial {
     app.factory('throttleNow', function () {
         'use strict';

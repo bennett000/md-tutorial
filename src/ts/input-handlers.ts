@@ -1,4 +1,4 @@
-///<reference path="./md-tutorial.ts" />
+///<reference path="./main.ts" />
 module mdTutorial {
     app.directive('mdtTap', mdtTap);
 

@@ -1,5 +1,5 @@
 // References for browser wrappers
-///<reference path="./md-tutorial.ts" />
+///<reference path="./main.ts" />
 module mdTutorial {
     app.factory('localStorage', function () {
         return new LocalStorage();

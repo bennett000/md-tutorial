@@ -5,7 +5,7 @@
 // we're going to start with one, and expand this @todo expand to multiple
 // parsers
 
-///<reference path="./md-tutorial.ts" />
+///<reference path="./main.ts" />
 module mdTutorial {
     var Q:angular.IQService, // can use Q as drop in
         options:any = {

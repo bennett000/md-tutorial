@@ -16,7 +16,7 @@ var source = {
         'lib/marked.min.js'
     ],
     ts: [
-        'src/ts/md-tutorial.ts',
+        'src/ts/main.ts',
         'src/ts/descriptions-applet.ts',
         'src/ts/descriptions-menus.ts',
         'src/ts/applet-selector.ts',
