@@ -19,7 +19,7 @@ var source = {
         'src/ts/main.ts',
         'src/ts/descriptions-applet.ts',
         'src/ts/descriptions-menus.ts',
-        'src/ts/applet-selector.ts',
+        'src/ts/menus.ts',
         'src/ts/browser.ts',
         'src/ts/common.ts',
         'src/ts/input-handlers.ts',
