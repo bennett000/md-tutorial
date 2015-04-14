@@ -540,6 +540,7 @@ nav p {
   background-color: #fdfcff;
   /* background-color: blue; */
   position: absolute;
+  font-size: 49.0%;
   left: 0;
   top: 0;
   bottom: 0;
@@ -558,13 +559,13 @@ nav p {
   padding-bottom: 0;
 }
 
-/* line 58, ../scss/partials/_sandbox.scss */
+/* line 60, ../scss/partials/_sandbox.scss */
 .app-sandbox > .mdt-md-output > p {
   margin-top: 0.05em;
   margin-bottom: 0.05em;
 }
 
-/* line 63, ../scss/partials/_sandbox.scss */
+/* line 65, ../scss/partials/_sandbox.scss */
 .app-sandbox > .mdt-md-output {
   background-color: #fdfcff;
   /* background-color: red; */
@@ -584,6 +585,7 @@ nav p {
   padding: 1%;
   padding-top: 0;
   padding-bottom: 0;
+  word-wrap: break-word;
 }
 
 /* line 4, ../scss/partials/_base.scss */
