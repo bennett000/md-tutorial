@@ -38,17 +38,21 @@
   top: 0;
   bottom: 0;
 
-  width: 49.5%;/* 23em;*/
+  width: 46.5%;/* 23em;*/
+  height: 100%;
 
+  border-style: solid;
+  border-width: 1px;
+  border-color: $background;
+  border-radius: 7px;
+
+  margin: 0.25%;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
 
+  padding: 1%;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .app-sandbox >.mdt-md-output > p {
@@ -61,20 +65,24 @@
   /* background-color: red; */
   position: absolute;
 
+  width: 46.5%;
+  height: 100%;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: $background;
+  border-radius: 7px;
+
   right: 0;
   top: 0;
   bottom: 0;
 
-  width: 49.5%;
-
+  margin: 0.25%;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
 
+  padding: 1%;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 

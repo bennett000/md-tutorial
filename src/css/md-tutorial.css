@@ -543,41 +543,47 @@ nav p {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 49.5%;
+  width: 46.5%;
   /* 23em;*/
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #9ab8c8;
+  border-radius: 7px;
+  margin: 0.25%;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
+  padding: 1%;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
-/* line 54, ../scss/partials/_sandbox.scss */
+/* line 58, ../scss/partials/_sandbox.scss */
 .app-sandbox > .mdt-md-output > p {
   margin-top: 0.05em;
   margin-bottom: 0.05em;
 }
 
-/* line 59, ../scss/partials/_sandbox.scss */
+/* line 63, ../scss/partials/_sandbox.scss */
 .app-sandbox > .mdt-md-output {
   background-color: #fdfcff;
   /* background-color: red; */
   position: absolute;
+  width: 46.5%;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #9ab8c8;
+  border-radius: 7px;
   right: 0;
   top: 0;
   bottom: 0;
-  width: 49.5%;
+  margin: 0.25%;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
+  padding: 1%;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 /* line 4, ../scss/partials/_base.scss */
