@@ -16,22 +16,25 @@ var source = {
         'lib/marked.min.js'
     ],
     ts: [
-        'src/ts/md-tutorial.ts',
+        'src/ts/main.ts',
         'src/ts/descriptions-applet.ts',
         'src/ts/descriptions-menus.ts',
-        'src/ts/applet-selector.ts',
+        'src/ts/descriptions-tutorial.ts',
+        'src/ts/menus.ts',
         'src/ts/browser.ts',
         'src/ts/common.ts',
         'src/ts/input-handlers.ts',
         'src/ts/sandbox.ts',
         'src/ts/save-load.ts',
         'src/ts/throttle.ts',
+        'src/ts/tutorial.ts',
         'src/ts/markdown.ts'
     ],
     staticFiles: [
         '!*.template.html', // why won't grunt copy ignore this? @todo dig
         '*.ico',
         'html/**/*.html',
+        'md/**/*.md',
         '**/*.png',
         '**/*.svg'
     ],

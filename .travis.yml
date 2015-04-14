@@ -10,7 +10,6 @@ before_install:
   - gem install compass
   - npm install -g compass
 install:
-  - bower install
   - npm install
 before_script:
   - export DISPLAY=:99.0

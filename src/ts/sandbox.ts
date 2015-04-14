@@ -1,4 +1,4 @@
-///<reference path="./md-tutorial.ts" />
+///<reference path="./main.ts" />
 module mdTutorial {
     app.service('mdtSandboxState', MdtSandboxState).
         directive('mdtSandbox', mdtSandbox);

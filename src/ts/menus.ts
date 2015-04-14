@@ -2,7 +2,7 @@
  * Created by michael on 29/03/15.
  */
 
-///<reference path="./md-tutorial.ts" />
+///<reference path="./main.ts" />
 module mdTutorial {
     app.service('mdtMenuState', MdtMenuState).
         service('mdtMenuFunctions', MdtMenuFunctions).

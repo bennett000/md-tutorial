@@ -4,7 +4,7 @@
   "description": "Working towards a better markdown tutorial",
   "index": "scripts/test-server.js",
   "scripts": {
-    "postinstall": "grunt bootstrap",
+    "postinstall": "node scripts/post-install.js",
     "start": "node scripts/test-server.js",
     "test": "grunt test"
   },
