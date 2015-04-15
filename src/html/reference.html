@@ -1,15 +1,64 @@
 <div class="app-reference">
     <h2>Titles</h2>
     <mdt-sandbox class="reference-line"># Title</mdt-sandbox>
-    <mdt-sandbox class="reference-line">Title
+    <mdt-sandbox class="reference-line reference-line-double">Title
 ===============</mdt-sandbox>
     <mdt-sandbox class="reference-line">## Sub Title</mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-double">Sub Title
+---------------</mdt-sandbox>
     <mdt-sandbox class="reference-line">### Sub Title</mdt-sandbox>
     <mdt-sandbox class="reference-line">#### ... Title</mdt-sandbox>
     <mdt-sandbox class="reference-line">##### ... Title</mdt-sandbox>
     <h2>Marking Text</h2>
     <mdt-sandbox class="reference-line">*Emphasis*</mdt-sandbox>
     <mdt-sandbox class="reference-line">_Emphasis_</mdt-sandbox>
-    <mdt-sandbox class="reference-line">**More Emphasis**</mdt-sandbox>
+    <mdt-sandbox class="reference-line">**Strong Emphasis**</mdt-sandbox>
+    <mdt-sandbox class="reference-line">__Strong Emphasis__</mdt-sandbox>
     <mdt-sandbox class="reference-line">`var inlineCode=true`</mdt-sandbox>
+    <h2>Links</h2>
+    <mdt-sandbox class="reference-line">[Git Hub](http://github.com)</mdt-sandbox>
+    <mdt-sandbox class="reference-line">[Git Hub](http://github.com "Hover Title")</mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-quad">[Git Hub][1]
+[Stack Overflow][b]
+[1]: http://github.com "Hover Title"
+[b]: http://stackoverflow.com "Help!"
+    </mdt-sandbox>
+    <h2>Lists</h2>
+    <mdt-sandbox class="reference-line reference-line-quad">Bullet Style
+* List Item One
+* List Item Two
+* List Item Three
+    </mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-quad">Plus Style
++ List Item One
++ List Item Two
++ List Item Three
+    </mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-quad">Dash Style
+- List Item One
+- List Item Two
+- List Item Three
+    </mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-quad">Ordered Style
+1.  List Item One
+1.  List Item Two
+3.  List Item Three
+    </mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-quad">Ordered Style
+* List Item One has lots, and lots of
+text, so a new line begins
+* List Item Two
+* List Item Three
+    </mdt-sandbox>
+    <h2>Blocks</h2>
+    <mdt-sandbox class="reference-line reference-line-quad">Normal text...
+&gt; Block
+&gt; Quote
+Back to normal
+    </mdt-sandbox>
+    <mdt-sandbox class="reference-line reference-line-quad">Normal text...
+     var a = 'this is a string in a code block';
+     console.log('a');
+Back to normal...
+    </mdt-sandbox>
 </div>

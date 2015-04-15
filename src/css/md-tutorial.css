@@ -130,11 +130,10 @@ h2 {
 h3 {
   font-weight: normal;
   font-style: italic;
-  margin-top: 3em;
   font-size: 1.45em;
 }
 
-/* line 18, ../scss/partials/_typography.scss */
+/* line 17, ../scss/partials/_typography.scss */
 p {
   margin-top: 0;
   -webkit-hypens: auto;
@@ -142,54 +141,54 @@ p {
   hyphens: auto;
 }
 
-/* line 24, ../scss/partials/_typography.scss */
+/* line 23, ../scss/partials/_typography.scss */
 ul {
   list-style: square;
   padding-left: 1.2em;
 }
 
-/* line 28, ../scss/partials/_typography.scss */
+/* line 27, ../scss/partials/_typography.scss */
 ol {
   padding-left: 1.2em;
 }
 
-/* line 31, ../scss/partials/_typography.scss */
+/* line 30, ../scss/partials/_typography.scss */
 blockquote {
   margin-left: 1em;
   padding-left: 1em;
   border-left: 1px solid #ddd;
 }
 
-/* line 36, ../scss/partials/_typography.scss */
+/* line 35, ../scss/partials/_typography.scss */
 code {
   font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
   font-size: .9em;
   background: white;
 }
 
-/* line 41, ../scss/partials/_typography.scss */
+/* line 40, ../scss/partials/_typography.scss */
 a {
   color: #2484c1;
   text-decoration: none;
 }
 
-/* line 45, ../scss/partials/_typography.scss */
+/* line 44, ../scss/partials/_typography.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 48, ../scss/partials/_typography.scss */
+/* line 47, ../scss/partials/_typography.scss */
 a img {
   border: none;
 }
 
-/* line 51, ../scss/partials/_typography.scss */
+/* line 50, ../scss/partials/_typography.scss */
 h1 a, h1 a:hover {
   color: #333;
   text-decoration: none;
 }
 
-/* line 55, ../scss/partials/_typography.scss */
+/* line 54, ../scss/partials/_typography.scss */
 hr {
   color: #ddd;
   height: 1px;
@@ -200,7 +199,7 @@ hr {
   border-right: 0;
 }
 
-/* line 64, ../scss/partials/_typography.scss */
+/* line 63, ../scss/partials/_typography.scss */
 .mdt-md-input {
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
 }
@@ -431,18 +430,31 @@ body, html {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* line 8, ../scss/partials/_reference.scss */
+/* line 11, ../scss/partials/_reference.scss */
 .reference-line {
   width: 90%;
-  height: 2.5em;
+  height: 1.5em;
   margin-bottom: 1%;
   margin-left: 3%;
   margin-right: 3%;
 }
 
-/* line 16, ../scss/partials/_reference.scss */
+/* line 19, ../scss/partials/_reference.scss */
+.reference-line-double {
+  height: 2.5em;
+}
+
+/* line 23, ../scss/partials/_reference.scss */
+.reference-line-quad {
+  height: 5.5em;
+  margin-bottom: 20px;
+}
+
+/* line 28, ../scss/partials/_reference.scss */
 .reference-line > form {
   float: left;
   width: 48.5%;
@@ -450,12 +462,14 @@ body, html {
   margin-right: 1%;
 }
 
-/* line 23, ../scss/partials/_reference.scss */
+/* line 35, ../scss/partials/_reference.scss */
 .reference-line > form > .mdt-md-input {
   width: 100%;
+  font-size: 82.5%;
+  height: 100%;
 }
 
-/* line 27, ../scss/partials/_reference.scss */
+/* line 41, ../scss/partials/_reference.scss */
 .reference-line > .mdt-md-output {
   float: right;
   width: 48.5%;

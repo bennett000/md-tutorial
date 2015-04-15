@@ -6,11 +6,13 @@ md-tutorial todo
 * Setup some watchers to automate compilation, bootstrapping, etc
 * Pretty print syntax in rendered markdown's code blocks
 * Grunt task to build a simple HTML5 manifest - then update replace task
-* Mobile telephone layout
 * Ability to easily modify layout during "work"
 * Make app as accessible as possible.  Currently the app is barely accessible
 [Basic Accessibility Tips](http://webaccess.berkeley.edu/resources/tips/web-accessibility)
 [angular also has some accessibility support](https://docs.angularjs.org/guide/accessibility)
+* Tabbing seems broken in Firefox
+* Reference Page is *horrible* there must be many ways to make it cleaner, and
+sane.  Also it has some issues with a few mardkown features not working...
 
 ## Flags panel
 
@@ -21,10 +23,9 @@ people who want to tinker.
 
 ## Local Storage Module
 
-* window.localStorage can be leveraged to provide document support.  I have,
-and angular wrapper lined up for this.
-* localStorage will also be used to mark preferences
-* Allow for HTML/MD to be exported through file system dialogues (email for ios)
+* Show files "dialog"
+* Show prompt (overwrite warning)
+* Show save as "dialog"
 
 ## Layouts
 
