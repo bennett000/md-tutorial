@@ -10,7 +10,8 @@ module mdTutorial {
         function linkFn(scope:any, elem:any, attrs) {
             var start = 0,
                 startX,
-                startY;
+                startY,
+                isFocus = false;
 
             function destroy() {
                 elem.off('mouseup');
@@ -18,6 +19,9 @@ module mdTutorial {
                 elem.off('mousedown');
                 elem.off('touchstart');
                 elem.off('touchcancel');
+                elem.off('keypress');
+                elem.off('focus');
+                elem.off('blur');
             }
 
             function normalizeEvent(e) {
@@ -54,6 +58,13 @@ module mdTutorial {
             }
 
             function trigger(e) {
+                scope.$apply(attrs.mdtTap);
+                clear();
+                // Prevent default action, like scrolling
+                e.preventDefault();
+            }
+
+            function triggerPointer(e) {
                 var newE = normalizeEvent(e);
                 if (newE === null) {
                     return clear();
@@ -68,18 +79,32 @@ module mdTutorial {
                 if (Math.abs(+newE.clientY - startY) > scrollThreshold) {
                     return;
                 }
-                scope.$apply(attrs.mdtTap);
-                clear();
-                // Prevent default action, like scrolling
-                e.preventDefault();
+                trigger(e);
+            }
+
+            function focus() {
+                console.log('focus');
+                isFocus = true;
+            }
+
+            function blur() {
+                isFocus = false;
             }
 
             angular.element(elem).attr('ontouchstart', ' ');
+            elem.on('focus', focus);
+            elem.on('blur', blur);
             elem.on('touchend', function (e) {
                 e.preventDefault();
+                triggerPointer(e);
+            });
+            elem.on('keypress', function (e) {
+                if (!isFocus) {
+                    return;
+                }
                 trigger(e);
             });
-            elem.on('mouseup', trigger);
+            elem.on('mouseup', triggerPointer);
             elem.on('mousedown', down);
             elem.on('touchstart', down);
             elem.on('$destroy', destroy);

@@ -7,6 +7,7 @@ module mdTutorial {
             args: '/about',
             fn: 'go',
             icon: '/img/icons/question-mark.svg',
+            tabindex: 900,
             onMenu: 'secondary'
         },
         remove: {
@@ -15,6 +16,7 @@ module mdTutorial {
             fn: 'remove',
             icon: '/img/icons/trash.svg',
             onMenu: 'secondary',
+            tabindex: 150,
             toggle: 'hide-remove'
         },
         mailto: {
@@ -23,6 +25,7 @@ module mdTutorial {
             fn: 'email',
             icon: '/img/icons/envelope-closed.svg',
             onMenu: 'secondary',
+            tabindex: 140,
             toggle: 'hide-email'
         },
         download: {
@@ -31,15 +34,8 @@ module mdTutorial {
             fn: 'download',
             icon: '/img/icons/data-transfer-download.svg',
             onMenu: 'secondary',
+            tabindex: 130,
             toggle: 'hide-download'
-        },
-        saveAs: {
-            label: 'Save As',
-            args: '',
-            fn: 'promptSaveAs',
-            icon: '/img/icons/file.svg',
-            onMenu: 'secondary',
-            toggle: 'hide-save-as'
         },
         load: {
             label: 'Load',
@@ -47,13 +43,24 @@ module mdTutorial {
             fn: 'promptLoad',
             icon: '/img/icons/folder.svg',
             onMenu: 'secondary',
+            tabindex: 120,
             toggle: 'hide-load'
+        },
+        saveAs: {
+            label: 'Save As',
+            args: '',
+            fn: 'promptSaveAs',
+            icon: '/img/icons/file.svg',
+            onMenu: 'secondary',
+            tabindex: 110,
+            toggle: 'hide-save-as'
         },
         sandbox: {
             label: 'Sandbox',
             args: '/sandbox',
             fn: 'go',
             icon: 'img/icons/pencil.svg',
+            tabindex: 100,
             onMenu: 'primary'
         },
         tutorial: {
@@ -61,6 +68,7 @@ module mdTutorial {
             args: '/tutorial',
             fn: 'go',
             icon: 'img/icons/location.svg',
+            tabindex: 200,
             onMenu: 'primary'
         },
         reference: {
@@ -68,6 +76,7 @@ module mdTutorial {
             args: '/reference',
             fn: 'go',
             icon: 'img/icons/book.svg',
+            tabindex: 300,
             onMenu: 'primary'
         }
     };

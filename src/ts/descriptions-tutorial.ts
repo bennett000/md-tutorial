@@ -3,11 +3,11 @@ module mdTutorial {
     // *NOTE* angular export is at the bottom
     var tutorial = [
         {
-            md: '0-intro.md'
+            filename: '0-intro.md'
         }, {
-            md: '1-workflow.md'
+            filename: '1-workflow.md'
         }, {
-            md: '2-basics-headings.md'
+            filename: '2-basics-headings.md'
         }
     ];
 

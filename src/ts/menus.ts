@@ -165,6 +165,7 @@ module mdTutorial {
                         fn: a.fn,
                         args: a.args,
                         label: a.label,
+                        tabindex: a.tabindex,
                         toggle: a.toggle
                     }
                 });

@@ -16,7 +16,7 @@ module mdTutorial {
         }
     };
 
-    export var app = angular.module('md-tutorial', ['ngRoute']).
+    export var app = angular.module('md-tutorial', ['ngRoute', 'ngAria']).
         config(configureRoutes).
         value('appFlags', appFlags).
         directive('mdtFrame', frameDirective).
