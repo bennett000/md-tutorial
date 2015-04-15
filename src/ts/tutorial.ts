@@ -1,8 +1,6 @@
 ///<reference path="./main.ts" />
 module mdTutorial {
-    app.service('tutorialFiles', TutorialFiles).run(function (tutorialFiles) {
-
-    });
+    app.service('tutorialFiles', TutorialFiles);
 
     /** @ngInject */
     function TutorialFiles($http, $q, mdtTutorial) {
