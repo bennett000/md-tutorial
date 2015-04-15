@@ -13,6 +13,7 @@ var source = {
     lib: [
         'lib/angular.min.js',
         'lib/angular-route.min.js',
+        'lib/angular-aria.min.js',
         'lib/marked.min.js'
     ],
     ts: [
