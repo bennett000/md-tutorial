@@ -2,11 +2,15 @@ md-tutorial todo
 ================
 
 * Make scripts/test-server.js system agnostic
-* Find someone with artistic skill to make icons
 * Find someone with design skill for scss/sass
 * Setup some watchers to automate compilation, bootstrapping, etc
 * Pretty print syntax in rendered markdown's code blocks
 * Grunt task to build a simple HTML5 manifest - then update replace task
+* Mobile telephone layout
+* Ability to easily modify layout during "work"
+* Make app as accessible as possible.  Currently the app is barely accessible
+[Basic Accessibility Tips](http://webaccess.berkeley.edu/resources/tips/web-accessibility)
+[angular also has some accessibility support](https://docs.angularjs.org/guide/accessibility)
 
 ## Flags panel
 
