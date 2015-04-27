@@ -1,26 +1,52 @@
 @import "../modules/colours";
 
 .mdt-prompt-input {
-  position: absolute;
-  width: 50%;
-  height: 33%;
+  position: relative;
 
-  left: 25%;
-  top: 33%;
+  width: 290px;
+  height: 90px;
+
+  margin: 0 auto;
+  margin-top: 22.5%;
+
+  padding: 5px;
+}
+
+.mdt-prompt-input-field {
+  width: 98%;
 }
 
 .mdt-prompt-file {
-  position: absolute;
-  width: 50%;
-  height: 33%;
+  position: relative;
 
-  left: 25%;
-  top: 33%;
+  width: 290px;
+  height: 66%;
+
+  margin: 0 auto;
+  margin-top: 7%;
+
+  padding: 5px;
 }
 
-.mdt-prompt-file-controls {
-  width: 100%;
-  height: 10%;
+.mdt-prompt-bool {
+  position: relative;
+
+  width: 290px;
+  height: 120px;
+
+  margin: 0 auto;
+  margin-top: 22.5%;
+
+  padding: 5px;
+}
+
+
+.mdt-prompt-bool, .mdt-prompt-input, .mdt-prompt-file {
+  background-color: $background;
+
+  border-radius: 7px;
+  border-width: 1px;
+  border-color: $background;
 }
 
 .mdt-prompt-file-list {
@@ -34,25 +60,7 @@
   height: 1.2em;
 }
 
-.mdt-prompt-bool {
-  position: relative;
-
-  width: 290px;
-  height: 140px;
-
-  background-color: $background;
-
-  border-radius: 7px;
-  border-width: 1px;
-  border-color: $background;
-
-  margin: 0 auto;
-  margin-top: 22.5%;
-
-  padding: 5px;
-}
-
-.mdt-prompt-bool-buttons {
+.mdt-prompt-bool-buttons, .mdt-prompt-input-buttons, .mdt-prompt-file-controls {
   position: absolute;
 
   height: 55px;

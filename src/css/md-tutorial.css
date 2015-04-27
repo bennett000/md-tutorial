@@ -700,29 +700,48 @@ nav p {
 
 /* line 3, ../scss/partials/_prompt.scss */
 .mdt-prompt-input {
-  position: absolute;
-  width: 50%;
-  height: 33%;
-  left: 25%;
-  top: 33%;
+  position: relative;
+  width: 290px;
+  height: 90px;
+  margin: 0 auto;
+  margin-top: 22.5%;
+  padding: 5px;
 }
 
-/* line 12, ../scss/partials/_prompt.scss */
+/* line 15, ../scss/partials/_prompt.scss */
+.mdt-prompt-input-field {
+  width: 98%;
+}
+
+/* line 19, ../scss/partials/_prompt.scss */
 .mdt-prompt-file {
-  position: absolute;
-  width: 50%;
-  height: 33%;
-  left: 25%;
-  top: 33%;
+  position: relative;
+  width: 290px;
+  height: 66%;
+  margin: 0 auto;
+  margin-top: 7%;
+  padding: 5px;
 }
 
-/* line 21, ../scss/partials/_prompt.scss */
-.mdt-prompt-file-controls {
-  width: 100%;
-  height: 10%;
+/* line 31, ../scss/partials/_prompt.scss */
+.mdt-prompt-bool {
+  position: relative;
+  width: 290px;
+  height: 120px;
+  margin: 0 auto;
+  margin-top: 22.5%;
+  padding: 5px;
 }
 
-/* line 26, ../scss/partials/_prompt.scss */
+/* line 44, ../scss/partials/_prompt.scss */
+.mdt-prompt-bool, .mdt-prompt-input, .mdt-prompt-file {
+  background-color: #9ab8c8;
+  border-radius: 7px;
+  border-width: 1px;
+  border-color: #9ab8c8;
+}
+
+/* line 52, ../scss/partials/_prompt.scss */
 .mdt-prompt-file-list {
   width: 100%;
   height: 90%;
@@ -730,27 +749,13 @@ nav p {
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 33, ../scss/partials/_prompt.scss */
+/* line 59, ../scss/partials/_prompt.scss */
 .mdt-prompt-file-item {
   height: 1.2em;
 }
 
-/* line 37, ../scss/partials/_prompt.scss */
-.mdt-prompt-bool {
-  position: relative;
-  width: 290px;
-  height: 140px;
-  background-color: #9ab8c8;
-  border-radius: 7px;
-  border-width: 1px;
-  border-color: #9ab8c8;
-  margin: 0 auto;
-  margin-top: 22.5%;
-  padding: 5px;
-}
-
-/* line 55, ../scss/partials/_prompt.scss */
-.mdt-prompt-bool-buttons {
+/* line 63, ../scss/partials/_prompt.scss */
+.mdt-prompt-bool-buttons, .mdt-prompt-input-buttons, .mdt-prompt-file-controls {
   position: absolute;
   height: 55px;
   width: 50%;
@@ -758,7 +763,7 @@ nav p {
   right: 0;
 }
 
-/* line 65, ../scss/partials/_prompt.scss */
+/* line 73, ../scss/partials/_prompt.scss */
 .mdt_prompt_select {
   background-color: rgba(192, 214, 226, 0.5);
   color: white;
