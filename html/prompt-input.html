@@ -1,0 +1,14 @@
+<form ng-show="show" class="mdt-prompt-input">
+    <input class="mdt-prompt-input-field" type="text" maxlength="255"
+           tabindex="5"
+           ng-model="data"/>
+
+    <div class="mdt-prompt-input-buttons">
+        <input class="mdt-prompt-input-button" type="button" value="{{ label }}"
+               tabindex="6"
+               mdt-tap="go()"/>
+        <input class="mdt-prompt-input-cancel" type="button" value="Cancel"
+               tabindex="7"
+               mdt-tap="cancel()"/>
+    </div>
+</form>

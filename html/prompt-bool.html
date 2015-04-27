@@ -1,0 +1,10 @@
+<form class="mdt-prompt-bool" ng-show="show">
+    <p>{{ label }}</p>
+
+    <div class="mdt-prompt-bool-buttons">
+        <input tabindex="2" type="button" value="{{ labelTrue }}"
+               mdt-tap="goTrue()"/>
+        <input tabindex="1" type="button" value="{{ labelFalse }}"
+               mdt-tap="goFalse()"/>
+    </div>
+</form>

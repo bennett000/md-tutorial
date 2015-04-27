@@ -1,4 +1,8 @@
 <div>
-    <mdt-applet-selectors class="nav"></mdt-applet-selectors>
+    <mdt-applet-selectors mdt-menu="primary"
+                          class="menu-primary"></mdt-applet-selectors>
+    <mdt-applet-selectors mdt-menu="secondary"
+                          class="menu-secondary"></mdt-applet-selectors>
     <div class="mdt-applets" ng-view=""></div>
+    <mdt-prompt ng-show="prompt" class="mdt-prompt"></mdt-prompt>
 </div>
