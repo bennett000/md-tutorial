@@ -44,7 +44,7 @@ module mdTutorial {
             icon: '/img/icons/bolt.svg',
             onMenu: 'secondary',
             tabindex: 130,
-            toggle: 'hide-load'
+            toggle: 'hide-new'
         },
         load: {
             label: 'Load',

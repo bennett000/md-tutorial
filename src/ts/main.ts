@@ -39,7 +39,7 @@ module mdTutorial {
             // if it's a new file, and it's empty remove is invisible
             if (!mdtSandboxState.file(cur) && (cur === newFileLabel)) {
                 toggleString += 'hide-save-as hide-email hide-download ' +
-                'hide-remove';
+                'hide-remove hide-new';
             }
             mdtMenuState.toggle(toggleString);
         }

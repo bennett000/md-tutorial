@@ -99,7 +99,8 @@ module mdTutorial {
         function promptSaveAs() {
             /** @todo Save As string from data */
             mdtPromptService.input('Save As').then(function (input) {
-                var exists = mdtSandboxState.file(input);
+                var exists = mdtSandboxState.file(input),
+                    cur = mdtSandboxState.current();
                 if (exists) {
                     mdtPromptService.bool(
                         'Overwrite File: ' + input + '?',
@@ -120,6 +121,10 @@ module mdTutorial {
                         input,
                         mdtSandboxState.file(mdtSandboxState.current())
                     );
+                    if (cur === newFileLabel) {
+                        mdtSandboxState.file(cur, '');
+                    }
+                    mdtSandboxState.current(input);
                 }
             });
         }
