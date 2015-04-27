@@ -281,12 +281,13 @@ describe('prompt file directive', function() {
         module('md-tutorial');
 
         inject(function($rootScope, $compile, mdtPromptService,
-                        $timeout, mdtSandboxState) {
+                        $timeout, mdtSandboxState, localStorage) {
             scope = $rootScope;
             compile = $compile;
             prompt = mdtPromptService;
             to = $timeout;
             files = mdtSandboxState;
+            localStorage.removeAll();
         });
     });
 
@@ -422,6 +423,7 @@ describe('prompt input directive', function() {
         });
         prompt.input('Test');
         flush();
+        el.isolateScope().data = '';
         el.isolateScope().go();
         flush();
         expect(done).toBe(false);

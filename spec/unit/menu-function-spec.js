@@ -9,20 +9,24 @@
 
 describe('menu functions', function() {
     'use strict';
-    var mf, loc, ms, w, sandboxState, scope;
+    var mf, loc, ms, w, sandboxState, scope, prompt, to;
 
     beforeEach(function() {
-        module('md-tutorial', function ($provide) {
-            $provide.value('$window', {location:{href:'dummy'}});
+        module('md-tutorial', function($provide) {
+            $provide.value('$window', {location: {href: 'dummy'}});
         });
-        inject(function(mdtMenuFunctions, $location, mdtMenuState,
-                        $window, mdtSandboxState, $rootScope) {
+        inject(function(mdtMenuFunctions, $location, mdtMenuState, $timeout,
+                        $window, mdtSandboxState, $rootScope,
+                        mdtPromptService, localStorage) {
             mf = mdtMenuFunctions;
             loc = $location;
             ms = mdtMenuState;
             w = $window;
             sandboxState = mdtSandboxState;
             scope = $rootScope;
+            prompt = mdtPromptService;
+            to = $timeout;
+            localStorage.removeAll();
         });
     });
 
@@ -76,5 +80,123 @@ describe('menu functions', function() {
         mf.download();
         scope.$apply();
         expect(window.open).toHaveBeenCalled();
+    });
+
+    it('prompt load should prompt for files', function() {
+        spyOn(prompt, 'file').and.callThrough();
+        mf.promptLoad();
+        expect(prompt.file).toHaveBeenCalled();
+    });
+
+    it('load should load files', function() {
+        spyOn(sandboxState, 'current').and.callThrough();
+        mf.promptLoad();
+        prompt.emit('provideFile', 'test');
+        scope.$apply();
+        to.flush();
+        expect(sandboxState.current).toHaveBeenCalled();
+    });
+
+    it('promptNew should change the current file if it is not "the new file"',
+       function() {
+           sandboxState.current('tst');
+           spyOn(sandboxState, 'current').and.callThrough();
+           mf.promptNew();
+           expect(sandboxState.current).toHaveBeenCalled();
+       });
+
+    it('promptNew should ask for overwrite if it is clearing "the new file"',
+       function() {
+           sandboxState.file('__new __file', 'data');
+           sandboxState.current('__new __file');
+           spyOn(prompt, 'bool').and.callThrough();
+           mf.promptNew();
+           expect(prompt.bool).toHaveBeenCalled();
+       });
+
+    it('promptNew should overwrite if it is okay to clear "the new file"',
+       function() {
+           sandboxState.file('__new __file', 'data');
+           sandboxState.current('__new __file');
+           spyOn(sandboxState, 'file').and.callThrough();
+           mf.promptNew();
+           prompt.emitSync('provideBool', true);
+           scope.$apply();
+           expect(sandboxState.file.calls.count()).toBe(2);
+       });
+
+    it('promptNew should not overwrite if it is not okay to clear ' +
+       '"the new file"', function() {
+        sandboxState.file('__new __file', 'data');
+        sandboxState.current('__new __file');
+        spyOn(sandboxState, 'file').and.callThrough();
+        mf.promptNew();
+        prompt.emitSync('provideBool', false);
+        scope.$apply();
+        expect(sandboxState.file.calls.count()).toBe(1);
+    });
+
+    it('promptSaveAs should save if new file does not exist', function() {
+        spyOn(sandboxState, 'file').and.callThrough();
+        mf.promptSaveAs();
+        prompt.emitSync('provideInput', 'stuff');
+        scope.$apply();
+        expect(sandboxState.file).toHaveBeenCalled();
+    });
+
+    it('promptSaveAs should overwrite if given the okay', function() {
+        sandboxState.file('a', 'test');
+        sandboxState.current('a');
+        sandboxState.file('b', 'data');
+        mf.promptSaveAs();
+        prompt.emitSync('provideInput', 'b');
+        to.flush();
+        scope.$apply();
+        prompt.emitSync('provideBool', true);
+        to.flush();
+        scope.$apply();
+        expect(sandboxState.file('b')).toBe('test');
+    });
+
+    it('promptSaveAs should not overwrite if not given the okay', function() {
+        sandboxState.file('a', 'test');
+        sandboxState.current('a');
+        sandboxState.file('b', 'data');
+        mf.promptSaveAs();
+        prompt.emitSync('provideInput', 'b');
+        to.flush();
+        scope.$apply();
+        prompt.emitSync('provideBool', false);
+        to.flush();
+        scope.$apply();
+        expect(sandboxState.file('b')).toBe('data');
+    });
+
+    it('promptRemove should prompt for a boolean if file is "new file"', function() {
+        sandboxState.file('__new __file', 'data');
+        sandboxState.current('__new __file');
+        spyOn(prompt, 'bool').and.callThrough();
+        mf.remove();
+        expect(prompt.bool).toHaveBeenCalled();
+    });
+
+    it('promptRemove should not remove if not given the okay', function() {
+        sandboxState.file('test', 'data');
+        sandboxState.current('test');
+        mf.remove();
+        prompt.emitSync('provideBool', false);
+        scope.$apply();
+        to.flush();
+        expect(sandboxState.file('test')).toBe('data');
+    });
+
+    it('promptRemove should remove if given the okay', function() {
+        sandboxState.file('test', 'data');
+        sandboxState.current('test');
+        mf.remove();
+        prompt.emitSync('provideBool', true);
+        scope.$apply();
+        to.flush();
+        expect(sandboxState.file('test')).toBeFalsy();
     });
 });

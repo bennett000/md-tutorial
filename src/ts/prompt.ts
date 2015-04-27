@@ -201,6 +201,9 @@ module mdTutorial {
             }
 
             function go() {
+                if (!scope.data) {
+                    return;
+                }
                 mdtPromptService.emitSync('provideInput', scope.data);
                 reset();
             }
