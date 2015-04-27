@@ -172,7 +172,7 @@ module mdTutorial {
 
 
     /** @ngInject */
-    function mdtPromptInput(mdtPromptService) {
+    function mdtPromptInput(mdtPromptService, $timeout) {
 
         function linkFn(scope, el) {
             var promptListener = mdtPromptService.on(promptStates.input,
@@ -194,6 +194,11 @@ module mdTutorial {
                 scope.data = '';
                 scope.label = label;
                 scope.show = true;
+                var input = angular.element(el[0].children[0]).children()[0];
+                // skip a turn so the element gets drawn
+                $timeout(function () {
+                    input.focus();
+                }, 0);
             }
 
             function destroy() {

@@ -1,5 +1,6 @@
 <form ng-show="show" class="mdt-prompt-file">
     <div class="mdt-prompt-file-list">
+        <!-- @todo figure out keyboard loading! -->
         <div ng-class="{ mdt_prompt_select: selected == file }"
              mdt-tap="onClick(file)"
              class="mdt-prompt-file-item" ng-repeat="file in files">
