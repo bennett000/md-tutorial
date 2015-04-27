@@ -35,15 +35,34 @@
 }
 
 .mdt-prompt-bool {
-  position: absolute;
-  width: 50%;
-  height: 33%;
+  position: relative;
 
-  left: 25%;
-  top: 33%;
+  width: 290px;
+  height: 140px;
+
+  background-color: $background;
+
+  border-radius: 7px;
+  border-width: 1px;
+  border-color: $background;
+
+  margin: 0 auto;
+  margin-top: 22.5%;
+
+  padding: 5px;
+}
+
+.mdt-prompt-bool-buttons {
+  position: absolute;
+
+  height: 55px;
+  width: 50%;
+
+  bottom: 0;
+  right: 0;
 }
 
 .mdt_prompt_select {
-  background-color: $background;
+  background-color: $prompt-shadow;
   color: white;
 }
