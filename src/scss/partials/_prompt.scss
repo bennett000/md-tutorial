@@ -1,0 +1,15 @@
+@import "../modules/colours";
+
+.mdt-prompt-input {
+  position: absolute;
+  width: 50%;
+  height: 33%;
+
+  left: 25%;
+  top: 33%;
+}
+
+.mdt_prompt_select {
+  background-color: $background;
+  color: white;
+}

@@ -99,6 +99,8 @@ module mdTutorial {
         var THROTTLE_MD:number = 150;
 
         function linkFn(scope:any, e:any, a:any, c:any, trans:any) {
+            var updateListener;
+
             scope.md = {
                 input: '',
                 output: '',
@@ -109,11 +111,18 @@ module mdTutorial {
             // "current' (managed) mode takes precedence
             if (scope.mdtCurrent) {
                 // "current" (managed) mode
-                scope.md.input = mdtSandboxState.file(mdtSandboxState.current());
-                update();
+                loadCurrent();
+                updateListener = mdtSandboxState.on('update', loadCurrent);
             } else if (scope.mdtFile) {
                 // declarative "file" mode
                 scope.md.input = mdtSandboxState.file(scope.mdtFile) || '';
+                update();
+            }
+
+            e.on('$destroy', destroy);
+
+            function loadCurrent() {
+                scope.md.input = mdtSandboxState.file(mdtSandboxState.current());
                 update();
             }
 
@@ -145,6 +154,12 @@ module mdTutorial {
                 }
                 scope.md.input = result;
                 update();
+            }
+
+            function destroy() {
+                if (updateListener) {
+                    updateListener();
+                }
             }
         }
 

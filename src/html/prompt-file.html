@@ -1,0 +1,13 @@
+<form ng-show="show" class="mdt-prompt-input">
+    <div class="mdt-prompt-file-list">
+        <div ng-class="{ mdt_prompt_select: selected == file }"
+             mdt-tap="onClick(file)"
+             class="mdt-prompt-file-item" ng-repeat="file in files">
+            {{ file }}
+        </div>
+    </div>
+    <input class="mdt-prompt-input-button" type="button" value="{{ label }}"
+           mdt-tap="go()"/>
+    <input class="mdt-prompt-input-cancel" type="button" value="Cancel"
+           mdt-tap="cancel()"/>
+</form>

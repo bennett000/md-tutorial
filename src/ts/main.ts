@@ -43,6 +43,7 @@ module mdTutorial {
             }
             mdtMenuState.toggle(toggleString);
         }
+
         setToggles();
         this.setToggles = setToggles;
         $scope.$on('$destroy', mdtSandboxState.onUpdate(setToggles));
@@ -82,18 +83,39 @@ module mdTutorial {
     }
 
     /** @ngInject */
-    function frameDirective(mdtMenuState) {
+    function frameDirective(mdtMenuState, mdtPromptService) {
 
         function linkFn(scope:any) {
-            var listenToggle = mdtMenuState.onToggle(update);
+            var listenToggle = mdtMenuState.onToggle(update),
+                liShow = mdtPromptService.on(promptStates.input, doShow),
+                lfShow = mdtPromptService.on(promptStates.file, doShow),
+                lbShow = mdtPromptService.on(promptStates.bool, doShow),
+                lHide = mdtPromptService.on('hide', doHide);
 
             update(mdtMenuState.toggle());
+
+            scope.$on('$destroy', destroy);
+            scope.prompt = !(mdtPromptService.state() === promptStates.off);
 
             function update(val) {
                 scope.toggle = val;
             }
 
-            scope.$on('$destroy', listenToggle);
+            function destroy() {
+                listenToggle();
+                liShow();
+                lfShow();
+                lbShow();
+                lHide();
+            }
+
+            function doShow() {
+                scope.prompt = true;
+            }
+
+            function doHide() {
+                scope.prompt = false;
+            }
         }
 
         return {

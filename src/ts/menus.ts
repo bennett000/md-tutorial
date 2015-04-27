@@ -71,7 +71,7 @@ module mdTutorial {
 
     /** @ngInject */
     function MdtMenuFunctions($window, $location, mdtMenuState,
-                              mdtSandboxState, mdtMarked) {
+                              mdtSandboxState, mdtMarked, mdtPromptService) {
 
         function go(args, label) {
             $location.path(args);
@@ -79,11 +79,16 @@ module mdTutorial {
         }
 
         function promptSaveAs(args, label) {
-
+            /** @todo Save As string from data */
+            mdtPromptService.input('Save As').then(function (input) {
+                console.debug('INPUT', input);
+            });
         }
 
         function promptLoad(args, label) {
-
+            mdtPromptService.file('Load').then(function (input) {
+                mdtSandboxState.current(input);
+            });
         }
 
         function validateSaveCall(cur) {

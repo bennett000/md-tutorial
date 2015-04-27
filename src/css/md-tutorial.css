@@ -436,6 +436,17 @@ body, html {
   background-color: #f9fca7;
 }
 
+/* line 156, ../scss/partials/_frame.scss */
+.mdt-prompt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(192, 214, 226, 0.5);
+  z-index: 1000;
+}
+
 /* line 1, ../scss/partials/_reference.scss */
 .app-reference {
   position: relative;
@@ -685,4 +696,19 @@ nav p {
   height: 95%;
   background-color: #fdfcff;
   border-radius: 7px;
+}
+
+/* line 3, ../scss/partials/_prompt.scss */
+.mdt-prompt-input {
+  position: absolute;
+  width: 50%;
+  height: 33%;
+  left: 25%;
+  top: 33%;
+}
+
+/* line 12, ../scss/partials/_prompt.scss */
+.mdt_prompt_select {
+  background-color: #9ab8c8;
+  color: white;
 }

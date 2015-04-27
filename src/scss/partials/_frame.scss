@@ -114,15 +114,15 @@ body, html {
   font-size: 0.75em;
   text-align: center;
 
-  color: black;
+  color: $button-text;
 }
 
 .mdt-applet-selector:active {
-  color: black;
+  color: $button-text;
 }
 
 .mdt-applet-selector:hover {
-  color: black;
+  color: $button-text;
 }
 
 .mdt-applet-selector > div {
@@ -151,5 +151,16 @@ body, html {
 
 .mdt-applet-selector:hover {
   background-color: $hover;
+}
+
+.mdt-prompt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: $prompt-shadow;
+  z-index: 1000;
 }
 

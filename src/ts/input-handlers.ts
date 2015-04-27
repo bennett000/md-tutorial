@@ -83,7 +83,6 @@ module mdTutorial {
             }
 
             function focus() {
-                console.log('focus');
                 isFocus = true;
             }
 

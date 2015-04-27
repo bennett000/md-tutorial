@@ -16,7 +16,7 @@ module mdTutorial {
             fn: 'remove',
             icon: '/img/icons/trash.svg',
             onMenu: 'secondary',
-            tabindex: 150,
+            tabindex: 160,
             toggle: 'hide-remove'
         },
         mailto: {
@@ -25,7 +25,7 @@ module mdTutorial {
             fn: 'email',
             icon: '/img/icons/envelope-closed.svg',
             onMenu: 'secondary',
-            tabindex: 140,
+            tabindex: 150,
             toggle: 'hide-email'
         },
         download: {
@@ -34,8 +34,17 @@ module mdTutorial {
             fn: 'download',
             icon: '/img/icons/data-transfer-download.svg',
             onMenu: 'secondary',
-            tabindex: 130,
+            tabindex: 140,
             toggle: 'hide-download'
+        },
+        startNew: {
+            label: 'New',
+            args: '',
+            fn: 'promptLoad',
+            icon: '/img/icons/bolt.svg',
+            onMenu: 'secondary',
+            tabindex: 130,
+            toggle: 'hide-load'
         },
         load: {
             label: 'Load',

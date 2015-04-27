@@ -25,6 +25,9 @@ describe('Frame is a simple directive that represents the "root" of the' +
                  module('html/applet-selector.html');
                  module('html/sandbox.html');
                  module('html/sandbox-directive.html');
+                 module('html/prompt-bool.html');
+                 module('html/prompt-input.html');
+                 module('html/prompt-file.html');
                  module('md-tutorial');
                  inject(function($rootScope, $compile, mdtMenus, mdtMenuState) {
                      scope = $rootScope;

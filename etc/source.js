@@ -26,7 +26,7 @@ var source = {
         'src/ts/common.ts',
         'src/ts/input-handlers.ts',
         'src/ts/sandbox.ts',
-        'src/ts/save-load.ts',
+        'src/ts/prompt.ts',
         'src/ts/throttle.ts',
         'src/ts/tutorial.ts',
         'src/ts/markdown.ts'
