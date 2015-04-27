@@ -1,4 +1,5 @@
-<form class="mdt-input-bool">
-    <input type="button" label="{{ trueLabel }}" mdt-tap="goTrue()"/>
-    <input type="button" label="{{ falseLabel }}" mdt-tap="goFalse()" />
+<form class="mdt-prompt-bool" ng-show="show">
+    <p>{{ label }}</p>
+    <input type="button" value="{{ labelTrue }}" mdt-tap="goTrue()"/>
+    <input type="button" value="{{ labelFalse }}" mdt-tap="goFalse()" />
 </form>

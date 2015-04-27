@@ -1,13 +1,14 @@
 ///<reference path="./main.ts" />
 module mdTutorial {
-    app.service('mdtSandboxState', MdtSandboxState).
+    app.constant('newFileLabel', '__new __file').
+        service('mdtSandboxState', MdtSandboxState).
         directive('mdtSandbox', mdtSandbox);
 
     /** @ngInject */
-    function MdtSandboxState(localStorage, mdtMakeListener) {
+    function MdtSandboxState(localStorage, mdtMakeListener, newFileLabel) {
         var that = mdtMakeListener(this),
             prefix = 'sandbox-',
-            newFileLabel = '__new __file',
+            newFileLabel = newFileLabel,
             currentFile:string = newFileLabel,
             storage = {};
 

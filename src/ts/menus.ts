@@ -70,7 +70,7 @@ module mdTutorial {
     }
 
     /** @ngInject */
-    function MdtMenuFunctions($window, $location, mdtMenuState,
+    function MdtMenuFunctions($window, $location, mdtMenuState, newFileLabel,
                               mdtSandboxState, mdtMarked, mdtPromptService) {
 
         function go(args, label) {
@@ -78,14 +78,79 @@ module mdTutorial {
             mdtMenuState.selected(label);
         }
 
-        function promptSaveAs(args, label) {
+        function remove() {
+            var cur = mdtSandboxState.current();
+            if (cur === newFileLabel) {
+                return resetNewFile();
+            }
+            mdtPromptService.bool(
+                'Permanently Remove ' + cur + '?',
+                'Remove',
+                'Keep'
+            ).then(function (val) {
+                    if (!val) {
+                        return;
+                    }
+                    mdtSandboxState.remove(cur);
+                    mdtSandboxState.current(newFileLabel);
+                });
+        }
+
+        function promptSaveAs() {
             /** @todo Save As string from data */
             mdtPromptService.input('Save As').then(function (input) {
-                console.debug('INPUT', input);
+                var exists = mdtSandboxState.file(input);
+                if (exists) {
+                    mdtPromptService.bool(
+                        'Overwrite File: ' + input + '?',
+                        'Overwrite',
+                        'Cancel'
+                    ).then(function (val) {
+                            if (!val) {
+                                return;
+                            }
+                            save();
+                        });
+                } else {
+                    save();
+                }
+
+                function save() {
+                    mdtSandboxState.file(
+                        input,
+                        mdtSandboxState.file(mdtSandboxState.current())
+                    );
+                }
             });
         }
 
-        function promptLoad(args, label) {
+        function resetNewFile() {
+            mdtPromptService.bool(
+                'Reset the new file, and lose all changes?',
+                'Reset',
+                'Keep'
+            ).then(function (val) {
+                    if (!val) {
+                        return;
+                    }
+                    mdtSandboxState.file(newFileLabel, '');
+                });
+        }
+
+        function promptNew() {
+            var cur = mdtSandboxState.current(),
+                data;
+            if (cur === newFileLabel) {
+                data = mdtSandboxState.file(cur);
+                if (data) {
+                    resetNewFile();
+                }
+            } else {
+                mdtSandboxState.current(newFileLabel);
+            }
+        }
+
+        function promptLoad() {
             mdtPromptService.file('Load').then(function (input) {
                 mdtSandboxState.current(input);
             });
@@ -100,7 +165,7 @@ module mdTutorial {
         }
 
         function getLabel(cur, data) {
-            if (cur === '__new __file') {
+            if (cur === newFileLabel) {
                 return data.slice(0, data.indexOf('\n'));
             } else {
                 return cur;
@@ -139,8 +204,10 @@ module mdTutorial {
         this.go = go;
         this.email = email;
         this.download = download;
+        this.remove = remove;
         this.promptLoad = promptLoad;
         this.promptSaveAs = promptSaveAs;
+        this.promptNew = promptNew;
     }
 
     /** @ngInject */

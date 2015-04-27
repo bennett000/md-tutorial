@@ -40,7 +40,7 @@ module mdTutorial {
         startNew: {
             label: 'New',
             args: '',
-            fn: 'promptLoad',
+            fn: 'promptNew',
             icon: '/img/icons/bolt.svg',
             onMenu: 'secondary',
             tabindex: 130,

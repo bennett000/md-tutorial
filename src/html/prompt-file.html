@@ -1,4 +1,4 @@
-<form ng-show="show" class="mdt-prompt-input">
+<form ng-show="show" class="mdt-prompt-file">
     <div class="mdt-prompt-file-list">
         <div ng-class="{ mdt_prompt_select: selected == file }"
              mdt-tap="onClick(file)"
@@ -6,8 +6,10 @@
             {{ file }}
         </div>
     </div>
-    <input class="mdt-prompt-input-button" type="button" value="{{ label }}"
-           mdt-tap="go()"/>
-    <input class="mdt-prompt-input-cancel" type="button" value="Cancel"
-           mdt-tap="cancel()"/>
+    <div class="mdt-prompt-file-controls">
+        <input class="mdt-prompt-input-button" type="button" value="{{ label }}"
+               mdt-tap="go()"/>
+        <input class="mdt-prompt-input-cancel" type="button" value="Cancel"
+               mdt-tap="cancel()"/>
+    </div>
 </form>

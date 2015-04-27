@@ -27,7 +27,7 @@ module mdTutorial {
         controller('Sandbox', Sandbox);
 
     /** @ngInject */
-    function Sandbox($scope, mdtMenuState, mdtSandboxState) {
+    function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
         function setToggles() {
             var toggleString = '', cur = mdtSandboxState.current();
             if (!mdtSandboxState.list().length) {
@@ -37,7 +37,7 @@ module mdTutorial {
                 toggleString += 'hide-save-as hide-email hide-download';
             }
             // if it's a new file, and it's empty remove is invisible
-            if (!mdtSandboxState.file(cur) && (cur === '__new __file')) {
+            if (!mdtSandboxState.file(cur) && (cur === newFileLabel)) {
                 toggleString += 'hide-save-as hide-email hide-download ' +
                 'hide-remove';
             }

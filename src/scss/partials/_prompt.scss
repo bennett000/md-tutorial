@@ -9,6 +9,40 @@
   top: 33%;
 }
 
+.mdt-prompt-file {
+  position: absolute;
+  width: 50%;
+  height: 33%;
+
+  left: 25%;
+  top: 33%;
+}
+
+.mdt-prompt-file-controls {
+  width: 100%;
+  height: 10%;
+}
+
+.mdt-prompt-file-list {
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mdt-prompt-file-item {
+  height: 1.2em;
+}
+
+.mdt-prompt-bool {
+  position: absolute;
+  width: 50%;
+  height: 33%;
+
+  left: 25%;
+  top: 33%;
+}
+
 .mdt_prompt_select {
   background-color: $background;
   color: white;

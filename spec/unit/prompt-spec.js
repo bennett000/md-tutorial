@@ -384,8 +384,10 @@ describe('prompt input directive', function() {
     }
 
     function flush() {
-        to.flush();
-        scope.$apply();
+        try {
+            to.flush();
+            scope.$apply();
+        } catch (err) {}
     }
 
     beforeEach(function() {
@@ -421,7 +423,7 @@ describe('prompt input directive', function() {
         prompt.input('Test');
         flush();
         el.isolateScope().go();
-        try { flush(); } catch (e) {};
+        flush();
         expect(done).toBe(false);
     });
 
@@ -434,7 +436,7 @@ describe('prompt input directive', function() {
         flush();
         el.isolateScope().data = 'booya';
         el.isolateScope().go();
-        try { flush(); } catch (e) {};
+        flush();
         expect(done).toBe('booya');
     });
 
