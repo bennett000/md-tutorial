@@ -273,14 +273,14 @@ body, html {
   background-color: #d0dce2;
 }
 
-@media screen and (max-width: 319px) {
+@media only screen and (max_width: 319px) {
   /* too small */
   /* line 21, ../scss/partials/_frame.scss */
   .too-small {
     display: block;
   }
 }
-@media screen and (max-width: 1024px) {
+@media only screen and (max_width: 1024px) {
   /* line 27, ../scss/partials/_frame.scss */
   .mdt-applets {
     width: 100%;
@@ -325,7 +325,7 @@ body, html {
     border-top-left-radius: 5px;
   }
 }
-@media screen and (min-width: 1025px) {
+@media only screen and (min_width: 1025px) {
   /* line 62, ../scss/partials/_frame.scss */
   .mdt-applets {
     height: 100%;
@@ -547,19 +547,19 @@ nav p {
   margin: 0;
 }
 
-@media screen and (max-width: 319px) {
+@media only screen and (max_width: 319px) {
   /* line 4, ../scss/partials/_sandbox.scss */
   body {
     font-size: 70%;
   }
 }
-@media screen and (max-width: 1024px) {
+@media only screen and (max_width: 1024px) {
   /* line 10, ../scss/partials/_sandbox.scss */
   body {
     font-size: 85%;
   }
 }
-@media screen and (min-width: 1025px) {
+@media only screen and (min_width: 1025px) {
   /* line 16, ../scss/partials/_sandbox.scss */
   body {
     font-size: 100%;

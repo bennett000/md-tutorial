@@ -1,14 +1,10 @@
 language: node_js
 node_js:
-  - "0.10"
+  - "4.3.1"
 before_install:
-  - npm install -g grunt-cli
-  - npm install -g bower
-  - npm install -g typescript
   - npm install -g codeclimate-test-reporter
   - gem install sass
   - gem install compass
-  - npm install -g compass
 install:
   - npm install
 before_script:
