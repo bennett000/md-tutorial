@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Tue Feb 04 2014 21:57:25 GMT-0500 (EST)
 /*global module, require */
+const path = require('path');
 module.exports = function(config) {
   'use strict';
 
@@ -86,9 +87,8 @@ module.exports = function(config) {
 
       // coverage support
       preprocessors: {
-        'src/**/*.ts': ['webpack', 'sourcemap'],
-        'src/html/**/*.html': ['ng-html2js'],
-        'src/js/**/*.js': ['coverage']
+        'src/**/*.ts': ['webpack', 'sourcemap', 'coverage'],
+        'src/html/**/*.html': ['ng-html2js']
       },
 
       // test results reporter to use
@@ -107,9 +107,16 @@ module.exports = function(config) {
         module: {
           loaders: [
             { test: /\.ts$/, loader: 'ts-loader', exclude: [
-              /node_modules/, /build/, /lib/] },
+              /node_modules/, /build/, /lib/ ]},
+            {
+              test: /\.scss$/,
+              // Query parameters are passed to node-sass
+              loader: 'style-loader!raw-loader!sass-loader?includePaths[]=' +
+              path.resolve(__dirname, '../node_modules/compass-mixins/lib')
+            },
             { test: /\.html$/, loader: 'raw' },
-            { test: /\.svg/, loader: 'url' },
+            { test: /\.png/, loader: 'url' },
+            { test: /\.svg/, loader: 'file-loader' },
             { test: /\.eot/, loader: 'url' },
             { test: /\.woff/, loader: 'url' },
             { test: /\.woff2/, loader: 'url' },

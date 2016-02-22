@@ -42,9 +42,15 @@ module.exports = {
     loaders: [
       { test: /\.ts$/, loader: 'ts-loader', exclude: [
         /node_modules/, /build/, /lib/ ]},
+      {
+        test: /\.scss$/,
+        // Query parameters are passed to node-sass
+        loader: 'style-loader!raw-loader!sass-loader?includePaths[]=' +
+        path.resolve(__dirname, './node_modules/compass-mixins/lib')
+      },
       { test: /\.html$/, loader: 'raw' },
       { test: /\.png/, loader: 'url' },
-      { test: /\.svg/, loader: 'url' },
+      { test: /\.svg/, loader: 'file-loader' },
       { test: /\.eot/, loader: 'url' },
       { test: /\.woff/, loader: 'url' },
       { test: /\.woff2/, loader: 'url' },

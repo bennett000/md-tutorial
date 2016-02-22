@@ -1,3 +1,5 @@
+require('../scss/md-tutorial.scss');
+
 import {frameDirective, appFlags, configureRoutes, Sandbox,
   NonSavingController} from './main';
 

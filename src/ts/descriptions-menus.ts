@@ -3,7 +3,7 @@ export const menus = {
     label: 'About',
     args: '/about',
     fn: 'go',
-    icon: '/img/icons/question-mark.svg',
+    icon: require('../img/icons/question-mark.svg'),
     tabindex: 900,
     onMenu: 'secondary'
   },
@@ -11,7 +11,7 @@ export const menus = {
     label: 'Remove',
     args: '',
     fn: 'remove',
-    icon: '/img/icons/trash.svg',
+    icon: require('../img/icons/trash.svg'),
     onMenu: 'secondary',
     tabindex: 160,
     toggle: 'hide-remove'
@@ -20,7 +20,7 @@ export const menus = {
     label: 'Send',
     args: '',
     fn: 'email',
-    icon: '/img/icons/envelope-closed.svg',
+    icon: require('../img/icons/envelope-closed.svg'),
     onMenu: 'secondary',
     tabindex: 150,
     toggle: 'hide-email'
@@ -29,7 +29,7 @@ export const menus = {
     label: 'Download',
     args: '',
     fn: 'download',
-    icon: '/img/icons/data-transfer-download.svg',
+    icon: require('../img/icons/data-transfer-download.svg'),
     onMenu: 'secondary',
     tabindex: 140,
     toggle: 'hide-download'
@@ -38,7 +38,7 @@ export const menus = {
     label: 'New',
     args: '',
     fn: 'promptNew',
-    icon: '/img/icons/bolt.svg',
+    icon: require('../img/icons/bolt.svg'),
     onMenu: 'secondary',
     tabindex: 130,
     toggle: 'hide-new'
@@ -47,7 +47,7 @@ export const menus = {
     label: 'Load',
     args: '',
     fn: 'promptLoad',
-    icon: '/img/icons/folder.svg',
+    icon: require('../img/icons/folder.svg'),
     onMenu: 'secondary',
     tabindex: 120,
     toggle: 'hide-load'
@@ -56,7 +56,7 @@ export const menus = {
     label: 'Save As',
     args: '',
     fn: 'promptSaveAs',
-    icon: '/img/icons/file.svg',
+    icon: require('../img/icons/file.svg'),
     onMenu: 'secondary',
     tabindex: 110,
     toggle: 'hide-save-as'
@@ -65,7 +65,7 @@ export const menus = {
     label: 'Sandbox',
     args: '/sandbox',
     fn: 'go',
-    icon: 'img/icons/pencil.svg',
+    icon: require('../img/icons/pencil.svg'),
     tabindex: 100,
     onMenu: 'primary'
   },
@@ -73,7 +73,7 @@ export const menus = {
     label: 'Tutorial',
     args: '/tutorial',
     fn: 'go',
-    icon: 'img/icons/location.svg',
+    icon: require('../img/icons/location.svg'),
     tabindex: 200,
     onMenu: 'primary'
   },
@@ -81,7 +81,7 @@ export const menus = {
     label: 'Reference',
     args: '/reference',
     fn: 'go',
-    icon: 'img/icons/book.svg',
+    icon: require('../img/icons/book.svg'),
     tabindex: 300,
     onMenu: 'primary'
   }
