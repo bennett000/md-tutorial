@@ -55,7 +55,7 @@ module.exports = function(config) {
         'node_modules/angular-aria/angular-aria.js',
         'node_modules/angular-mocks/angular-mocks.js',
         'spec/unit/mock-*.js',
-        'src/ts/boot.ts',
+        'src/ts/index.ts',
         'spec/unit/helper-*.js',
         'spec/unit/*-spec.js',
         'src/html/**/*.html'
