@@ -25,21 +25,6 @@ module.exports = (grunt) ->
           externs: 'etc/externs/angular-1.3.js'
           angular_pass: true
 
-    # Build CSS
-    compass:
-      debug:
-        options:
-          cssDir: 'src/css'
-          sassDir: 'src/scss'
-          environment: 'development'
-          force: true
-      build:
-        options:
-          cssDir: 'build/css'
-          sassDir: 'src/scss'
-          environment: 'production'
-          force: true
-
     # Copy assets
     copy:
       build:
@@ -65,7 +50,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'e2e', 'End to end tests', ['protractor']
   grunt.registerTask 'test-all', 'End to end tests', ['protractor']
-  grunt.registerTask 'bootstrap', 'Generate index.html', ['compass']
 
-  grunt.registerTask 'build', 'Build The Project', ['compass', 'copy']
+  grunt.registerTask 'build', 'Build The Project', ['copy']
 

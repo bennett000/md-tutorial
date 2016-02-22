@@ -4,8 +4,6 @@ node_js:
 before_install:
   - npm install -g npm
   - npm install -g codeclimate-test-reporter
-  - gem install sass
-  - gem install compass
 install:
   - npm install
 before_script:
