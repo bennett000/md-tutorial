@@ -4,3 +4,9 @@ export const promptStates = Object.freeze({
 });
 
 export const noop = angular.noop;
+
+// filter selectors
+export const defaultMode = '/sandbox';
+
+export const newFileLabel = '__new __file';
+

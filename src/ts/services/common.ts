@@ -1,11 +1,11 @@
-import {noop} from './constants';
+import {noop} from '../constants';
 
 const rx = /(\d+)|(\D+)/g,
   /** @const */
   rd = /\d+/;
 
 
-export function makeListenerFactory($timeout) {
+export function makeListenerFactory() {
   function makeListener(obj) {
     if (!(obj && typeof obj === 'object')) {
       return obj;
@@ -54,7 +54,7 @@ export function makeListenerFactory($timeout) {
       }
       const args = args2array(arguments, 0);
       // async
-      $timeout(function () {
+      setTimeout(function () {
         emitSync.apply(null, args);
       }, 0);
     }
@@ -75,7 +75,6 @@ export function makeListenerFactory($timeout) {
   }
   return makeListener;
 }
-makeListenerFactory.$inject = ['$timeout'];
 
 export function safeCall(fn:Function, args?:Array<any>, ctext?:any) {
   try {

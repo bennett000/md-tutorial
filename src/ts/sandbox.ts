@@ -1,4 +1,4 @@
-import {naturalSort} from './common';
+import {naturalSort} from './services/common';
 
 export function MdtSandboxState(localStorage, mdtMakeListener, newFileLabel) {
   const that = mdtMakeListener(this),
@@ -89,7 +89,6 @@ export function MdtSandboxState(localStorage, mdtMakeListener, newFileLabel) {
   this.onUpdate = onUpdate;
   this.saveAs = saveAs;
 }
-MdtSandboxState.$inject = ['localStorage', 'mdtMakeListener', 'newFileLabel'];
 
 export function mdtSandbox($sce, mdtMarked, throttle, mdtSandboxState) {
   const THROTTLE_MD:number = 150;

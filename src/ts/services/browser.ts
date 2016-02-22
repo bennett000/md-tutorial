@@ -1,33 +1,25 @@
 // References for browser wrappers
+import {Injectable} from 'angular2/core';
 import {safeCall} from './common';
-
-
-export function createLocalStorage() {
-  return new LocalStorage();
-}
-createLocalStorage.$inject = [];
 
 const prefix = 'mdt' + window.location.pathname;
 
-class StorageWrapper {
-  storage:Storage;
+@Injectable()
+export class LocalStorage {
+  storage = window.localStorage;
 
-  constructor(storage) {
-    this.storage = storage;
-  }
-
-  set(key:string, value:string) {
+  public set(key: string, value: string) {
     return this.storage.setItem(prefix + key, value);
   }
 
-  get(key:string) {
+  public get(key: string) {
     return this.storage.getItem(prefix + key);
   }
 
-  list(subPrefix?:string, callback?:Function):string[] {
+  public list(subPrefix?: string, callback?: Function): string[] {
     const result = [];
-    let key:string,
-      i:number;
+    let key: string,
+      i: number;
 
     // if falsey, force string
     subPrefix = subPrefix || '';
@@ -43,11 +35,11 @@ class StorageWrapper {
     return result;
   }
 
-  remove(key:string) {
+  public remove(key: string) {
     return this.storage.removeItem(prefix + key);
   }
 
-  removeAll():void {
+  public removeAll(): void {
     const toRemove = [];
 
     this.list(null, function (error, key) {
@@ -57,8 +49,8 @@ class StorageWrapper {
     toRemove.forEach(this.remove.bind(this));
   }
 
-  length():number {
-    let len:number = 0;
+  public length(): number {
+    let len: number = 0;
 
     this.list(null, function () {
       len += 1;
@@ -67,11 +59,4 @@ class StorageWrapper {
     return len;
   }
 }
-
-class LocalStorage extends StorageWrapper {
-  constructor() {
-    super(window.localStorage);
-  }
-}
-
 

@@ -4,6 +4,7 @@
  */
 
 import {promptStates} from './constants';
+import {newFileLabel} from './constants';
 
 export const appFlags = {
   worker: {
@@ -16,7 +17,7 @@ export const appFlags = {
   }
 };
 
-export function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
+export function Sandbox($scope, mdtMenuState, mdtSandboxState) {
   function setToggles() {
     let toggleString = '';
     const cur = mdtSandboxState.current();
@@ -38,7 +39,7 @@ export function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
   this.setToggles = setToggles;
   $scope.$on('$destroy', mdtSandboxState.onUpdate(setToggles));
 }
-Sandbox.$inject = ['$scope', 'mdtMenuState', 'mdtSandboxState', 'newFileLabel'];
+Sandbox.$inject = ['$scope', 'mdtMenuState', 'mdtSandboxState'];
 
 export function NonSavingController(mdtMenuState, mdtMenus) {
   let toggleString = '';
@@ -86,7 +87,7 @@ export function frameDirective(mdtMenuState, mdtPromptService) {
     update(mdtMenuState.toggle());
 
     scope.$on('$destroy', destroy);
-    scope.prompt = !(mdtPromptService.state() === promptStates.off);
+    scope.prompt = !(mdtPromptService.state === promptStates.off);
 
     function update(val) {
       scope.toggle = val;

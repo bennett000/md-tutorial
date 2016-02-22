@@ -1,96 +1,5 @@
 import {promptStates} from './constants';
 
-export function MdtPromptService($q, mdtMakeListener) {
-  const that = mdtMakeListener(this);
-  let state:string = promptStates.off;
-
-  this.input = promptInput;
-  this.file = promptFile;
-  this.bool = promptBool;
-  this.state = getState;
-
-  function getState():string {
-    return state;
-  }
-
-  function promptBool(label:string, labelTrue:string, labelFalse:string) {
-    const d = $q.defer();
-    let input;
-    if (state !== promptStates.off) {
-      d.reject(new Error('promptInput: Prompt in progress'));
-      return d.promise;
-    }
-    state = promptStates.bool;
-    that.emit(promptStates.bool, label, labelTrue, labelFalse);
-    function cleanUp() {
-      input();
-      state = promptStates.off;
-      that.emit('hide');
-    }
-
-    input = that.on('provideBool', function (input) {
-      d.resolve(input);
-      cleanUp();
-    });
-    return d.promise;
-  }
-
-  function promptInput(label:string) {
-    const d = $q.defer();
-    let input, cancel;
-    if (state !== promptStates.off) {
-      d.reject(new Error('promptInput: Prompt in progress'));
-      return d.promise;
-    }
-    state = promptStates.input;
-    that.emit(promptStates.input, label);
-    function cleanUp() {
-      input();
-      cancel();
-      state = promptStates.off;
-      that.emit('hide');
-    }
-
-    input = that.on('provideInput', function (input) {
-      d.resolve(input);
-      cleanUp();
-    });
-    cancel = that.on('cancel', function () {
-      d.reject(new Error('promptInput: Cancelled'));
-      cleanUp();
-    });
-    return d.promise;
-  }
-
-  function promptFile(label:string) {
-    const d = $q.defer();
-    let input, cancel;
-    if (state !== promptStates.off) {
-      d.reject(new Error('promptFile: Prompt in progress'));
-      return d.promise;
-    }
-    state = promptStates.file;
-    that.emit(promptStates.file, label);
-    function cleanUp() {
-      input();
-      cancel();
-      state = promptStates.off;
-      that.emit('hide');
-    }
-
-    input = that.on('provideFile', function (filename) {
-      d.resolve(filename);
-      cleanUp();
-    });
-    cancel = that.on('cancel', function () {
-      d.reject(new Error('promptInput: Cancelled'));
-      cleanUp();
-    });
-    return d.promise;
-  }
-}
-MdtPromptService.$inject = ['$q', 'mdtMakeListener'];
-
 export function mdtPrompt() {
   return {
     restrict: 'E',
@@ -116,7 +25,7 @@ export function mdtPromptFile(mdtPromptService, mdtSandboxState) {
     function reset() {
       scope.files = [];
       scope.label = '';
-      scope.show = mdtPromptService.state() === promptStates.file;
+      scope.show = mdtPromptService.state === promptStates.file;
     }
 
     function onPrompt(label:string) {
@@ -176,7 +85,7 @@ export function mdtPromptInput(mdtPromptService, $timeout) {
     function reset() {
       scope.data = '';
       scope.label = '';
-      scope.show = mdtPromptService.state() === promptStates.input;
+      scope.show = mdtPromptService.state === promptStates.input;
     }
 
     function onPrompt(label:string) {
@@ -233,7 +142,7 @@ export function mdtPromptBool(mdtPromptService) {
       scope.label = '';
       scope.labelTrue = '';
       scope.labelFalse = '';
-      scope.show = mdtPromptService.state() === promptStates.bool;
+      scope.show = mdtPromptService.state === promptStates.bool;
     }
 
     function onPrompt(label:string, labelTrue:string,

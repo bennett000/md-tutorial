@@ -1,9 +1,7 @@
 /**
  * Created by michael on 29/03/15.
  */
-
-// filter selectors
-const defaultMode = '/sandbox';
+import {newFileLabel} from './constants';
 
 export function mdtAppletSelector() {
   return {
@@ -13,61 +11,12 @@ export function mdtAppletSelector() {
   };
 }
 
-export function MdtMenuState(mdtMakeListener) {
-  const states = {
-      selected: defaultMode,
-      toggle: ''
-    },
-    that = mdtMakeListener(this);
-
-  function access(prop, val?:string):string {
-    if (val === undefined) {
-      return states[prop];
-    }
-    states[prop] = val;
-    that.emitSync(prop, val);
-    return states[prop];
-  }
-
-  function current(val?:string) {
-    return access('selected', val);
-  }
-
-  function onSelect(cb) {
-    return that.on('selected', cb);
-  }
-
-  function onToggle(cb) {
-    return that.on('toggle', cb);
-  }
-
-  function toggle(val?:string) {
-    return access('toggle', val);
-  }
-
-  function onPrompt(cb) {
-    return that.on('prompt', cb);
-  }
-
-  function prompt(val?:string) {
-    return access('prompt', val);
-  }
-
-  this.prompt = prompt;
-  this.toggle = toggle;
-  this.selected = current;
-  this.onSelect = onSelect;
-  this.onToggle = onToggle;
-  this.onPrompt = onPrompt;
-}
-MdtMenuState.$inject = ['mdtMakeListener'];
-
-export function MdtMenuFunctions($window, $location, mdtMenuState, newFileLabel,
-                          mdtSandboxState, mdtMarked, mdtPromptService) {
+export function MdtMenuFunctions($window, $location, mdtMenuState,
+                                 mdtSandboxState, mdtMarked, mdtPromptService) {
 
   function go(args, label) {
     $location.path(args);
-    mdtMenuState.selected(label);
+    mdtMenuState.current(label);
   }
 
   function remove() {
@@ -207,7 +156,7 @@ export function MdtMenuFunctions($window, $location, mdtMenuState, newFileLabel,
   this.promptNew = promptNew;
 }
 MdtMenuFunctions.$inject = ['$window', '$location', 'mdtMenuState',
-  'newFileLabel', 'mdtSandboxState', 'mdtMarked', 'mdtPromptService'];
+  'mdtSandboxState', 'mdtMarked', 'mdtPromptService'];
 
 export function mdtAppletSelectors(mdtMenus, mdtMenuState, mdtMenuFunctions) {
 
@@ -240,7 +189,7 @@ export function mdtAppletSelectors(mdtMenus, mdtMenuState, mdtMenuFunctions) {
       }
     });
     scope.select = select;
-    scope.selected = mdtMenuState.selected();
+    scope.selected = mdtMenuState.current();
     scope.toggle = mdtMenuState.toggle();
 
     listenSelect = mdtMenuState.onSelect(updateSelect);

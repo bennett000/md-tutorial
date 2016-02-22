@@ -1,3 +1,4 @@
+import {upgradeAdapter} from './upgrade-adapter';
 export const APP_NAME = 'md-tutorial';
 
 import {frameDirective, appFlags, configureRoutes, Sandbox,
@@ -22,22 +23,21 @@ app.constant('mdtMenus', menus);
 import {tutorial} from './descriptions-tutorial';
 app.constant('mdtTutorial', tutorial);
 
+import {Marked} from './services/markdown';
+app.factory('mdtMarked', upgradeAdapter.downgradeNg2Provider(Marked));
 
-import {MdtMenuState, MdtMenuFunctions, mdtAppletSelector,
-  mdtAppletSelectors} from './menus';
+import {MdtMenuState} from './services/menu-services';
+app.factory('mdtMenuState', upgradeAdapter.downgradeNg2Provider(MdtMenuState))
 
-app.service('mdtMenuState', MdtMenuState)
-  .service('mdtMenuFunctions', MdtMenuFunctions)
-  .directive('mdtAppletSelector', mdtAppletSelector)
-  .directive('mdtAppletSelectors', mdtAppletSelectors);
+import {mdtAppletSelector, mdtAppletSelectors, MdtMenuFunctions} from './menus';
+app.directive('mdtAppletSelector', mdtAppletSelector)
+  .directive('mdtAppletSelectors', mdtAppletSelectors)
+  .service('mdtMenuFunctions', MdtMenuFunctions);
 
-import {markedFactory} from './markdown';
-app.service('mdtMarked', markedFactory);
+import {LocalStorage} from './services/browser';
+app.factory('localStorage', upgradeAdapter.downgradeNg2Provider(LocalStorage));
 
-import {createLocalStorage} from './browser';
-app.factory('localStorage', createLocalStorage);
-
-import {safeCall, naturalSort, makeListenerFactory} from './common';
+import {safeCall, naturalSort, makeListenerFactory} from './services/common';
 app.value('mdtSafeCall', safeCall)
   .value('mdtNaturalSort', naturalSort)
   .factory('mdtMakeListener', makeListenerFactory);
@@ -46,19 +46,24 @@ app.value('mdtSafeCall', safeCall)
 import {mdtTap} from './input-handlers';
 app.directive('mdtTap', mdtTap);
 
-import {MdtPromptService, mdtPrompt, mdtPromptFile, mdtPromptBool,
+import {MdtPromptService} from './services/prompt-service';
+app.factory('mdtPromptService', upgradeAdapter
+  .downgradeNg2Provider(MdtPromptService));
+
+import {mdtPrompt, mdtPromptFile, mdtPromptBool,
   mdtPromptInput} from './prompt';
-app.service('mdtPromptService', MdtPromptService)
-  .directive('mdtPrompt', mdtPrompt)
+
+  app.directive('mdtPrompt', mdtPrompt)
   .directive('mdtPromptFile', mdtPromptFile)
   .directive('mdtPromptBool', mdtPromptBool)
   .directive('mdtPromptInput', mdtPromptInput);
 
+import {MdtSandboxState } from './services/sandbox-service';
+app.factory('mdtSandboxState', upgradeAdapter
+  .downgradeNg2Provider(MdtSandboxState));
 
-import {MdtSandboxState, mdtSandbox} from './sandbox';
-app.service('mdtSandboxState', MdtSandboxState)
-  .directive('mdtSandbox', mdtSandbox)
-  .constant('newFileLabel', '__new __file');
+import {mdtSandbox} from './sandbox';
+app .directive('mdtSandbox', mdtSandbox);
 
 import {throttleNow, throttle, debounce} from './throttle';
 app.factory('throttleNow', throttleNow)
