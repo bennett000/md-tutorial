@@ -16,7 +16,6 @@ export const appFlags = {
   }
 };
 
-/** @ngInject */
 export function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
   function setToggles() {
     let toggleString = '';
@@ -39,8 +38,8 @@ export function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
   this.setToggles = setToggles;
   $scope.$on('$destroy', mdtSandboxState.onUpdate(setToggles));
 }
+Sandbox.$inject = ['$scope', 'mdtMenuState', 'mdtSandboxState', 'newFileLabel'];
 
-/** @ngInject */
 export function NonSavingController(mdtMenuState, mdtMenus) {
   let toggleString = '';
   Object.keys(mdtMenus).forEach(function (name) {
@@ -51,8 +50,8 @@ export function NonSavingController(mdtMenuState, mdtMenus) {
   });
   mdtMenuState.toggle(toggleString);
 }
+NonSavingController.$inject = ['mdtMenuState', 'mdtMenus'];
 
-/** @ngInject */
 export function configureRoutes($routeProvider, mdtApplets) {
   //$routeProvider.when('/', {
   //    templateUrl: 'html/root.html',
@@ -72,9 +71,9 @@ export function configureRoutes($routeProvider, mdtApplets) {
     redirectTo: '/sandbox'
   });
 }
+configureRoutes.$inject = ['$routeProvider', 'mdtApplets'];
 
 
-/** @ngInject */
 export function frameDirective(mdtMenuState, mdtPromptService) {
 
   function linkFn(scope:any) {
@@ -111,9 +110,9 @@ export function frameDirective(mdtMenuState, mdtPromptService) {
   }
 
   return {
-    replace: true,
     scope: {},
     link: linkFn,
     template: require('../html/frame.html')
   };
 }
+frameDirective.$inject = ['mdtMenuState', 'mdtPromptService'];

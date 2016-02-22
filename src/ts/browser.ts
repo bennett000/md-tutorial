@@ -2,10 +2,10 @@
 import {safeCall} from './common';
 
 
-/** @ngInject */
 export function createLocalStorage() {
   return new LocalStorage();
 }
+createLocalStorage.$inject = [];
 
 const prefix = 'mdt' + window.location.pathname;
 

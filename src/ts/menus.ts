@@ -13,7 +13,6 @@ export function mdtAppletSelector() {
   };
 }
 
-/** @ngInject */
 export function MdtMenuState(mdtMakeListener) {
   const states = {
       selected: defaultMode,
@@ -61,8 +60,8 @@ export function MdtMenuState(mdtMakeListener) {
   this.onToggle = onToggle;
   this.onPrompt = onPrompt;
 }
+MdtMenuState.$inject = ['mdtMakeListener'];
 
-/** @ngInject */
 export function MdtMenuFunctions($window, $location, mdtMenuState, newFileLabel,
                           mdtSandboxState, mdtMarked, mdtPromptService) {
 
@@ -207,8 +206,9 @@ export function MdtMenuFunctions($window, $location, mdtMenuState, newFileLabel,
   this.promptSaveAs = promptSaveAs;
   this.promptNew = promptNew;
 }
+MdtMenuFunctions.$inject = ['$window', '$location', 'mdtMenuState',
+  'newFileLabel', 'mdtSandboxState', 'mdtMarked', 'mdtPromptService'];
 
-/** @ngInject */
 export function mdtAppletSelectors(mdtMenus, mdtMenuState, mdtMenuFunctions) {
 
   function getOnMenu(name:string) {
@@ -281,3 +281,4 @@ export function mdtAppletSelectors(mdtMenus, mdtMenuState, mdtMenuFunctions) {
     'ng-repeat="selector in selectors"></mdt-applet-selector></div>'
   };
 }
+mdtAppletSelectors.$inject = ['mdtMenus', 'mdtMenuState', 'mdtMenuFunctions'];

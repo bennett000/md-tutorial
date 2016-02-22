@@ -8,7 +8,6 @@ export function throttleNow() {
   return () => Date.now();
 }
 
-/** @ngInject */
 export function throttle($timeout, throttleNow) {
   'use strict';
 
@@ -55,8 +54,8 @@ export function throttle($timeout, throttleNow) {
 
   return throttle;
 }
+throttle.$inject = ['$timeout', 'throttleNow'];
 
-/** @ngInject */
 export function debounce($timeout, throttleNow) {
   'use strict';
 
@@ -105,5 +104,6 @@ export function debounce($timeout, throttleNow) {
 
   return debounce;
 }
+debounce.$inject = ['$timeout', 'throttleNow'];
 
 

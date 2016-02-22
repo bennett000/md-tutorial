@@ -1,5 +1,4 @@
 
-/** @ngInject */
 export function TutorialFiles($http, $q, mdtTutorial) {
   const gets = [], files = [];
 
@@ -13,8 +12,8 @@ export function TutorialFiles($http, $q, mdtTutorial) {
     });
   });
 }
+TutorialFiles.$inject = ['$http', '$q', 'mdtTutorial'];
 
-/** @ngInject */
 function TutorialStates() {
 
 }

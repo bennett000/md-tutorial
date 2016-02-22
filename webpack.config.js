@@ -11,8 +11,8 @@ module.exports = {
       'angular',
       'angular-route',
       'angular-aria',
-      'marked'
-      //'reflect-metadata'
+      'marked',
+      'reflect-metadata'
     ]
   },
   stats: {

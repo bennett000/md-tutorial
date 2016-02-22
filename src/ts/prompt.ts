@@ -1,6 +1,5 @@
 import {promptStates} from './constants';
 
-/** @ngInject */
 export function MdtPromptService($q, mdtMakeListener) {
   const that = mdtMakeListener(this);
   let state:string = promptStates.off;
@@ -90,17 +89,16 @@ export function MdtPromptService($q, mdtMakeListener) {
     return d.promise;
   }
 }
+MdtPromptService.$inject = ['$q', 'mdtMakeListener'];
 
-/** @ngInject */
 export function mdtPrompt() {
   return {
     restrict: 'E',
-    replace: true,
     template: '<div><mdt-prompt-input></mdt-prompt-input><mdt-prompt-file></mdt-prompt-file><mdt-prompt-bool></mdt-prompt-bool></div>'
   };
 }
+mdtPrompt.$inject = [];
 
-/** @ngInject */
 export function mdtPromptFile(mdtPromptService, mdtSandboxState) {
   function linkFn(scope, el) {
     const promptListener = mdtPromptService.on(promptStates.file,
@@ -160,9 +158,9 @@ export function mdtPromptFile(mdtPromptService, mdtSandboxState) {
     template: require('../html/prompt-file.html')
   };
 }
+mdtPromptFile.$inject = ['mdtPromptService', 'mdtSandboxState'];
 
 
-/** @ngInject */
 export function mdtPromptInput(mdtPromptService, $timeout) {
 
   function linkFn(scope, el) {
@@ -217,8 +215,8 @@ export function mdtPromptInput(mdtPromptService, $timeout) {
     template: require('../html/prompt-input.html')
   };
 }
+mdtPromptInput.$inject = ['mdtPromptService', '$timeout'];
 
-/** @ngInject */
 export function mdtPromptBool(mdtPromptService) {
 
   function linkFn(scope, el) {
@@ -268,3 +266,4 @@ export function mdtPromptBool(mdtPromptService) {
     template: require('../html/prompt-bool.html')
   };
 }
+mdtPromptBool.$inject = ['mdtPromptService'];

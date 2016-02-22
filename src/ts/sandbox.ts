@@ -1,6 +1,5 @@
 import {naturalSort} from './common';
 
-/** @ngInject */
 export function MdtSandboxState(localStorage, mdtMakeListener, newFileLabel) {
   const that = mdtMakeListener(this),
     prefix = 'sandbox-',
@@ -90,8 +89,8 @@ export function MdtSandboxState(localStorage, mdtMakeListener, newFileLabel) {
   this.onUpdate = onUpdate;
   this.saveAs = saveAs;
 }
+MdtSandboxState.$inject = ['localStorage', 'mdtMakeListener', 'newFileLabel'];
 
-/** @ngInject */
 export function mdtSandbox($sce, mdtMarked, throttle, mdtSandboxState) {
   const THROTTLE_MD:number = 150;
 
@@ -171,3 +170,4 @@ export function mdtSandbox($sce, mdtMarked, throttle, mdtSandboxState) {
     template: require('../html/sandbox-directive.html')
   }
 }
+mdtSandbox.$inject = ['$sce', 'mdtMarked', 'throttle', 'mdtSandboxState'];

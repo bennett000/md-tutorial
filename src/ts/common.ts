@@ -5,7 +5,6 @@ const rx = /(\d+)|(\D+)/g,
   rd = /\d+/;
 
 
-/** @ngInject */
 export function makeListenerFactory($timeout) {
   function makeListener(obj) {
     if (!(obj && typeof obj === 'object')) {
@@ -76,6 +75,7 @@ export function makeListenerFactory($timeout) {
   }
   return makeListener;
 }
+makeListenerFactory.$inject = ['$timeout'];
 
 export function safeCall(fn:Function, args?:Array<any>, ctext?:any) {
   try {

@@ -38,10 +38,10 @@ function render(md:string, options?:any):angular.IPromise<string> {
   return d.promise;
 }
 
-/** @ngInject */
 export function markedFactory($q) {
   Q = $q;
   // @todo optionally web workerize this
   this.render = render;
 }
+markedFactory.$inject = ['$q'];
 
