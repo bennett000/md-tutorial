@@ -4,49 +4,44 @@
 // maintains a general interface to one, or more markdown programs
 // we're going to start with one, and expand this @todo expand to multiple
 // parsers
+import * as marked from 'marked';
 
-///<reference path="./main.ts" />
-module mdTutorial {
-    var Q:angular.IQService, // can use Q as drop in
-        options:any = {
-            gfm: true,
-            tables: true,
-            breaks: true,
-            pedantic: false,
-            smartLists: true,
-            smartypants: true
-        };
-
-    app.service('mdtMarked', markedFactory);
-
-    marked.setOptions(options);
+let Q:angular.IQService, // can use Q as drop in
+  options:any = {
+    gfm: true,
+    tables: true,
+    breaks: true,
+    pedantic: false,
+    smartLists: true,
+    smartypants: true
+  };
 
 
-    function render(md:string, options?:any):angular.IPromise<string> {
-        var d:angular.IDeferred<string> = Q.defer();
-        if (options) {
-            marked(md, options, onReady)
-        } else {
-            marked(md, onReady);
-        }
+marked.setOptions(options);
 
-        function onReady(err, html) {
-            if (err) {
-                d.reject(err);
-            } else {
-                d.resolve(html);
-            }
-        }
+function render(md:string, options?:any):angular.IPromise<string> {
+  const d:angular.IDeferred<string> = Q.defer();
+  if (options) {
+    marked(md, options, onReady)
+  } else {
+    marked(md, onReady);
+  }
 
-        return d.promise;
+  function onReady(err, html) {
+    if (err) {
+      d.reject(err);
+    } else {
+      d.resolve(html);
     }
+  }
 
-    /** @ngInject */
-    function markedFactory($q) {
-        Q = $q;
-        // @todo optionally web workerize this
-        this.render = render;
-    }
+  return d.promise;
+}
 
+/** @ngInject */
+export function markedFactory($q) {
+  Q = $q;
+  // @todo optionally web workerize this
+  this.render = render;
 }
 

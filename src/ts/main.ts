@@ -3,126 +3,117 @@
  * Created by michael on 28/03/15.
  */
 
-///<reference path="../../etc/defs/index.d.ts" />
-module mdTutorial {
-    var appFlags = {
-        worker: {
-            error: null,
-            is: false
-        },
-        storage: {
-            error: null,
-            is: false
-        }
-    };
+import {promptStates} from './constants';
 
-    export var app = angular.module('md-tutorial', ['ngRoute', 'ngAria']).
-        config(configureRoutes).
-        value('appFlags', appFlags).
-        directive('mdtFrame', frameDirective).
-        controller('FirstTime', NonSavingController).
-        controller('Reference', NonSavingController).
-        controller('Tutorial', NonSavingController).
-        controller('About', NonSavingController).
-        controller('Sandbox', Sandbox);
+export const appFlags = {
+  worker: {
+    error: null,
+    is: false
+  },
+  storage: {
+    error: null,
+    is: false
+  }
+};
 
-    /** @ngInject */
-    function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
-        function setToggles() {
-            var toggleString = '', cur = mdtSandboxState.current();
-            if (!mdtSandboxState.list().length) {
-                toggleString += 'hide-load';
-            }
-            if (!mdtSandboxState.file(cur)) {
-                toggleString += 'hide-save-as hide-email hide-download';
-            }
-            // if it's a new file, and it's empty remove is invisible
-            if (!mdtSandboxState.file(cur) && (cur === newFileLabel)) {
-                toggleString += 'hide-save-as hide-email hide-download ' +
-                'hide-remove hide-new';
-            }
-            mdtMenuState.toggle(toggleString);
-        }
+/** @ngInject */
+export function Sandbox($scope, mdtMenuState, mdtSandboxState, newFileLabel) {
+  function setToggles() {
+    let toggleString = '';
+    const cur = mdtSandboxState.current();
+    if (!mdtSandboxState.list().length) {
+      toggleString += 'hide-load';
+    }
+    if (!mdtSandboxState.file(cur)) {
+      toggleString += 'hide-save-as hide-email hide-download';
+    }
+    // if it's a new file, and it's empty remove is invisible
+    if (!mdtSandboxState.file(cur) && (cur === newFileLabel)) {
+      toggleString += 'hide-save-as hide-email hide-download ' +
+        'hide-remove hide-new';
+    }
+    mdtMenuState.toggle(toggleString);
+  }
 
-        setToggles();
-        this.setToggles = setToggles;
-        $scope.$on('$destroy', mdtSandboxState.onUpdate(setToggles));
+  setToggles();
+  this.setToggles = setToggles;
+  $scope.$on('$destroy', mdtSandboxState.onUpdate(setToggles));
+}
+
+/** @ngInject */
+export function NonSavingController(mdtMenuState, mdtMenus) {
+  let toggleString = '';
+  Object.keys(mdtMenus).forEach(function (name) {
+    if (!mdtMenus[name].toggle) {
+      return;
+    }
+    toggleString += mdtMenus[name].toggle + ' ';
+  });
+  mdtMenuState.toggle(toggleString);
+}
+
+/** @ngInject */
+export function configureRoutes($routeProvider, mdtApplets) {
+  //$routeProvider.when('/', {
+  //    templateUrl: 'html/root.html',
+  //    controller: 'FirstTime',
+  //    controllerAs: 'firstTime'
+  //});
+
+  Object.keys(mdtApplets).forEach(function (applet) {
+    const a = mdtApplets[applet];
+    $routeProvider.when(a.path, {
+      template: a.template,
+      controller: a.controller,
+      controllerAs: a.controllerAs
+    });
+  });
+  $routeProvider.otherwise({
+    redirectTo: '/sandbox'
+  });
+}
+
+
+/** @ngInject */
+export function frameDirective(mdtMenuState, mdtPromptService) {
+
+  function linkFn(scope:any) {
+    const listenToggle = mdtMenuState.onToggle(update),
+      liShow = mdtPromptService.on(promptStates.input, doShow),
+      lfShow = mdtPromptService.on(promptStates.file, doShow),
+      lbShow = mdtPromptService.on(promptStates.bool, doShow),
+      lHide = mdtPromptService.on('hide', doHide);
+
+    update(mdtMenuState.toggle());
+
+    scope.$on('$destroy', destroy);
+    scope.prompt = !(mdtPromptService.state() === promptStates.off);
+
+    function update(val) {
+      scope.toggle = val;
     }
 
-    /** @ngInject */
-    function NonSavingController(mdtMenuState, mdtMenus) {
-        var toggleString = '';
-        Object.keys(mdtMenus).forEach(function (name) {
-            if (!mdtMenus[name].toggle) {
-                return;
-            }
-            toggleString += mdtMenus[name].toggle + ' ';
-        });
-        mdtMenuState.toggle(toggleString);
+    function destroy() {
+      listenToggle();
+      liShow();
+      lfShow();
+      lbShow();
+      lHide();
     }
 
-    /** @ngInject */
-    function configureRoutes($routeProvider, mdtApplets) {
-        //$routeProvider.when('/', {
-        //    templateUrl: 'html/root.html',
-        //    controller: 'FirstTime',
-        //    controllerAs: 'firstTime'
-        //});
-
-        Object.keys(mdtApplets).forEach(function (applet) {
-            var a = mdtApplets[applet];
-            $routeProvider.when(a.path, {
-                templateUrl: a.template,
-                controller: a.controller,
-                controllerAs: a.controllerAs
-            });
-        });
-        $routeProvider.otherwise({
-            redirectTo: '/sandbox'
-        });
+    function doShow() {
+      scope.prompt = true;
     }
 
-    /** @ngInject */
-    function frameDirective(mdtMenuState, mdtPromptService) {
-
-        function linkFn(scope:any) {
-            var listenToggle = mdtMenuState.onToggle(update),
-                liShow = mdtPromptService.on(promptStates.input, doShow),
-                lfShow = mdtPromptService.on(promptStates.file, doShow),
-                lbShow = mdtPromptService.on(promptStates.bool, doShow),
-                lHide = mdtPromptService.on('hide', doHide);
-
-            update(mdtMenuState.toggle());
-
-            scope.$on('$destroy', destroy);
-            scope.prompt = !(mdtPromptService.state() === promptStates.off);
-
-            function update(val) {
-                scope.toggle = val;
-            }
-
-            function destroy() {
-                listenToggle();
-                liShow();
-                lfShow();
-                lbShow();
-                lHide();
-            }
-
-            function doShow() {
-                scope.prompt = true;
-            }
-
-            function doHide() {
-                scope.prompt = false;
-            }
-        }
-
-        return {
-            replace: true,
-            scope: {},
-            link: linkFn,
-            templateUrl: 'html/frame.html'
-        };
+    function doHide() {
+      scope.prompt = false;
     }
+  }
+
+  return {
+    replace: true,
+    scope: {},
+    link: linkFn,
+    template: require('../html/frame.html')
+  };
 }
