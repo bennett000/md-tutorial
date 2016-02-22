@@ -12,11 +12,12 @@
     "jshint": "jshint ./spec/**/*.js ./scripts/*.js",
     "karma": "karma start ./etc/karma.conf.js --singleRun",
     "lint": "npm run coffeelint; npm run jshint; npm run tshint",
-    "postinstall": "npm run typings install; npm run build",
+    "postinstall": "npm run typings; npm run build",
     "start": "node scripts/test-server.js",
     "test": "npm run karma",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "typings": "typings install",
     "tshint": "tslint -c ./etc/tslint.json ./src/**/*.ts"
   },
   "repository": {
