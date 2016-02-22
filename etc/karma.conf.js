@@ -106,14 +106,14 @@ module.exports = function(config) {
         },
         module: {
           loaders: [
-            { test: /\.ts$/, loader: 'ts', exclude: [
-              /node_modules/, /build/, '/lib/'] },
+            { test: /\.ts$/, loader: 'ts-loader', exclude: [
+              /node_modules/, /build/, /lib/] },
             { test: /\.html$/, loader: 'raw' },
             { test: /\.svg/, loader: 'url' },
             { test: /\.eot/, loader: 'url' },
             { test: /\.woff/, loader: 'url' },
             { test: /\.woff2/, loader: 'url' },
-            { test: /\.ttf/, loader: 'url' },
+            { test: /\.ttf/, loader: 'url' }
           ]
         },
         stats: { colors: true, reasons: true },

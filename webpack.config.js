@@ -40,7 +40,8 @@ module.exports = {
       loader: 'tslint'
     }],
     loaders: [
-      { test: /\.ts$/, loader: 'ts-loader', exclude: /node_modules/ },
+      { test: /\.ts$/, loader: 'ts-loader', exclude: [
+        /node_modules/, /build/, /lib/ ]},
       { test: /\.html$/, loader: 'raw' },
       { test: /\.png/, loader: 'url' },
       { test: /\.svg/, loader: 'url' },
